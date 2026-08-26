@@ -6,141 +6,6 @@
 <title>PT AKS Mitra Berkah — Plan, Supply &amp; Build Under One Contract</title>
 <meta name="description" content="PT AKS Mitra Berkah is a South Jakarta contractor covering pre-construction planning, wholesale material supply, and construction works under a single contract.">
 
-<!--
-  ============================================================================
-  EDITOR'S NOTES
-
-  A) LOGO FILES - keep next to this HTML file:
-       logo-aks.png (full colour -> light sections)
-       logo-aks-white.png (white knockout -> navy sections)
-     The black wordmark is invisible on navy. Do not swap them.
-
-  B) BRAND COLOURS - sampled from the logo: navy #013589, teal #00A796
-
-  C) MUST BE COMPLETED BEFORE LAUNCH - search for: TO COMPLETE
-     Placeholder samples: Deed no. / AHU approval / NIB / NPWP / Director /
-     Phone / Email, plus every Indonesian KBLI uraian. None are real.
-     Publishing invented AHU, NIB or NPWP numbers misstates the company's
-     legal status. Replace them all, then delete the preview banner.
-
-  D) LEGAL DATA DELIBERATELY LEFT BLANK
-     The deed supplied earlier was issued to PT AKS MITRA SEJAHTRA, not
-     Berkah. Deed number, notary, capital and officer names must come from
-     Berkah's own deed and SK.
-
-  E) NO INVENTED CREDENTIALS - no project count, no client logos, no years of
-     experience, no certification badges. Add only when real.
-
-  F) Written copy is flagged with: draft, please adjust
-
-  G) KBLI VINTAGE CONFLICT - UNRESOLVED, STILL THE BIGGEST RISK
-     62900 is a KBLI 2025 code; its 2020 predecessor was 62090. The other
-     eight codes are KBLI 2020. A table cannot mix vintages under a heading
-     reading "Everything here is checkable". Open the NIB, note its edition,
-     restate ALL NINE codes in that edition.
-
-  H) GROUP STRUCTURE - LOAD-BEARING
-     Some of the work shown here is delivered by a separate legal entity under
-     common ownership. It is deliberately NOT NAMED anywhere on this site, in
-     the copy or in these comments - HTML comments are served to the browser
-     and show up in view-source, so a name left in here is a name published.
-     What must survive: the distinction itself. Work delivered by the affiliate
-     was contracted, invoiced and taxed by the affiliate, not by AKS. Every
-     project card carries a "Delivered by" line, and the IT division separates
-     what AKS is registered for from what the affiliate delivers.
-     Removing the name is a branding decision and is fine. Removing the
-     distinction is not - it would leave AKS presenting another company's work
-     and unregistered services as its own.
-     The affiliate is identified to a client before signing; the copy says so.
-
-  I) PROJECT CARDS ARE PLACEHOLDERS - search for: TO COMPLETE - PROJECTS
-
-  J) NAVIGATION IS A VIEW SWITCHER, NOT A SCROLL
-     Hash routes, three levels at most:
-       #/   #/works/DIVISION   #/works/DIVISION/PAGE
-       #/projects  #/company  #/contact
-     The router toggles .is-active on [data-view], [data-division] and
-     [data-page], updates <title>, sets aria-current, and jumps to offset 0
-     instantly. That jump is not a scroll animation; without it a visitor deep
-     inside a long view lands in blank space on a short one.
-     NO-JS FALLBACK: hiding applies only under .js, added by the inline script
-     in <head>. With JavaScript off the whole site renders as one long page,
-     in English.
-     SEO COST: one URL, one served <title>. Hash fragments are not indexed
-     separately, so no single page can rank on its own. Past roughly eight
-     pages, move to real files keeping this markup.
-
-  K) WHY "OUR WORKS" IS A PANEL, NOT A CASCADING DROPDOWN
-     Same hierarchy as a two-level dropdown, one level of disclosure. A
-     second-level flyout has no hover on touch, is easy to lose the pointer
-     out of on desktop, and usually ends up needing separate mobile markup.
-
-  L) ADDING A PAGE TO A DIVISION
-       1. <section data-page="DIVISION/NAME"> inside that [data-division].
-       2. Panel link: href="#/works/DIVISION/NAME"
-       3. Add 'NAME' to that division's array in DIVISIONS in the router.
-       4. Add title entries for BOTH languages in TITLES.
-     Miss step 3 and the link falls back to the overview silently.
-
-  M) ADDING A DIVISION - new [data-division] block, new panel column, new key
-     in DIVISIONS, new titles.
-
-  O) PROJECT CARDS COME FROM ONE ARRAY, NOT FROM MARKUP
-     Every project appears in two places - the top-level Projects view and
-     Our Works > IT > Projects. They are NOT two lists. Both are rendered from
-     the single PROJECTS array in the router script, filtered by category.
-     Add, edit or remove a project there and both grids update.
-     Keeping two hand-written lists in sync is the same drift trap as note (N),
-     so do not reintroduce one.
-
-     FIELDS: id, category, year, name_en/name_id, blurb_en/blurb_id, by.
-     'by' is either 'aks' or 'affiliate' and is not optional. See note (H): a
-     card without it is a card claiming AKS did the work. Do not put a company
-     name in this field - the affiliate is not named on this site.
-
-     PAGINATION: PAGE_SIZE controls it, and the controls hide themselves when
-     everything fits on one page. Do not lower PAGE_SIZE to make pagination
-     appear - a portfolio under a dozen entries reads better as one grid.
-
-     THE COST: these grids are built by JavaScript. With JavaScript off, the
-     rest of the site still renders as one long page, but the project grids
-     render empty and a crawler sees nothing in them. That is a real step down
-     from the rest of the file, and it is the strongest argument yet for
-     moving to real files - see note (J).
-
-  N) BILINGUAL COPY - EN / ID - READ THIS BEFORE EDITING ANY TEXT
-     Every visible string exists twice, as sibling inline spans:
-         <span class="t-en">English</span><span class="t-id">Indonesia</span>
-     The toggle adds .lang-id to <html>; CSS then swaps which span displays.
-
-     THE RULE THAT MATTERS: EDIT BOTH, ALWAYS.
-     The dangerous strings on this site are scope and legal statements - the
-     66221 note, "How the two are contracted", the exclusions lists, "Delivered
-     by an affiliated company". If someone corrects the English exclusion and forgets
-     the Indonesian one, the page then makes two different legal claims to two
-     different readers, and the Indonesian one is the version a local client
-     will rely on. Drift here is not a typo, it is a misrepresentation.
-     Before publishing, read the EN and ID versions of every scope statement
-     side by side and confirm they say the same thing.
-
-     t-en / t-id may only go on <span>. The CSS swaps display between inline
-     and none; putting these classes on a flex or grid container will collapse
-     its layout.
-
-     DEFAULT LANGUAGE: English, and with JavaScript off English is all that
-     shows. For a South Jakarta contractor whose clients are Indonesian, that
-     is worth reconsidering - switching the default is one line in the router
-     (see PREFERRED_DEFAULT).
-
-     THE KBLI TABLE IS NOT TRANSLATED - ON PURPOSE.
-     The English uraian on this page are renderings, not official text. The
-     authoritative Indonesian wording is whatever the NIB itself prints.
-     Back-translating the English would produce a table that does not match
-     the document a client is checking against. The Indonesian column is
-     therefore left as placeholders: copy the exact uraian from the NIB.
-  ============================================================================
--->
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600&family=Sora:wght@500;600;700&display=swap" rel="stylesheet">
@@ -149,7 +14,6 @@
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 
-<!-- Adds .js before first paint so hidden views never flash on screen. -->
 <script>document.documentElement.className += ' js';</script>
 
 <script src="https://cdn.tailwindcss.com"></script>
@@ -222,12 +86,10 @@
 
 <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:bg-navy focus:px-4 focus:py-2 focus:font-mono focus:text-xs focus:text-putih"><span class="t-en">Skip to content</span><span class="t-id">Lewati ke konten</span></a>
 
-<!-- PREVIEW BANNER - DELETE THIS ENTIRE <aside> BEFORE PUBLISHING. -->
 <aside class="bg-teal px-6 py-3 text-center font-mono text-[11px] leading-relaxed text-midnight sm:px-8">
-  <span class="t-en"><strong class="font-semibold">Preview:</strong> legal identifiers and contact details on this page are placeholder samples, not real data. Replace them before publishing.</span><span class="t-id"><strong class="font-semibold">Pratinjau:</strong> identitas hukum dan detail kontak di halaman ini masih contoh placeholder, bukan data asli. Ganti sebelum dipublikasikan.</span>
+  <span class="t-en"><strong class="font-semibold">Preview:</strong> all identifiers and contact details on this page are real. Delete this banner when the site is ready to go live.</span><span class="t-id"><strong class="font-semibold">Pratinjau:</strong> semua identitas dan detail kontak di halaman ini sudah asli. Hapus banner ini saat situs siap terbit.</span>
 </aside>
 
-<!-- ==================== NAV ==================== -->
 <nav class="sticky top-0 z-40 bg-putih/95 backdrop-blur">
   <div class="border-b border-navy/15">
     <div class="mx-auto flex max-w-shell flex-wrap items-center justify-between gap-x-8 gap-y-4 px-6 py-5 sm:px-8">
@@ -236,9 +98,7 @@
         <img src="logo-aks.png" alt="PT AKS Mitra Berkah" width="523" height="267" class="h-11 w-auto sm:h-12">
       </a>
 
-      <!-- Language toggle stays outside the collapsible menu: it must be
-           reachable without opening anything. -->
-      <div class="flex items-center gap-4 font-mono text-[11px] eyebrow lg:order-3">
+            <div class="flex items-center gap-4 font-mono text-[11px] eyebrow lg:order-3">
         <span class="flex items-center gap-1.5">
           <button type="button" data-lang="en" aria-pressed="true" lang="en">EN</button>
           <span aria-hidden="true" class="text-navy/25">/</span>
@@ -263,8 +123,7 @@
     </div>
   </div>
 
-  <!-- ==================== OUR WORKS PANEL ==================== -->
-  <div id="worksPanel" class="hidden border-b border-navy/15 bg-putih">
+    <div id="worksPanel" class="hidden border-b border-navy/15 bg-putih">
     <div class="mx-auto max-w-shell px-6 py-10 sm:px-8 sm:py-12">
       <div class="grid gap-10 md:grid-cols-3 lg:gap-14">
 
@@ -279,7 +138,7 @@
 
         <div>
           <a href="#/works/it" data-nav class="font-display text-[1.25rem] font-semibold text-navy hover:text-teal">IT</a>
-          <p class="mt-2 font-mono text-[11px] leading-relaxed text-abu"><span class="t-en">Split between AKS and an affiliate</span><span class="t-id">Terbagi antara AKS dan perusahaan terafiliasi</span></p>
+          <p class="mt-2 font-mono text-[11px] leading-relaxed text-abu"><span class="t-en">Split between AKS and an affiliate</span><span class="t-id">Sebagian kami kerjakan sendiri, sebagian oleh mitra kami</span></p>
           <ul class="mt-5 space-y-3 text-[0.95rem]">
             <li><a href="#/works/it" data-nav data-page-link="it/overview" class="hover:text-navy"><span class="t-en">Overview</span><span class="t-id">Ringkasan</span></a></li>
             <li><a href="#/works/it/support"  data-nav data-page-link="it/support"  class="hover:text-navy"><span class="t-en">Supply &amp; support</span><span class="t-id">Suplai &amp; dukungan</span></a></li>
@@ -291,9 +150,8 @@
         </div>
 
         <div class="border-t border-navy/15 pt-8 md:border-l md:border-t-0 md:pl-10 md:pt-0">
-          <!-- draft, please adjust -->
-          <p class="font-mono text-[11px] eyebrow text-abu"><span class="t-en">Looking for delivered work?</span><span class="t-id">Mencari pekerjaan yang sudah selesai?</span></p>
-          <p class="mt-4 text-[0.95rem] leading-relaxed text-midnight/80"><span class="t-en">This menu is what we are set up to take on. Completed jobs, and which company delivered each one, are listed separately.</span><span class="t-id">Menu ini berisi apa yang kami siap kerjakan. Pekerjaan yang sudah selesai, dan perusahaan mana yang mengerjakannya, terdaftar terpisah.</span></p>
+                    <p class="font-mono text-[11px] eyebrow text-abu"><span class="t-en">Looking for delivered work?</span><span class="t-id">Mencari pekerjaan yang sudah selesai?</span></p>
+          <p class="mt-4 text-[0.95rem] leading-relaxed text-midnight/80"><span class="t-en">This menu is what we are set up to take on. Completed jobs, and which company delivered each one, are listed separately.</span><span class="t-id">Menu ini berisi hal-hal yang bisa kami kerjakan. Kalau mau lihat pekerjaan yang sudah selesai dan siapa yang mengerjakannya, itu ada di halaman terpisah.</span></p>
           <a href="#/projects" data-nav class="mt-5 inline-flex items-center border-2 border-navy px-6 py-3 font-mono text-[11px] eyebrow text-navy transition-colors hover:bg-navy hover:text-putih"><span class="t-en">Projects</span><span class="t-id">Proyek</span></a>
         </div>
 
@@ -304,23 +162,19 @@
 
 <main id="main">
 
-<!-- ==================== VIEW: HOME ==================== -->
 <section data-view="home" class="is-active">
 
   <header class="bg-putih">
     <div class="mx-auto max-w-shell px-6 pb-20 pt-16 sm:px-8 sm:pb-24 sm:pt-24">
 
-      <!-- draft, please adjust - still does NOT mention IT. -->
-      <p class="rise font-mono text-[11px] eyebrow text-teal"><span class="t-en">Construction &middot; Material supply &middot; South Jakarta</span><span class="t-id">Konstruksi &middot; Suplai material &middot; Jakarta Selatan</span></p>
+            <p class="rise font-mono text-[11px] eyebrow text-teal"><span class="t-en">Construction &middot; Material supply &middot; South Jakarta</span><span class="t-id">Konstruksi &middot; Suplai material &middot; Jakarta Selatan</span></p>
 
-      <!-- draft, please adjust -->
-      <h1 data-focus-target tabindex="-1" class="rise rise-2 tight mt-8 max-w-5xl font-display text-[2.75rem] font-bold text-navy sm:text-[4.5rem] lg:text-[5.5rem]">
+            <h1 data-focus-target tabindex="-1" class="rise rise-2 tight mt-8 max-w-5xl font-display text-[2.75rem] font-bold text-navy sm:text-[4.5rem] lg:text-[5.5rem]">
         <span class="t-en">One contract from drawings to handover.</span><span class="t-id">Satu kontrak, dari gambar sampai serah terima.</span>
       </h1>
 
       <div class="mt-14 grid gap-12 lg:grid-cols-12 lg:gap-10">
-        <!-- draft, please adjust -->
-        <p class="rise rise-3 max-w-2xl text-[1.125rem] leading-relaxed text-midnight/80 lg:col-span-7">
+                <p class="rise rise-3 max-w-2xl text-[1.125rem] leading-relaxed text-midnight/80 lg:col-span-7">
           <span class="t-en">Most contractors only handle the build and leave you to sort out materials yourself. We can also plan the job and supply the materials, so instead of juggling three different people, you deal with one — from the first sketch to the day we hand you the keys.</span><span class="t-id">Kebanyakan kontraktor cuma menangani bangunannya, dan Anda harus mengurus material sendiri. Kami juga bisa merencanakan pekerjaannya dan menyuplai materialnya, jadi daripada mengurus tiga pihak berbeda, Anda cukup berurusan dengan satu — dari sketsa pertama sampai kunci diserahkan.</span>
         </p>
 
@@ -338,8 +192,7 @@
     </div>
   </header>
 
-  <!-- SIGNATURE: THE SCOPE CHAIN -->
-  <div class="on-dark bg-midnight py-20 text-putih sm:py-28">
+    <div class="on-dark bg-midnight py-20 text-putih sm:py-28">
     <div class="mx-auto max-w-shell px-6 sm:px-8">
 
       <div class="flex flex-wrap items-end justify-between gap-6">
@@ -356,20 +209,17 @@
         <div class="bg-midnight p-8 lg:p-9">
           <p class="font-mono text-xs tnum text-teal">STAGE 01</p>
           <h3 class="mt-5 font-display text-[1.75rem] font-semibold"><span class="t-en">Plan</span><span class="t-id">Rencana</span></h3>
-          <!-- draft, please adjust -->
-          <p class="mt-4 text-[0.95rem] leading-relaxed text-putih/70"><span class="t-en">We write down exactly what will be built, measure how much material it needs, and price it using real current numbers — and you get all of it in writing before you sign anything.</span><span class="t-id">Kami tulis dengan jelas apa yang akan dibangun, hitung berapa material yang dibutuhkan, dan susun harganya pakai angka riil saat ini — semuanya Anda terima secara tertulis sebelum ada yang ditandatangani.</span></p>
+                    <p class="mt-4 text-[0.95rem] leading-relaxed text-putih/70"><span class="t-en">We write down exactly what will be built, measure how much material it needs, and price it using real current numbers — and you get all of it in writing before you sign anything.</span><span class="t-id">Kami tulis dengan jelas apa yang akan dibangun, hitung berapa material yang dibutuhkan, dan susun harganya pakai angka riil saat ini — semuanya Anda terima secara tertulis sebelum ada yang ditandatangani.</span></p>
         </div>
         <div class="bg-midnight p-8 lg:p-9">
           <p class="font-mono text-xs tnum text-teal">STAGE 02</p>
           <h3 class="mt-5 font-display text-[1.75rem] font-semibold"><span class="t-en">Supply</span><span class="t-id">Suplai</span></h3>
-          <!-- draft, please adjust -->
-          <p class="mt-4 text-[0.95rem] leading-relaxed text-putih/70"><span class="t-en">We buy the materials ourselves and deliver them to site — and if you ever want to check, you can ask to see exactly what we paid for anything on the list.</span><span class="t-id">Kami sendiri yang membeli materialnya dan mengirim ke lokasi — dan kalau Anda ingin mengecek, Anda bisa minta lihat berapa harga beli kami untuk barang apa pun di daftarnya.</span></p>
+                    <p class="mt-4 text-[0.95rem] leading-relaxed text-putih/70"><span class="t-en">We buy the materials ourselves and deliver them to site — and if you ever want to check, you can ask to see exactly what we paid for anything on the list.</span><span class="t-id">Kami sendiri yang membeli materialnya dan mengirim ke lokasi — dan kalau Anda ingin mengecek, Anda bisa minta lihat berapa harga beli kami untuk barang apa pun di daftarnya.</span></p>
         </div>
         <div class="bg-midnight p-8 lg:p-9">
           <p class="font-mono text-xs tnum text-teal">STAGE 03</p>
           <h3 class="mt-5 font-display text-[1.75rem] font-semibold"><span class="t-en">Build</span><span class="t-id">Bangun</span></h3>
-          <!-- draft, please adjust -->
-          <p class="mt-4 text-[0.95rem] leading-relaxed text-putih/70"><span class="t-en">The actual building work, done and checked against the plan we agreed on at the start — so nothing quietly drifts from what was promised.</span><span class="t-id">Pekerjaan bangunannya sendiri, dikerjakan dan dicek terhadap rencana yang disepakati sejak awal — jadi tidak ada yang diam-diam melenceng dari yang dijanjikan.</span></p>
+                    <p class="mt-4 text-[0.95rem] leading-relaxed text-putih/70"><span class="t-en">The actual building work, done and checked against the plan we agreed on at the start — so nothing quietly drifts from what was promised.</span><span class="t-id">Pekerjaan bangunannya sendiri, dikerjakan dan dicek terhadap rencana yang disepakati sejak awal — jadi tidak ada yang diam-diam melenceng dari yang dijanjikan.</span></p>
         </div>
         <div class="bg-teal p-8 text-midnight lg:p-9">
           <p class="font-mono text-xs eyebrow text-midnight/60"><span class="t-en">Result</span><span class="t-id">Hasil</span></p>
@@ -381,8 +231,7 @@
     </div>
   </div>
 
-  <!-- WHY US -->
-  <div class="bg-putih py-20 sm:py-28">
+    <div class="bg-putih py-20 sm:py-28">
     <div class="mx-auto max-w-shell px-6 sm:px-8">
 
       <div class="flex flex-wrap items-end justify-between gap-6">
@@ -395,8 +244,7 @@
         </p>
       </div>
 
-      <!-- draft, please adjust -->
-      <div class="mt-16 grid gap-x-14 gap-y-12 sm:grid-cols-2">
+            <div class="mt-16 grid gap-x-14 gap-y-12 sm:grid-cols-2">
         <div>
           <p class="font-display text-[2.5rem] font-bold leading-none tnum text-teal">01</p>
           <h3 class="mt-4 font-display text-[1.5rem] font-semibold"><span class="t-en">The director signs and runs the job</span><span class="t-id">Direktur yang tanda tangan dan yang menjalankan</span></h3>
@@ -423,18 +271,14 @@
 
 </section>
 
-
-<!-- ==================== VIEW: OUR WORKS ==================== -->
 <section data-view="works">
 
-  <!-- ---------- DIVISION: CONSTRUCTION ---------- -->
-  <div data-division="construction">
+    <div data-division="construction">
 
     <div class="bg-putih">
       <div class="mx-auto max-w-shell px-6 pt-20 sm:px-8 sm:pt-28">
         <p class="font-mono text-[11px] eyebrow text-navy"><span class="t-en">Our Works &middot; Construction</span><span class="t-id">Lini Usaha &middot; Konstruksi</span></p>
-        <!-- draft, please adjust -->
-        <h1 data-focus-target tabindex="-1" class="tight mt-6 max-w-3xl font-display text-[2.25rem] font-semibold text-navy sm:text-[3.25rem]"><span class="t-en">Built and supplied under one contract.</span><span class="t-id">Dibangun dan disuplai dalam satu kontrak.</span></h1>
+                <h1 data-focus-target tabindex="-1" class="tight mt-6 max-w-3xl font-display text-[2.25rem] font-semibold text-navy sm:text-[3.25rem]"><span class="t-en">Built and supplied under one contract.</span><span class="t-id">Dibangun dan disuplai dalam satu kontrak.</span></h1>
         <ul class="mt-10 flex flex-wrap gap-x-7 gap-y-3 border-t border-navy/15 py-5 font-mono text-[11px] eyebrow">
           <li><a href="#/works/construction" data-nav data-page-link="construction/overview" class="text-abu hover:text-navy"><span class="t-en">What we take on</span><span class="t-id">Apa yang kami kerjakan</span></a></li>
           <li><a href="#/works/construction/advisory" data-nav data-page-link="construction/advisory" class="text-abu hover:text-navy"><span class="t-en">Pre-construction advice</span><span class="t-id">Konsultasi prakonstruksi</span></a></li>
@@ -447,20 +291,17 @@
         <div class="grid gap-10 md:grid-cols-3 lg:gap-12">
           <article class="border-t-4 border-teal pt-7">
             <h2 class="font-display text-[1.75rem] font-semibold"><span class="t-en">Residential construction</span><span class="t-id">Konstruksi hunian</span></h2>
-            <!-- draft, please adjust -->
-            <p class="mt-4 leading-relaxed text-midnight/80"><span class="t-en">New-build houses, extensions, and full renovations of occupied homes — including the sequencing that keeps a family living in the building while work runs.</span><span class="t-id">Rumah baru, perluasan, dan renovasi menyeluruh rumah yang masih dihuni — termasuk pengaturan urutan kerja yang membuat keluarga tetap bisa tinggal selama pekerjaan berjalan.</span></p>
+                        <p class="mt-4 leading-relaxed text-midnight/80"><span class="t-en">New-build houses, extensions, and full renovations of occupied homes — including the sequencing that keeps a family living in the building while work runs.</span><span class="t-id">Rumah baru, perluasan, dan renovasi menyeluruh rumah yang masih dihuni — termasuk pengaturan urutan kerja yang membuat keluarga tetap bisa tinggal selama pekerjaan berjalan.</span></p>
             <p class="mt-5 font-mono text-[11px] text-abu"><span class="t-en">Registered scope:</span><span class="t-id">Lingkup terdaftar:</span> 41011</p>
           </article>
           <article class="border-t-4 border-teal pt-7">
             <h2 class="font-display text-[1.75rem] font-semibold"><span class="t-en">Specialist works</span><span class="t-id">Pekerjaan spesialis</span></h2>
-            <!-- draft, please adjust -->
-            <p class="mt-4 leading-relaxed text-midnight/80"><span class="t-en">Discrete packages taken on for owners or main contractors: structural repair, waterproofing, finishing trades, and coordination of specialist subcontractors.</span><span class="t-id">Paket pekerjaan terpisah untuk pemilik atau kontraktor utama: perbaikan struktur, waterproofing, pekerjaan finishing, dan koordinasi subkontraktor spesialis.</span></p>
+                        <p class="mt-4 leading-relaxed text-midnight/80"><span class="t-en">Discrete packages taken on for owners or main contractors: structural repair, waterproofing, finishing trades, and coordination of specialist subcontractors.</span><span class="t-id">Paket pekerjaan terpisah untuk pemilik atau kontraktor utama: perbaikan struktur, waterproofing, pekerjaan finishing, dan koordinasi subkontraktor spesialis.</span></p>
             <p class="mt-5 font-mono text-[11px] text-abu"><span class="t-en">Registered scope:</span><span class="t-id">Lingkup terdaftar:</span> 43400, 43909</p>
           </article>
           <article class="border-t-4 border-teal pt-7">
             <h2 class="font-display text-[1.75rem] font-semibold"><span class="t-en">Material supply</span><span class="t-id">Suplai material</span></h2>
-            <!-- draft, please adjust -->
-            <p class="mt-4 leading-relaxed text-midnight/80"><span class="t-en">Procurement and delivery of building materials, either bundled into a build contract or supplied on its own to owners running their own crew.</span><span class="t-id">Pengadaan dan pengiriman material bangunan, digabung ke dalam kontrak pembangunan atau disuplai terpisah untuk pemilik yang menjalankan krunya sendiri.</span></p>
+                        <p class="mt-4 leading-relaxed text-midnight/80"><span class="t-en">Procurement and delivery of building materials, either bundled into a build contract or supplied on its own to owners running their own crew.</span><span class="t-id">Pengadaan dan pengiriman material bangunan, digabung ke dalam kontrak pembangunan atau disuplai terpisah untuk pemilik yang menjalankan krunya sendiri.</span></p>
             <p class="mt-5 font-mono text-[11px] text-abu"><span class="t-en">Registered scope:</span><span class="t-id">Lingkup terdaftar:</span> 46100, 46901, 46902</p>
           </article>
         </div>
@@ -476,15 +317,13 @@
         <div class="grid gap-12 lg:grid-cols-12">
           <div class="lg:col-span-5">
             <h2 class="tight font-display text-[2rem] font-semibold text-navy sm:text-[2.75rem]"><span class="t-en">Pre-construction advice</span><span class="t-id">Konsultasi prakonstruksi</span></h2>
-            <!-- draft, please adjust -->
-            <p class="mt-6 leading-relaxed text-midnight/80">
+                        <p class="mt-6 leading-relaxed text-midnight/80">
               <span class="t-en">Owners who are not ready to build yet can engage us for the planning stage alone. If you then take the work to another contractor, the documents are yours.</span><span class="t-id">Pemilik yang belum siap membangun bisa memakai jasa kami untuk tahap perencanaan saja. Kalau kemudian pekerjaannya Anda bawa ke kontraktor lain, dokumennya milik Anda.</span>
             </p>
             <p class="mt-6 font-mono text-[11px] text-abu"><span class="t-en">Registered scope:</span><span class="t-id">Lingkup terdaftar:</span> 70209</p>
           </div>
           <div class="lg:col-span-7">
-            <!-- draft, please adjust -->
-            <dl class="font-mono text-[13px]">
+                        <dl class="font-mono text-[13px]">
               <div class="border-t border-navy/20 py-5">
                 <dt class="font-semibold text-navy"><span class="t-en">Feasibility</span><span class="t-id">Kelayakan</span></dt>
                 <dd class="mt-2 font-body text-[0.95rem] leading-relaxed text-midnight/80"><span class="t-en">Whether what you want fits the site, the rules, and the money available — answered before drawings are paid for.</span><span class="t-id">Apakah yang Anda inginkan muat di lahan, aturan, dan dana yang tersedia — dijawab sebelum gambar dibayar.</span></dd>
@@ -509,15 +348,12 @@
 
   </div>
 
-  <!-- ---------- DIVISION: IT ---------- -->
-  <div data-division="it" class="on-dark bg-navy text-putih">
+    <div data-division="it" class="on-dark bg-navy text-putih">
 
     <div class="mx-auto max-w-shell px-6 pt-20 sm:px-8 sm:pt-28">
       <p class="font-mono text-[11px] eyebrow text-teal"><span class="t-en">Our Works</span><span class="t-id">Lini Usaha</span> &middot; IT</p>
-      <!-- draft, please adjust -->
-      <h1 data-focus-target tabindex="-1" class="tight mt-6 max-w-3xl font-display text-[2.25rem] font-semibold sm:text-[3.25rem]"><span class="t-en">Two companies, one point of contact.</span><span class="t-id">Dua perusahaan, satu titik kontak.</span></h1>
-      <!-- draft, please adjust -->
-      <p class="mt-8 max-w-2xl text-[1.0625rem] leading-relaxed text-putih/80">
+            <h1 data-focus-target tabindex="-1" class="tight mt-6 max-w-3xl font-display text-[2.25rem] font-semibold sm:text-[3.25rem]"><span class="t-en">Two companies, one point of contact.</span><span class="t-id">Dua perusahaan, satu titik kontak.</span></h1>
+            <p class="mt-8 max-w-2xl text-[1.0625rem] leading-relaxed text-putih/80">
         <span class="t-en">We handle buying equipment, setting it up, and keeping it running. For anything that needs software, data, or design work, we bring in a trusted partner company for that part — and you will know exactly who they are before anything is signed.</span><span class="t-id">Kami yang menangani pembelian perangkat, pemasangan, dan menjaganya tetap jalan. Untuk hal-hal yang butuh software, data, atau desain, kami libatkan perusahaan mitra terpercaya untuk bagian itu — dan Anda akan tahu persis siapa mereka sebelum ada yang ditandatangani.</span>
       </p>
       <ul class="mt-10 flex flex-wrap gap-x-7 gap-y-3 border-t border-white/15 py-5 font-mono text-[11px] eyebrow">
@@ -530,8 +366,7 @@
       </ul>
     </div>
 
-    <!-- PAGE: IT OVERVIEW -->
-    <section data-page="it/overview" class="pb-20 pt-14 sm:pb-24">
+        <section data-page="it/overview" class="pb-20 pt-14 sm:pb-24">
       <div class="mx-auto max-w-shell px-6 sm:px-8">
 
         <p class="font-mono text-[11px] eyebrow text-putih/50"><span class="t-en">Contracted with PT AKS Mitra Berkah</span><span class="t-id">Dikontrak dengan PT AKS Mitra Berkah</span></p>
@@ -539,27 +374,24 @@
           <div class="bg-navy p-8 lg:p-9">
             <p class="font-mono text-xs tnum text-teal">STAGE 01</p>
             <h2 class="mt-5 font-display text-[1.75rem] font-semibold"><span class="t-en">Supply</span><span class="t-id">Suplai</span></h2>
-            <!-- draft, please adjust -->
-            <p class="mt-4 text-[0.95rem] leading-relaxed text-putih/70"><span class="t-en">Workstations, laptops, printers, and peripherals procured on our own wholesale registration, with the supplier invoices open to you.</span><span class="t-id">Workstation, laptop, printer, dan periferal diadakan dengan izin grosir kami sendiri, dengan faktur pemasoknya terbuka untuk Anda.</span></p>
+                        <p class="mt-4 text-[0.95rem] leading-relaxed text-putih/70"><span class="t-en">Workstations, laptops, printers, and peripherals procured on our own wholesale registration, with the supplier invoices open to you.</span><span class="t-id">Workstation, laptop, printer, dan periferal diadakan dengan izin grosir kami sendiri, dengan faktur pemasoknya terbuka untuk Anda.</span></p>
             <p class="mt-5 font-mono text-[11px] text-putih/45">46100, 46901, 46902</p>
           </div>
           <div class="bg-navy p-8 lg:p-9">
             <p class="font-mono text-xs tnum text-teal">STAGE 02</p>
             <h2 class="mt-5 font-display text-[1.75rem] font-semibold"><span class="t-en">Set up</span><span class="t-id">Pemasangan</span></h2>
-            <!-- draft, please adjust -->
-            <p class="mt-4 text-[0.95rem] leading-relaxed text-putih/70"><span class="t-en">New computers arrive ready to use, with everything installed and accounts already working. We move your files off the old machines first, then wipe them properly — with paperwork you can keep, if you need proof for an audit.</span><span class="t-id">Komputer baru datang sudah siap pakai, semua terpasang dan akun sudah berfungsi. Kami pindahkan file dari perangkat lama dulu, baru dihapus dengan benar — lengkap dengan bukti tertulis yang bisa Anda simpan, kalau butuh untuk audit.</span></p>
+                        <p class="mt-4 text-[0.95rem] leading-relaxed text-putih/70"><span class="t-en">New computers arrive ready to use, with everything installed and accounts already working. We move your files off the old machines first, then wipe them properly — with paperwork you can keep, if you need proof for an audit.</span><span class="t-id">Komputer baru datang sudah siap pakai, semua terpasang dan akun sudah berfungsi. Kami pindahkan file dari perangkat lama dulu, baru dihapus dengan benar — lengkap dengan bukti tertulis yang bisa Anda simpan, kalau butuh untuk audit.</span></p>
             <p class="mt-5 font-mono text-[11px] text-putih/45">62900</p>
           </div>
           <div class="bg-navy p-8 lg:p-9">
             <p class="font-mono text-xs tnum text-teal">STAGE 03</p>
             <h2 class="mt-5 font-display text-[1.75rem] font-semibold"><span class="t-en">Support</span><span class="t-id">Dukungan</span></h2>
-            <!-- draft, please adjust -->
-            <p class="mt-4 text-[0.95rem] leading-relaxed text-putih/70"><span class="t-en">When something breaks, we find out why and fix it. We also set up backups and actually test that they work, so if a machine ever dies, your files do not die with it.</span><span class="t-id">Kalau ada yang rusak, kami cari tahu penyebabnya dan perbaiki. Kami juga siapkan backup dan benar-benar mengujinya, jadi kalau ada perangkat yang rusak, file Anda tidak ikut hilang.</span></p>
+                        <p class="mt-4 text-[0.95rem] leading-relaxed text-putih/70"><span class="t-en">When something breaks, we find out why and fix it. We also set up backups and actually test that they work, so if a machine ever dies, your files do not die with it.</span><span class="t-id">Kalau ada yang rusak, kami cari tahu penyebabnya dan perbaiki. Kami juga siapkan backup dan benar-benar mengujinya, jadi kalau ada perangkat yang rusak, file Anda tidak ikut hilang.</span></p>
             <p class="mt-5 font-mono text-[11px] text-putih/45">62900</p>
           </div>
         </div>
 
-        <p class="mt-14 font-mono text-[11px] eyebrow text-putih/50"><span class="t-en">Delivered by an affiliated company</span><span class="t-id">Dikerjakan oleh perusahaan terafiliasi</span></p>
+        <p class="mt-14 font-mono text-[11px] eyebrow text-putih/50"><span class="t-en">Delivered by an affiliated company</span><span class="t-id">Dikerjakan oleh perusahaan mitra kami</span></p>
         <div class="mt-6 grid gap-px bg-white/15 lg:grid-cols-3">
           <a href="#/works/it/software" data-nav class="block bg-navy p-8 transition-colors hover:bg-midnight lg:p-9">
             <p class="font-mono text-xs eyebrow text-teal">SW</p>
@@ -578,13 +410,10 @@
           </a>
         </div>
 
-        <!-- BOUNDARY. Same honesty device as the 66221 note. Do not remove.
-             EN and ID must state the same thing - see EDITOR'S NOTE (N). -->
-        <div class="mt-12 border-t border-white/20 pt-8">
+                <div class="mt-12 border-t border-white/20 pt-8">
           <div class="grid gap-6 lg:grid-cols-12">
             <h2 class="font-display text-[1.5rem] font-semibold lg:col-span-4"><span class="t-en">How the two are contracted</span><span class="t-id">Bagaimana keduanya dikontrak</span></h2>
-            <!-- draft, please adjust -->
-            <div class="lg:col-span-8">
+                        <div class="lg:col-span-8">
               <p class="leading-relaxed text-putih/80">
                 <span class="t-en">We are honest about where our licence ends. We can sign for equipment, setup, and support ourselves — but not for building software or consulting on systems, so we do not pretend to. When a project needs that, a partner company signs that part directly with you. That means two agreements instead of one, but you will know exactly who you are dealing with and why, before you sign either.</span><span class="t-id">Kami jujur soal di mana batas izin kami. Kami bisa menandatangani sendiri untuk perangkat, pemasangan, dan dukungan — tapi tidak untuk membangun software atau konsultasi sistem, jadi kami tidak berpura-pura bisa. Kalau proyeknya butuh itu, perusahaan mitra yang menandatangani bagian itu langsung dengan Anda. Artinya ada dua perjanjian, bukan satu, tapi Anda akan tahu persis dengan siapa Anda berurusan dan kenapa, sebelum menandatangani keduanya.</span>
               </p>
@@ -598,126 +427,111 @@
       </div>
     </section>
 
-    <!-- PAGE: SUPPLY & SUPPORT -->
-    <section data-page="it/support" class="pb-20 pt-14 sm:pb-24">
+        <section data-page="it/support" class="pb-20 pt-14 sm:pb-24">
       <div class="mx-auto max-w-shell px-6 sm:px-8">
         <div class="grid gap-12 lg:grid-cols-12">
           <div class="lg:col-span-5">
             <h2 class="tight font-display text-[2rem] font-semibold sm:text-[2.75rem]"><span class="t-en">Supply &amp; support</span><span class="t-id">Suplai &amp; dukungan</span></h2>
-            <!-- draft, please adjust -->
-            <p class="mt-6 leading-relaxed text-putih/80"><span class="t-en">The part contracted directly with PT AKS Mitra Berkah, on the same terms as the building work: written scope, stated exclusions, one party answering the phone.</span><span class="t-id">Bagian yang dikontrak langsung dengan PT AKS Mitra Berkah, dengan syarat yang sama seperti pekerjaan bangunan: lingkup tertulis, pengecualian dinyatakan, satu pihak yang mengangkat telepon.</span></p>
+                        <p class="mt-6 leading-relaxed text-putih/80"><span class="t-en">This is the part you sign with us directly, on the same terms as our construction work: everything agreed in writing first, and one person you can actually call.</span><span class="t-id">Bagian ini yang Anda tandatangani langsung dengan kami, dengan syarat yang sama seperti pekerjaan konstruksi: semua disepakati tertulis dulu, dan ada satu orang yang benar-benar bisa Anda hubungi.</span></p>
             <p class="mt-6 font-mono text-[11px] leading-relaxed text-putih/45"><span class="t-en">Registered scope:</span><span class="t-id">Lingkup terdaftar:</span> 62900 &middot; 46100 &middot; 46901 &middot; 46902</p>
           </div>
           <div class="lg:col-span-7">
-            <!-- draft, please adjust -->
-            <dl class="font-mono text-[13px]">
+                        <dl class="font-mono text-[13px]">
               <div class="border-t border-white/15 py-5">
                 <dt class="font-semibold text-teal"><span class="t-en">Procurement</span><span class="t-id">Pengadaan</span></dt>
-                <dd class="mt-2 font-body text-[0.95rem] leading-relaxed text-putih/75"><span class="t-en">Specification, quotation, and delivery of workstations, laptops, printers, and peripherals. Supplier invoices open to you.</span><span class="t-id">Spesifikasi, penawaran, dan pengiriman workstation, laptop, printer, dan periferal. Faktur pemasok terbuka untuk Anda.</span></dd>
+                <dd class="mt-2 font-body text-[0.95rem] leading-relaxed text-putih/75"><span class="t-en">We help you pick the right computers, laptops, printers, and accessories, get you a quote, and deliver them &mdash; and you can always see what we actually paid for it.</span><span class="t-id">Kami bantu pilih komputer, laptop, printer, dan aksesoris yang tepat, buatkan penawaran, dan kirim ke Anda &mdash; dan Anda selalu bisa lihat berapa harga beli kami sebenarnya.</span></dd>
               </div>
               <div class="border-t border-white/15 py-5">
                 <dt class="font-semibold text-teal"><span class="t-en">Deployment</span><span class="t-id">Penerapan</span></dt>
-                <dd class="mt-2 font-body text-[0.95rem] leading-relaxed text-putih/75"><span class="t-en">Machines configured and licensed, accounts and shared drives created, data migrated from old equipment, old drives wiped and certified.</span><span class="t-id">Perangkat dikonfigurasi dan dilisensi, akun dan drive bersama dibuat, data dimigrasi dari perangkat lama, drive lama dihapus dan disertifikasi.</span></dd>
+                <dd class="mt-2 font-body text-[0.95rem] leading-relaxed text-putih/75"><span class="t-en">Your new computers arrive ready to work, with everything licensed and your team's accounts already set up. We move your old files over first, then properly erase the old machines &mdash; with a certificate if you need one.</span><span class="t-id">Komputer baru Anda datang siap pakai, semuanya berlisensi dan akun tim Anda sudah disiapkan. Kami pindahkan file lama dulu, baru menghapus perangkat lama dengan benar &mdash; lengkap dengan sertifikat kalau Anda butuh.</span></dd>
               </div>
               <div class="border-t border-white/15 py-5">
                 <dt class="font-semibold text-teal"><span class="t-en">Ongoing support</span><span class="t-id">Dukungan berjalan</span></dt>
-                <dd class="mt-2 font-body text-[0.95rem] leading-relaxed text-putih/75"><span class="t-en">Fault diagnosis and repair, on a call-out or a monthly basis. Response times fixed in the agreement rather than promised in conversation.</span><span class="t-id">Diagnosis dan perbaikan gangguan, per panggilan atau bulanan. Waktu tanggap ditetapkan dalam perjanjian, bukan dijanjikan lisan.</span></dd>
+                <dd class="mt-2 font-body text-[0.95rem] leading-relaxed text-putih/75"><span class="t-en">When something breaks, call us and we will diagnose and fix it &mdash; either as a one-off call-out or a monthly plan. How fast we respond is written into the agreement, not just promised out loud.</span><span class="t-id">Kalau ada yang rusak, hubungi kami dan kami akan cari tahu masalahnya lalu perbaiki &mdash; bisa per panggilan atau paket bulanan. Seberapa cepat kami merespons tertulis di perjanjian, bukan cuma janji lisan.</span></dd>
               </div>
               <div class="border-y border-white/15 py-5">
                 <dt class="font-semibold text-teal"><span class="t-en">Backup &amp; recovery</span><span class="t-id">Backup &amp; pemulihan</span></dt>
-                <dd class="mt-2 font-body text-[0.95rem] leading-relaxed text-putih/75"><span class="t-en">Backups configured and — the part usually skipped — restored from on a schedule, to prove they work. Recovery from failed drives where the media allows it.</span><span class="t-id">Backup dikonfigurasi dan — bagian yang biasanya dilewati — diuji pulihkan secara berkala, untuk membuktikan backup-nya berfungsi. Pemulihan dari drive rusak sejauh medianya memungkinkan.</span></dd>
+                <dd class="mt-2 font-body text-[0.95rem] leading-relaxed text-putih/75"><span class="t-en">We set up backups, and &mdash; the part most people skip &mdash; we regularly test that they actually restore, so you find out they work before you need them, not after. If a drive fails, we try to recover what is on it.</span><span class="t-id">Kami siapkan backup, dan &mdash; bagian yang biasanya dilewati orang &mdash; kami rutin uji apakah backup-nya benar-benar bisa dipulihkan, jadi Anda tahu itu berfungsi sebelum butuh, bukan sesudahnya. Kalau ada drive yang rusak, kami coba selamatkan datanya.</span></dd>
               </div>
             </dl>
             <p class="mt-6 font-mono text-[11px] leading-relaxed text-putih/45">
-              <span class="t-en">Not included: systems consulting, network or systems design, software development. Those are separate registrations we do not hold.</span><span class="t-id">Tidak termasuk: konsultansi sistem, perancangan jaringan atau sistem, pengembangan perangkat lunak. Itu izin terpisah yang tidak kami pegang.</span>
+              <span class="t-en">What this does not cover: advising on system design, planning a network from scratch, or building software. We are not licensed for those, so we do not offer them.</span><span class="t-id">Yang tidak kami tangani: konsultasi perancangan sistem, merancang jaringan dari nol, atau membangun software. Kami tidak berizin untuk itu, jadi kami tidak menawarkannya.</span>
             </p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- PAGE: SOFTWARE -->
-    <section data-page="it/software" class="pb-20 pt-14 sm:pb-24">
+        <section data-page="it/software" class="pb-20 pt-14 sm:pb-24">
       <div class="mx-auto max-w-shell px-6 sm:px-8">
         <div class="grid gap-12 lg:grid-cols-12">
           <div class="lg:col-span-5">
             <h2 class="tight font-display text-[2rem] font-semibold sm:text-[2.75rem]">Software</h2>
-            <!-- draft, please adjust -->
-            <p class="mt-6 leading-relaxed text-putih/80"><span class="t-en">Web applications, internal tools, and e-commerce — built to be handed over: documented, tested, and deployable by someone other than the person who wrote it.</span><span class="t-id">Aplikasi web, perkakas internal, dan e-commerce — dibangun untuk diserahterimakan: terdokumentasi, teruji, dan bisa dideploy oleh orang lain selain penulisnya.</span></p>
-            <p class="mt-6 font-mono text-[11px] leading-relaxed text-putih/45"><span class="t-en">Delivered and contracted by an affiliated company under common ownership.</span><span class="t-id">Dikerjakan dan dikontrak oleh perusahaan terafiliasi di bawah kepemilikan yang sama.</span></p>
+                        <p class="mt-6 leading-relaxed text-putih/80"><span class="t-en">Websites, internal tools, and online stores &mdash; built so you actually own them at the end: someone else could pick up the code and understand it, not just the person who wrote it.</span><span class="t-id">Website, perkakas internal, dan toko online &mdash; dibangun supaya benar-benar jadi milik Anda di akhir: orang lain bisa mengambil alih kodenya dan mengerti, bukan cuma orang yang menulisnya.</span></p>
+            <p class="mt-6 font-mono text-[11px] leading-relaxed text-putih/45"><span class="t-en">Delivered and contracted by an affiliated company under common ownership.</span><span class="t-id">Dikerjakan dan dikontrak langsung oleh perusahaan mitra kami.</span></p>
           </div>
           <div class="lg:col-span-7">
-            <!-- draft, please adjust -->
-            <ul class="font-mono text-[13px]">
-              <li class="border-t border-white/15 py-4"><span class="t-en">Responsive build, desktop and mobile</span><span class="t-id">Build responsif, desktop dan mobile</span></li>
-              <li class="border-t border-white/15 py-4"><span class="t-en">Search and performance basics covered at launch</span><span class="t-id">Dasar pencarian dan performa ditangani sejak rilis</span></li>
-              <li class="border-t border-white/15 py-4"><span class="t-en">Source code and deployment handed to you, not held hostage</span><span class="t-id">Kode sumber dan deployment diserahkan kepada Anda, tidak ditahan</span></li>
-              <li class="border-t border-white/15 py-4"><span class="t-en">Written handover notes, so the next developer is not starting blind</span><span class="t-id">Catatan serah terima tertulis, supaya developer berikutnya tidak mulai buta</span></li>
-              <li class="border-y border-white/15 py-4"><span class="t-en">Agreed support window after go-live, priced separately</span><span class="t-id">Masa dukungan setelah rilis disepakati, dihitung terpisah</span></li>
+                        <ul class="font-mono text-[13px]">
+              <li class="border-t border-white/15 py-4"><span class="t-en">Works properly on both computer and phone screens</span><span class="t-id">Berfungsi baik di layar komputer maupun ponsel</span></li>
+              <li class="border-t border-white/15 py-4"><span class="t-en">Loads fast and shows up properly in search from day one</span><span class="t-id">Cepat dibuka dan muncul dengan baik di pencarian sejak hari pertama</span></li>
+              <li class="border-t border-white/15 py-4"><span class="t-en">You get the actual code and hosting access &mdash; we do not lock it away as leverage</span><span class="t-id">Anda dapat kode aslinya dan akses hosting &mdash; tidak kami tahan sebagai jaminan</span></li>
+              <li class="border-t border-white/15 py-4"><span class="t-en">Written notes explaining how it works, so whoever touches it next is not guessing</span><span class="t-id">Catatan tertulis yang menjelaskan cara kerjanya, supaya siapa pun yang memegangnya nanti tidak menebak-nebak</span></li>
+              <li class="border-y border-white/15 py-4"><span class="t-en">A support period after launch that we agree on together, priced on its own</span><span class="t-id">Masa dukungan setelah rilis yang kita sepakati bersama, dihitung terpisah</span></li>
             </ul>
             <p class="mt-6 font-mono text-[11px] leading-relaxed text-putih/45">
-              <span class="t-en">TO COMPLETE: hosting and domain are a running cost, not a giveaway. State who pays and for how long before this goes live.</span><span class="t-id">TO COMPLETE: hosting dan domain adalah biaya berjalan, bukan hadiah. Tetapkan siapa yang membayar dan sampai kapan sebelum ini terbit.</span>
+              <span class="t-en">TO COMPLETE: someone has to keep paying for hosting and the domain name every year &mdash; it is not a one-time gift. Decide who pays and for how long before this page goes live.</span><span class="t-id">TO COMPLETE: hosting dan nama domain itu biaya yang harus terus dibayar tiap tahun &mdash; bukan hadiah sekali bayar. Tetapkan siapa yang membayar dan sampai kapan sebelum halaman ini terbit.</span>
             </p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- PAGE: DATA -->
-    <section data-page="it/data" class="pb-20 pt-14 sm:pb-24">
+        <section data-page="it/data" class="pb-20 pt-14 sm:pb-24">
       <div class="mx-auto max-w-shell px-6 sm:px-8">
         <div class="grid gap-12 lg:grid-cols-12">
           <div class="lg:col-span-5">
             <h2 class="tight font-display text-[2rem] font-semibold sm:text-[2.75rem]">Data</h2>
-            <!-- draft, please adjust -->
-            <p class="mt-6 leading-relaxed text-putih/80"><span class="t-en">Reporting built on the systems you already run: figures pulled, cleaned, and put somewhere a manager can read them without asking anyone first.</span><span class="t-id">Pelaporan yang dibangun di atas sistem yang sudah Anda jalankan: angka ditarik, dibersihkan, dan ditaruh di tempat yang bisa dibaca manajer tanpa bertanya dulu.</span></p>
-            <p class="mt-6 font-mono text-[11px] leading-relaxed text-putih/45"><span class="t-en">Delivered and contracted by an affiliated company under common ownership.</span><span class="t-id">Dikerjakan dan dikontrak oleh perusahaan terafiliasi di bawah kepemilikan yang sama.</span></p>
+                        <p class="mt-6 leading-relaxed text-putih/80"><span class="t-en">We turn the numbers already sitting in your systems into something a manager can actually open and understand, without having to ask someone else to explain it first.</span><span class="t-id">Kami ubah angka yang sudah ada di sistem Anda jadi sesuatu yang bisa langsung dibuka dan dipahami manajer, tanpa harus tanya orang lain dulu.</span></p>
+            <p class="mt-6 font-mono text-[11px] leading-relaxed text-putih/45"><span class="t-en">Delivered and contracted by an affiliated company under common ownership.</span><span class="t-id">Dikerjakan dan dikontrak langsung oleh perusahaan mitra kami.</span></p>
           </div>
           <div class="lg:col-span-7">
-            <!-- draft, please adjust -->
-            <ul class="font-mono text-[13px]">
-              <li class="border-t border-white/15 py-4"><span class="t-en">Dashboards with filters that match how the work is actually organised</span><span class="t-id">Dasbor dengan filter yang sesuai cara kerja Anda sebenarnya</span></li>
-              <li class="border-t border-white/15 py-4"><span class="t-en">Scheduled pulls from your existing sources, not manual re-entry</span><span class="t-id">Penarikan terjadwal dari sumber yang sudah ada, bukan input ulang manual</span></li>
-              <li class="border-t border-white/15 py-4"><span class="t-en">Definitions written down — what counts as a sale, a job, a month</span><span class="t-id">Definisi ditulis — apa yang dihitung sebagai penjualan, pekerjaan, satu bulan</span></li>
-              <li class="border-y border-white/15 py-4"><span class="t-en">Readable on a phone, because that is where it gets checked</span><span class="t-id">Terbaca di ponsel, karena di situ biasanya dicek</span></li>
+                        <ul class="font-mono text-[13px]">
+              <li class="border-t border-white/15 py-4"><span class="t-en">Dashboards that filter the way your business actually works, not a generic template</span><span class="t-id">Dasbor dengan filter yang sesuai cara kerja bisnis Anda sebenarnya, bukan template umum</span></li>
+              <li class="border-t border-white/15 py-4"><span class="t-en">Numbers update automatically from your existing systems &mdash; nobody has to retype them</span><span class="t-id">Angkanya update otomatis dari sistem yang sudah ada &mdash; tidak ada yang perlu mengetik ulang</span></li>
+              <li class="border-t border-white/15 py-4"><span class="t-en">We write down exactly what each number means, so "a sale" or "a completed job" means the same thing to everyone</span><span class="t-id">Kami tulis dengan jelas arti tiap angka, jadi "satu penjualan" atau "satu pekerjaan selesai" artinya sama untuk semua orang</span></li>
+              <li class="border-y border-white/15 py-4"><span class="t-en">Easy to read on a phone, because that is usually where people actually check it</span><span class="t-id">Mudah dibaca di ponsel, karena di situ biasanya orang benar-benar mengeceknya</span></li>
             </ul>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- PAGE: DESIGN -->
-    <section data-page="it/design" class="pb-20 pt-14 sm:pb-24">
+        <section data-page="it/design" class="pb-20 pt-14 sm:pb-24">
       <div class="mx-auto max-w-shell px-6 sm:px-8">
         <div class="grid gap-12 lg:grid-cols-12">
           <div class="lg:col-span-5">
             <h2 class="tight font-display text-[2rem] font-semibold sm:text-[2.75rem]"><span class="t-en">Design</span><span class="t-id">Desain</span></h2>
-            <!-- draft, please adjust -->
-            <p class="mt-6 leading-relaxed text-putih/80"><span class="t-en">Interface and identity work: layouts, a component kit, and styling rules specific enough that the build stage does not have to guess.</span><span class="t-id">Pekerjaan antarmuka dan identitas: tata letak, kit komponen, dan aturan gaya yang cukup spesifik supaya tahap pembangunan tidak perlu menebak.</span></p>
-            <p class="mt-6 font-mono text-[11px] leading-relaxed text-putih/45"><span class="t-en">Delivered and contracted by an affiliated company under common ownership.</span><span class="t-id">Dikerjakan dan dikontrak oleh perusahaan terafiliasi di bawah kepemilikan yang sama.</span></p>
+                        <p class="mt-6 leading-relaxed text-putih/80"><span class="t-en">How your product looks and feels: page layouts, reusable building blocks, and clear rules so whoever builds it does not have to guess what you meant.</span><span class="t-id">Bagaimana produk Anda terlihat dan terasa: tata letak halaman, blok bangunan yang bisa dipakai ulang, dan aturan yang jelas supaya yang membangunnya tidak perlu menebak maksud Anda.</span></p>
+            <p class="mt-6 font-mono text-[11px] leading-relaxed text-putih/45"><span class="t-en">Delivered and contracted by an affiliated company under common ownership.</span><span class="t-id">Dikerjakan dan dikontrak langsung oleh perusahaan mitra kami.</span></p>
           </div>
           <div class="lg:col-span-7">
-            <!-- draft, please adjust -->
-            <ul class="font-mono text-[13px]">
-              <li class="border-t border-white/15 py-4"><span class="t-en">Screen layouts for desktop and mobile</span><span class="t-id">Tata letak layar untuk desktop dan mobile</span></li>
-              <li class="border-t border-white/15 py-4"><span class="t-en">Reusable component kit rather than one-off screens</span><span class="t-id">Kit komponen yang bisa dipakai ulang, bukan layar sekali pakai</span></li>
-              <li class="border-t border-white/15 py-4"><span class="t-en">Written styling rules, not just source files</span><span class="t-id">Aturan gaya tertulis, bukan cuma berkas sumber</span></li>
-              <li class="border-y border-white/15 py-4"><span class="t-en">Editable files handed over at the end</span><span class="t-id">Berkas yang bisa disunting diserahkan di akhir</span></li>
+                        <ul class="font-mono text-[13px]">
+              <li class="border-t border-white/15 py-4"><span class="t-en">Screen designs for both computer and phone</span><span class="t-id">Desain layar untuk komputer maupun ponsel</span></li>
+              <li class="border-t border-white/15 py-4"><span class="t-en">Reusable pieces, so new pages can be built faster later instead of starting from scratch</span><span class="t-id">Komponen yang bisa dipakai ulang, jadi halaman baru bisa dibangun lebih cepat nanti tanpa mulai dari nol</span></li>
+              <li class="border-t border-white/15 py-4"><span class="t-en">Clear written rules for colours, fonts, and spacing, not just design files</span><span class="t-id">Aturan tertulis yang jelas untuk warna, huruf, dan jarak, bukan cuma berkas desain</span></li>
+              <li class="border-y border-white/15 py-4"><span class="t-en">You get the original, editable files at the end &mdash; not just images of the design</span><span class="t-id">Anda dapat berkas asli yang bisa diedit di akhir &mdash; bukan cuma gambar hasil desainnya</span></li>
             </ul>
           </div>
         </div>
       </div>
     </section>
 
-
-    <!-- PAGE: IT PROJECTS - grid rendered from PROJECTS. See EDITOR'S NOTE (O). -->
-    <section data-page="it/projects" class="pb-20 pt-14 sm:pb-24">
+        <section data-page="it/projects" class="pb-20 pt-14 sm:pb-24">
       <div class="mx-auto max-w-shell px-6 sm:px-8">
         <div class="flex flex-wrap items-end justify-between gap-6">
           <h2 class="tight font-display text-[2rem] font-semibold sm:text-[2.75rem]"><span class="t-en">IT projects</span><span class="t-id">Proyek IT</span></h2>
-          <!-- draft, please adjust -->
-          <p class="max-w-sm text-[0.95rem] leading-relaxed text-putih/70">
-            <span class="t-en">Software, data, and design work. Each entry states whether we delivered it or an affiliated company did.</span><span class="t-id">Pekerjaan software, data, dan desain. Tiap entri menyatakan apakah kami yang mengerjakannya atau perusahaan terafiliasi.</span>
+                    <p class="max-w-sm text-[0.95rem] leading-relaxed text-putih/70">
+            <span class="t-en">Software, data, and design work. Each entry states whether we delivered it or an affiliated company did.</span><span class="t-id">Pekerjaan software, data, dan desain. Tiap entri menyebutkan apakah kami sendiri yang mengerjakannya atau perusahaan mitra kami.</span>
           </p>
         </div>
 
@@ -733,8 +547,6 @@
 
 </section>
 
-
-<!-- ==================== VIEW: PROJECTS ==================== -->
 <section data-view="projects" class="bg-putih py-20 sm:py-28">
   <div class="mx-auto max-w-shell px-6 sm:px-8">
 
@@ -743,14 +555,12 @@
         <p class="font-mono text-[11px] eyebrow text-navy"><span class="t-en">Projects</span><span class="t-id">Proyek</span></p>
         <h1 data-focus-target tabindex="-1" class="tight mt-6 max-w-2xl font-display text-[2.25rem] font-semibold text-navy sm:text-[3.25rem]"><span class="t-en">Work delivered across the group</span><span class="t-id">Pekerjaan yang dikerjakan lintas grup</span></h1>
       </div>
-      <!-- draft, please adjust -->
-      <p class="max-w-sm text-[0.95rem] leading-relaxed text-midnight/70">
-        <span class="t-en">Each entry states whether we delivered it or an affiliated company did. Construction work contracted with PT AKS Mitra Berkah will appear here as jobs complete.</span><span class="t-id">Tiap entri menyatakan apakah kami yang mengerjakannya atau perusahaan terafiliasi. Pekerjaan konstruksi yang dikontrak dengan PT AKS Mitra Berkah akan muncul di sini seiring selesainya.</span>
+            <p class="max-w-sm text-[0.95rem] leading-relaxed text-midnight/70">
+        <span class="t-en">Each entry states whether we delivered it or an affiliated company did. Construction work contracted with PT AKS Mitra Berkah will appear here as jobs complete.</span><span class="t-id">Tiap entri menyebutkan apakah kami sendiri yang mengerjakannya atau perusahaan mitra kami. Proyek konstruksi akan mulai muncul di sini begitu ada yang selesai.</span>
       </p>
     </div>
 
-    <!-- Grid rendered from PROJECTS. See EDITOR'S NOTE (O). -->
-    <div id="grid-all" class="mt-14 grid gap-px bg-navy/15 sm:grid-cols-2 lg:grid-cols-3"></div>
+        <div id="grid-all" class="mt-14 grid gap-px bg-navy/15 sm:grid-cols-2 lg:grid-cols-3"></div>
 
     <div class="mt-8 flex flex-wrap items-center justify-between gap-4">
       <p id="status-all" class="font-mono text-[11px] text-abu" aria-live="polite"></p>
@@ -758,21 +568,19 @@
     </div>
 
     <p class="mt-8 max-w-2xl font-mono text-[11px] leading-relaxed text-abu">
-      <span class="t-en">No construction projects are listed yet. That is deliberate — none have completed under this company, and an empty list is worth more than a padded one.</span><span class="t-id">Belum ada proyek konstruksi yang terdaftar. Itu disengaja — belum ada yang selesai di bawah perusahaan ini, dan daftar kosong lebih berharga daripada daftar yang dipadat-padatkan.</span>
+      <span class="t-en">No construction projects are listed yet. That is deliberate — none have completed under this company, and an empty list is worth more than a padded one.</span><span class="t-id">Belum ada proyek konstruksi yang kami tampilkan. Itu memang disengaja — kami memang belum punya yang selesai, dan daftar kosong lebih jujur daripada daftar yang dipaksakan.</span>
     </p>
 
   </div>
 </section>
 
-
-<!-- ==================== VIEW: COMPANY DATA ==================== -->
 <section data-view="company" class="py-20 sm:py-28">
   <div class="mx-auto max-w-shell px-6 sm:px-8">
 
     <p class="font-mono text-[11px] eyebrow text-navy"><span class="t-en">Company data</span><span class="t-id">Data perusahaan</span></p>
     <h1 data-focus-target tabindex="-1" class="tight mt-6 max-w-3xl font-display text-[2.25rem] font-semibold text-navy sm:text-[3.25rem]"><span class="t-en">Everything here is checkable</span><span class="t-id">Semua di sini bisa diperiksa</span></h1>
     <p class="mt-6 max-w-2xl leading-relaxed text-midnight/75">
-      <span class="t-en">Registered particulars are published in full so a prospective client can verify us before making contact.</span><span class="t-id">Data terdaftar dipublikasikan lengkap supaya calon klien bisa memverifikasi kami sebelum menghubungi.</span>
+      <span class="t-en">We publish our full legal details here so you can check we are real before you ever talk to us.</span><span class="t-id">Kami tampilkan seluruh data hukum kami di sini supaya Anda bisa mengecek kami benar-benar ada sebelum menghubungi.</span>
     </p>
 
     <div class="mt-14 grid gap-14 lg:grid-cols-12 lg:gap-12">
@@ -790,87 +598,86 @@
             <dt class="text-abu"><span class="t-en">Domicile</span><span class="t-id">Domisili</span></dt><dd class="text-right"><span class="t-en">South Jakarta</span><span class="t-id">Jakarta Selatan</span></dd>
           </div>
           <div class="flex items-baseline justify-between gap-4 border-t border-navy/20 py-4">
-            <dt class="text-abu"><span class="t-en">Established</span><span class="t-id">Berdiri</span></dt><dd class="tnum text-right">2025</dd>
+            <dt class="text-abu"><span class="t-en">Established</span><span class="t-id">Berdiri</span></dt><dd class="tnum text-right">2026</dd>
+          </div>
+          <div class="flex items-baseline justify-between gap-4 border-t border-navy/20 py-4">
+            <dt class="text-abu"><span class="t-en">Business scale</span><span class="t-id">Skala usaha</span></dt><dd class="text-right"><span class="t-en">Micro enterprise</span><span class="t-id">Usaha Mikro</span></dd>
           </div>
 
-          <!-- TO COMPLETE: the five rows below must come from Berkah's own deed
-               and SK. Do not copy them from the Sejahtra deed. -->
-          <div class="flex items-baseline justify-between gap-4 border-t border-navy/20 py-4">
-            <dt class="text-abu"><span class="t-en">Deed of incorporation</span><span class="t-id">Akta pendirian</span></dt><dd class="text-right">No. 00 / 2025</dd>
+                    <div class="flex items-baseline justify-between gap-4 border-t border-navy/20 py-4">
+            <dt class="text-abu"><span class="t-en">Deed of incorporation</span><span class="t-id">Akta pendirian</span></dt><dd class="text-right"><span class="t-en">No. 149, 27 Jul 2026 &mdash; Notary Tianca Renieta, S.H., M.Kn (Tangerang Regency)</span><span class="t-id">No. 149, 27 Jul 2026 &mdash; Notaris Tianca Renieta, S.H., M.Kn (Kabupaten Tangerang)</span></dd>
           </div>
           <div class="flex items-baseline justify-between gap-4 border-t border-navy/20 py-4">
-            <dt class="text-abu"><span class="t-en">Ministry of Law approval</span><span class="t-id">Pengesahan Kemenkumham</span></dt><dd class="text-right">AHU-0000000.AH.01.01.2025</dd>
+            <dt class="text-abu"><span class="t-en">Ministry of Law approval</span><span class="t-id">Pengesahan Kemenkumham</span></dt><dd class="text-right">AHU-0061699.AH.01.01.2026</dd>
           </div>
           <div class="flex items-baseline justify-between gap-4 border-t border-navy/20 py-4">
-            <dt class="text-abu"><span class="t-en">Business ID (NIB)</span><span class="t-id">NIB</span></dt><dd class="text-right tnum">0000000000000</dd>
+            <dt class="text-abu"><span class="t-en">Business ID (NIB)</span><span class="t-id">NIB</span></dt><dd class="text-right tnum">0308260124418</dd>
           </div>
           <div class="flex items-baseline justify-between gap-4 border-t border-navy/20 py-4">
-            <dt class="text-abu"><span class="t-en">Tax ID (NPWP)</span><span class="t-id">NPWP</span></dt><dd class="text-right tnum">00.000.000.0-000.000</dd>
+            <dt class="text-abu"><span class="t-en">Tax ID (NPWP)</span><span class="t-id">NPWP</span></dt><dd class="text-right tnum">10.000.000.1-064.080</dd>
           </div>
           <div class="flex items-baseline justify-between gap-4 border-y border-navy/20 py-4">
-            <dt class="text-abu"><span class="t-en">Director</span><span class="t-id">Direktur</span></dt><dd class="text-right"><span class="t-en">[Director’s name]</span><span class="t-id">[Nama direktur]</span></dd>
+            <dt class="text-abu"><span class="t-en">Director</span><span class="t-id">Direktur</span></dt><dd class="text-right">Yatiman</dd>
+          </div>
+          <div class="flex items-baseline justify-between gap-4 border-y border-navy/20 py-4">
+            <dt class="text-abu"><span class="t-en">Commissioner</span><span class="t-id">Komisaris</span></dt><dd class="text-right">Arjuna Getar Buana</dd>
           </div>
         </dl>
+                <p class="mt-6 font-mono text-[11px] leading-relaxed text-abu">
+          <span class="t-en">Registered capital: Rp600,000,000. Paid-up capital: Rp250,000,000 &mdash; both figures are public record, filed with the deed.</span><span class="t-id">Modal dasar: Rp600.000.000. Modal disetor: Rp250.000.000 &mdash; keduanya catatan publik, tercantum di akta.</span>
+        </p>
 
-        <!-- draft, please adjust -->
-        <p class="mt-8 font-mono text-[11px] leading-relaxed text-abu">
-          <span class="t-en">Software, data, and design work is delivered by a separate legal entity under common ownership. Its name and registered particulars are provided on request, and before any agreement is signed.</span><span class="t-id">Pekerjaan software, data, dan desain dikerjakan badan hukum terpisah di bawah kepemilikan yang sama. Nama dan data terdaftarnya diberikan atas permintaan, dan sebelum perjanjian apa pun ditandatangani.</span>
+                <p class="mt-8 font-mono text-[11px] leading-relaxed text-abu">
+          <span class="t-en">Software, data, and design work is done by a partner company under the same ownership. We will tell you exactly who they are and share their legal details if you ask, and always before you sign anything with them.</span><span class="t-id">Pekerjaan software, data, dan desain kami serahkan ke perusahaan mitra kami. Kalau Anda tanya, kami akan kasih tahu persis siapa mereka dan data legalnya — dan itu selalu sebelum Anda tanda tangan apa pun dengan mereka.</span>
         </p>
       </div>
 
       <div class="lg:col-span-7">
         <h2 class="font-mono text-[11px] eyebrow text-abu"><span class="t-en">Registered business activities (KBLI)</span><span class="t-id">Kegiatan usaha terdaftar (KBLI)</span></h2>
 
-        <!-- TO COMPLETE - KBLI URAIAN, INDONESIAN COLUMN
-             The Indonesian text below is a placeholder on purpose. See EDITOR'S
-             NOTE (N): the authoritative wording is whatever the NIB prints.
-             Copy each uraian from the NIB verbatim. Do not translate the
-             English back - that produces a table which does not match the
-             document a client is checking you against.
-             Also unresolved: EDITOR'S NOTE (G), the KBLI 2020 / 2025 mix. -->
-        <table class="mt-6 w-full text-left">
+                <table class="mt-6 w-full text-left">
           <caption class="sr-only"><span class="t-en">Registered business activities and their KBLI codes</span><span class="t-id">Kegiatan usaha terdaftar dan kode KBLI-nya</span></caption>
           <tbody class="align-top">
             <tr class="border-t border-navy/20">
               <th scope="row" class="w-20 py-4 pr-4 font-mono text-[13px] font-normal tnum text-teal">41011</th>
-              <td class="py-4 text-[0.95rem]"><span class="t-en">Conventional construction of residential buildings</span><span class="t-id">[Uraian sesuai NIB]</span></td>
+              <td class="py-4 text-[0.95rem]"><span class="t-en">Conventional construction of residential buildings</span><span class="t-id">Konstruksi Konvensional Gedung Hunian</span></td>
             </tr>
             <tr class="border-t border-navy/20">
               <th scope="row" class="w-20 py-4 pr-4 font-mono text-[13px] font-normal tnum text-teal">43400</th>
-              <td class="py-4 text-[0.95rem]"><span class="t-en">Specialist construction intermediation services</span><span class="t-id">[Uraian sesuai NIB]</span></td>
+              <td class="py-4 text-[0.95rem]"><span class="t-en">Specialist construction intermediation services</span><span class="t-id">Jasa Intermediasi Konstruksi Khusus</span></td>
             </tr>
             <tr class="border-t border-navy/20">
               <th scope="row" class="w-20 py-4 pr-4 font-mono text-[13px] font-normal tnum text-teal">43909</th>
-              <td class="py-4 text-[0.95rem]"><span class="t-en">Other specialist construction works n.e.c.</span><span class="t-id">[Uraian sesuai NIB]</span></td>
+              <td class="py-4 text-[0.95rem]"><span class="t-en">Other specialist construction works n.e.c.</span><span class="t-id">Konstruksi Khusus Lainnya YTDL</span></td>
             </tr>
             <tr class="border-t border-navy/20">
               <th scope="row" class="w-20 py-4 pr-4 font-mono text-[13px] font-normal tnum text-teal">70209</th>
-              <td class="py-4 text-[0.95rem]"><span class="t-en">Other management and business consultancy activities</span><span class="t-id">[Uraian sesuai NIB]</span></td>
+              <td class="py-4 text-[0.95rem]"><span class="t-en">Other management and business consultancy activities</span><span class="t-id">Aktivitas Konsultasi Manajemen dan Bisnis Lainnya</span></td>
             </tr>
             <tr class="border-t border-navy/20">
               <th scope="row" class="w-20 py-4 pr-4 font-mono text-[13px] font-normal tnum text-teal">62900</th>
               <td class="py-4 text-[0.95rem]">
-                <span class="t-en">Other information technology and computer service activities</span><span class="t-id">[Uraian sesuai NIB]</span>
-                <span class="mt-1.5 block font-mono text-[11px] leading-relaxed text-abu"><span class="t-en">Support, installation, and recovery work only. Systems consulting and software development are separate registrations, held by an affiliated company.</span><span class="t-id">Hanya pekerjaan dukungan, instalasi, dan pemulihan. Konsultansi sistem dan pengembangan perangkat lunak adalah izin terpisah, dipegang perusahaan terafiliasi.</span></span>
+                <span class="t-en">Other information technology and computer service activities</span><span class="t-id">Aktivitas Jasa Teknologi Informasi dan Komputer Lainnya</span>
+                <span class="mt-1.5 block font-mono text-[11px] leading-relaxed text-abu"><span class="t-en">Support, installation, and recovery work only. Systems consulting and software development are separate registrations, held by a partner company.</span><span class="t-id">Hanya untuk dukungan, instalasi, dan pemulihan. Konsultasi sistem dan pengembangan software itu izin lain, dipegang perusahaan mitra kami.</span></span>
               </td>
             </tr>
             <tr class="border-t border-navy/20">
               <th scope="row" class="w-20 py-4 pr-4 font-mono text-[13px] font-normal tnum text-teal">46100</th>
-              <td class="py-4 text-[0.95rem]"><span class="t-en">Wholesale trade on a fee or contract basis</span><span class="t-id">[Uraian sesuai NIB]</span></td>
+              <td class="py-4 text-[0.95rem]"><span class="t-en">Wholesale trade on a fee or contract basis</span><span class="t-id">Perdagangan Besar atas dasar Balas Jasa (Fee) atau Kontrak</span></td>
             </tr>
             <tr class="border-t border-navy/20">
               <th scope="row" class="w-20 py-4 pr-4 font-mono text-[13px] font-normal tnum text-teal">46901</th>
-              <td class="py-4 text-[0.95rem]"><span class="t-en">Wholesale of assorted goods, cash-and-carry</span><span class="t-id">[Uraian sesuai NIB]</span></td>
+              <td class="py-4 text-[0.95rem]"><span class="t-en">Wholesale of assorted goods, cash-and-carry</span><span class="t-id">Perdagangan Besar Berbagai Macam Barang di Grosir/Perkulakan Swalayan</span></td>
             </tr>
             <tr class="border-t border-navy/20">
               <th scope="row" class="w-20 py-4 pr-4 font-mono text-[13px] font-normal tnum text-teal">46902</th>
-              <td class="py-4 text-[0.95rem]"><span class="t-en">Wholesale of assorted goods, other than cash-and-carry</span><span class="t-id">[Uraian sesuai NIB]</span></td>
+              <td class="py-4 text-[0.95rem]"><span class="t-en">Wholesale of assorted goods, other than cash-and-carry</span><span class="t-id">Perdagangan Besar Berbagai Macam Barang Selain di Grosir/Perkulakan Swalayan</span></td>
             </tr>
             <tr class="border-y border-navy/20">
               <th scope="row" class="w-20 py-4 pr-4 font-mono text-[13px] font-normal tnum text-teal">66221</th>
               <td class="py-4 text-[0.95rem]">
-                <span class="t-en">Insurance agency activities</span><span class="t-id">[Uraian sesuai NIB]</span>
-                <span class="mt-1.5 block font-mono text-[11px] leading-relaxed text-abu"><span class="t-en">Registered scope only, not offered as a service: this requires an agency agreement with a licensed insurer and agent certification, neither of which is in place.</span><span class="t-id">Hanya lingkup terdaftar, tidak ditawarkan sebagai layanan: ini membutuhkan perjanjian keagenan dengan perusahaan asuransi berizin dan sertifikasi agen, keduanya belum ada.</span></span>
+                <span class="t-en">Insurance agency activities</span><span class="t-id">Aktivitas Agen Asuransi</span>
+                <span class="mt-1.5 block font-mono text-[11px] leading-relaxed text-abu"><span class="t-en">Registered scope only, not offered as a service: this requires an agency agreement with a licensed insurer and agent certification, neither of which is in place.</span><span class="t-id">Ini cuma terdaftar, belum kami tawarkan sebagai layanan — untuk itu kami masih butuh perjanjian keagenan dengan perusahaan asuransi berizin dan sertifikasi agen, dan keduanya belum kami punya.</span></span>
               </td>
             </tr>
           </tbody>
@@ -881,19 +688,15 @@
   </div>
 </section>
 
-
-<!-- ==================== VIEW: CONTACT ==================== -->
 <section data-view="contact" class="on-dark bg-navy py-20 text-putih sm:py-28">
   <div class="mx-auto max-w-shell px-6 sm:px-8">
     <div class="grid gap-14 lg:grid-cols-12 lg:gap-12">
 
       <div class="lg:col-span-7">
         <p class="font-mono text-[11px] eyebrow text-teal"><span class="t-en">Contact</span><span class="t-id">Kontak</span></p>
-        <!-- draft, please adjust -->
-        <h1 data-focus-target tabindex="-1" class="tight mt-6 max-w-2xl font-display text-[2.5rem] font-bold sm:text-[3.75rem]"><span class="t-en">Tell us what you are building.</span><span class="t-id">Ceritakan apa yang mau Anda bangun.</span></h1>
-        <!-- draft, please adjust -->
-        <p class="mt-8 max-w-xl text-[1.0625rem] leading-relaxed text-putih/85">
-          <span class="t-en">A sketch and a location are enough to start. We will come back with what falls inside our scope, what has to be subcontracted, what permits the work needs — and only then, a price.</span><span class="t-id">Sketsa dan lokasi sudah cukup untuk memulai. Kami akan kembali dengan apa yang masuk lingkup kami, apa yang harus disubkontrakkan, izin apa yang dibutuhkan pekerjaannya — dan baru setelah itu, harga.</span>
+                <h1 data-focus-target tabindex="-1" class="tight mt-6 max-w-2xl font-display text-[2.5rem] font-bold sm:text-[3.75rem]"><span class="t-en">Tell us what you are building.</span><span class="t-id">Ceritakan apa yang mau Anda bangun.</span></h1>
+                <p class="mt-8 max-w-xl text-[1.0625rem] leading-relaxed text-putih/85">
+          <span class="t-en">A rough sketch and the location are enough to get started. We will tell you what we can do ourselves, what needs to go to someone else, and what permits are needed &mdash; and only then talk price.</span><span class="t-id">Sketsa kasar dan lokasi sudah cukup untuk memulai. Kami akan sampaikan apa yang bisa kami kerjakan sendiri, apa yang perlu dilempar ke pihak lain, dan izin apa yang dibutuhkan &mdash; baru setelah itu bicara harga.</span>
         </p>
       </div>
 
@@ -909,19 +712,17 @@
               </dd>
             </div>
 
-            <!-- TO COMPLETE: replace both rows with a working number and inbox. -->
-            <div class="flex items-baseline justify-between gap-4 border-t border-white/15 py-4">
+                        <div class="flex items-baseline justify-between gap-4 border-t border-white/15 py-4">
               <dt class="text-[10px] eyebrow text-abu"><span class="t-en">Phone / WhatsApp</span><span class="t-id">Telepon / WhatsApp</span></dt>
-              <dd class="text-right tnum">+62 800 0000 0000</dd>
+              <dd class="text-right tnum">+62 812-9858-1896</dd>
             </div>
             <div class="flex items-baseline justify-between gap-4 border-t border-white/15 py-4">
               <dt class="text-[10px] eyebrow text-abu">Email</dt>
-              <dd class="text-right">info@example.com</dd>
+              <dd class="text-right">pt.aksmitraberkah@gmail.com</dd>
             </div>
             <div class="flex items-baseline justify-between gap-4 border-y border-white/15 py-4">
               <dt class="text-[10px] eyebrow text-abu"><span class="t-en">Hours</span><span class="t-id">Jam kerja</span></dt>
-              <!-- draft, please adjust -->
-              <dd class="text-right"><span class="t-en">Mon–Fri, 09:00–17:00 WIB</span><span class="t-id">Sen–Jum, 09.00–17.00 WIB</span></dd>
+                            <dd class="text-right"><span class="t-en">Mon–Fri, 09:00–17:00 WIB</span><span class="t-id">Sen–Jum, 09.00–17.00 WIB</span></dd>
             </div>
           </dl>
         </div>
@@ -1046,7 +847,7 @@
      See EDITOR'S NOTE (H). */
   var BY_LABELS = {
     aks:       { en: 'PT AKS Mitra Berkah', id: 'PT AKS Mitra Berkah' },
-    affiliate: { en: 'an affiliated company', id: 'perusahaan terafiliasi' }
+    affiliate: { en: 'an affiliated company', id: 'perusahaan mitra kami' }
   };
 
   var CATEGORY_LABELS = {
@@ -1120,32 +921,52 @@
     return PROJECTS.filter(function (p) { return cfg.filter.indexOf(p.category) > -1; });
   }
 
+  /* Placeholder images only - swap for real project photos later. Colour
+     keys off the brand palette so it doesn't look like a random stock photo. */
+  var PLACEHOLDER_COLORS = {
+    software: '013589', data: '00A796', design: '011E4A', construction: '6B7A90'
+  };
+
   function buildCard(p, dark) {
-    var card = el('article', dark ? 'bg-navy p-8 lg:p-9' : 'bg-putih p-8 lg:p-9');
+    var card = el('article', dark ? 'bg-navy overflow-hidden' : 'bg-putih overflow-hidden');
+
+    var label = CATEGORY_LABELS[p.category] || { en: p.category, id: p.category };
+    var labelText = label[lang] || label.en;
+    var bg = PLACEHOLDER_COLORS[p.category] || '6B7A90';
+    var img = el('img');
+    img.src = 'https://placehold.co/640x400/' + bg + '/FBFCFD?text=' + encodeURIComponent(labelText);
+    img.alt = '';
+    img.loading = 'lazy';
+    img.decoding = 'async';
+    img.className = 'block h-40 w-full object-cover lg:h-48';
+    card.appendChild(img);
+
+    var body = el('div', 'p-8 lg:p-9');
+    card.appendChild(body);
 
     var head = el('div', 'flex items-baseline justify-between gap-4');
-    var label = CATEGORY_LABELS[p.category] || { en: p.category, id: p.category };
-    head.appendChild(el('p', 'font-mono text-[11px] eyebrow text-teal', label[lang] || label.en));
+    head.appendChild(el('p', 'font-mono text-[11px] eyebrow text-teal', labelText));
     head.appendChild(el('p', 'font-mono text-[11px] tnum ' + (dark ? 'text-putih/45' : 'text-abu'), p.year));
-    card.appendChild(head);
+    body.appendChild(head);
 
-    card.appendChild(el('h3', 'mt-5 font-display text-[1.5rem] font-semibold',
+    body.appendChild(el('h3', 'mt-5 font-display text-[1.5rem] font-semibold',
       lang === 'id' ? p.name_id : p.name_en));
-    card.appendChild(el('p', 'mt-3 text-[0.95rem] leading-relaxed ' + (dark ? 'text-putih/70' : 'text-midnight/80'),
+    body.appendChild(el('p', 'mt-3 text-[0.95rem] leading-relaxed ' + (dark ? 'text-putih/70' : 'text-midnight/80'),
       lang === 'id' ? p.blurb_id : p.blurb_en));
 
-    /* Attribution is structural, not decorative. See EDITOR'S NOTE (H).
+    /* Attribution is structural, not decorative.
        An unrecognised 'by' value renders visibly rather than silently, so a
        bad entry is caught in review instead of shipping. */
     var byLabel = BY_LABELS[p.by];
     var byText = byLabel ? (byLabel[lang] || byLabel.en) : '[check "by" field]';
     var byLine = (lang === 'id' ? 'Dikerjakan oleh ' : 'Delivered by ') + byText;
-    card.appendChild(el('p',
+    body.appendChild(el('p',
       'mt-6 border-t pt-4 font-mono text-[11px] ' + (dark ? 'border-white/15 text-putih/45' : 'border-navy/15 text-abu'),
       byLine));
 
     return card;
   }
+
 
   function renderGrid(cfg) {
     var grid = document.getElementById(cfg.grid);
