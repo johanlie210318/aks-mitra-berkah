@@ -10,96 +10,104 @@
   ============================================================================
   EDITOR'S NOTES
 
-  A) LOGO FILES - keep these next to this HTML file, in the same folder:
-       logo-aks.png        full colour, transparent, cropped tight  -> light sections
-       logo-aks-white.png  white knockout                           -> navy sections
-     The black wordmark is invisible on navy, which is why the white
-     version exists. Do not swap them.
-     If you move the logos into a subfolder, update both src attributes
-     (search this file for: logo-aks).
+  A) LOGO FILES - keep next to this HTML file:
+       logo-aks.png (full colour -> light sections)
+       logo-aks-white.png (white knockout -> navy sections)
+     The black wordmark is invisible on navy. Do not swap them.
 
-  B) BRAND COLOURS - sampled directly from your logo file, do not eyeball:
-       navy  #013589
-       teal  #00A796
+  B) BRAND COLOURS - sampled from the logo: navy #013589, teal #00A796
 
-  C) MUST BE COMPLETED BEFORE LAUNCH
-     Search for: TO COMPLETE
-     Seven fields hold PLACEHOLDER SAMPLES so the layout can be reviewed as if
-     finished. They are deliberately zero-filled but format-correct:
-       Deed no. / AHU approval / NIB / NPWP / Director / Phone / Email
-     None are real. Publishing invented AHU / NIB / NPWP numbers misstates the
-     company's legal status. Replace all seven, then delete the preview banner
-     sitting directly above the nav.
+  C) MUST BE COMPLETED BEFORE LAUNCH - search for: TO COMPLETE
+     Placeholder samples: Deed no. / AHU approval / NIB / NPWP / Director /
+     Phone / Email, plus every Indonesian KBLI uraian. None are real.
+     Publishing invented AHU, NIB or NPWP numbers misstates the company's
+     legal status. Replace them all, then delete the preview banner.
 
   D) LEGAL DATA DELIBERATELY LEFT BLANK
-     The deed supplied earlier was issued in the name of PT AKS MITRA SEJAHTRA,
-     not Berkah. Deed number, notary, capital figures and officer names must
-     come from Berkah's own deed and SK.
+     The deed supplied earlier was issued to PT AKS MITRA SEJAHTRA, not
+     Berkah. Deed number, notary, capital and officer names must come from
+     Berkah's own deed and SK.
 
-  E) NO INVENTED CREDENTIALS
-     No project count, no client logos, no "X years of experience", no
-     certification badges. Add only when real.
+  E) NO INVENTED CREDENTIALS - no project count, no client logos, no years of
+     experience, no certification badges. Add only when real.
 
-  F) Copy written rather than taken from a document is flagged with an HTML
-     comment reading: draft, please adjust
+  F) Written copy is flagged with: draft, please adjust
 
-  G) KBLI VINTAGE CONFLICT - UNRESOLVED, READ BEFORE PUBLISHING
-     62900 is a KBLI 2025 code; its KBLI 2020 predecessor was 62090. The other
-     eight codes in the activities table are KBLI 2020 codes. A published table
-     cannot mix two vintages under a heading reading "Everything here is
-     checkable". Open the NIB, note which edition it was issued under, and
-     restate ALL NINE codes in that edition. Do not convert them by hand.
+  G) KBLI VINTAGE CONFLICT - UNRESOLVED, STILL THE BIGGEST RISK
+     62900 is a KBLI 2025 code; its 2020 predecessor was 62090. The other
+     eight codes are KBLI 2020. A table cannot mix vintages under a heading
+     reading "Everything here is checkable". Open the NIB, note its edition,
+     restate ALL NINE codes in that edition.
 
-  H) GROUP STRUCTURE - THE LOAD-BEARING DISTINCTION ON THIS PAGE
+  H) GROUP STRUCTURE - LOAD-BEARING
      PT AKS Mitra Berkah and Zestha Vutura are separate legal entities under
      common ownership. Work delivered by Zestha was contracted, invoiced and
-     taxed by Zestha, not by AKS. Every project card therefore carries a
-     "Delivered by" line, and the IT view splits the offer into what AKS is
-     registered for and what the affiliate delivers. Do not remove either
-     device. They are also what closes the KBLI gap: AKS needs no software or
-     consulting codes, because AKS is not the entity selling those.
+     taxed by Zestha. Every project card carries a "Delivered by" line, and
+     the IT division separates what AKS is registered for from what the
+     affiliate delivers. Do not remove either device.
 
-  I) PROJECT CARDS ARE PLACEHOLDERS
-     Search for: TO COMPLETE - PROJECTS
-     Real entries need, per project: name, category, year, one line on what was
-     delivered, and the delivering entity. Client names need the client's
-     permission. Publishing invented client work loses tenders.
+  I) PROJECT CARDS ARE PLACEHOLDERS - search for: TO COMPLETE - PROJECTS
 
-  J) NAVIGATION IS NOW A VIEW SWITCHER, NOT A SCROLL
-     Clicking a menu item swaps which view is displayed instead of scrolling to
-     an anchor. Read this whole note before editing the nav or the router.
+  J) NAVIGATION IS A VIEW SWITCHER, NOT A SCROLL
+     Hash routes, three levels at most:
+       #/   #/works/DIVISION   #/works/DIVISION/PAGE
+       #/projects  #/company  #/contact
+     The router toggles .is-active on [data-view], [data-division] and
+     [data-page], updates <title>, sets aria-current, and jumps to offset 0
+     instantly. That jump is not a scroll animation; without it a visitor deep
+     inside a long view lands in blank space on a short one.
+     NO-JS FALLBACK: hiding applies only under .js, added by the inline script
+     in <head>. With JavaScript off the whole site renders as one long page,
+     in English.
+     SEO COST: one URL, one served <title>. Hash fragments are not indexed
+     separately, so no single page can rank on its own. Past roughly eight
+     pages, move to real files keeping this markup.
 
-     HOW IT WORKS
-       - Each top-level view is a <section data-view="NAME">.
-       - The IT view contains sub-views: <section data-subview="NAME">.
-       - Routes are hash based:  #/it  and  #/it/software
-       - The router at the foot of the body reads the hash, toggles .is-active,
-         updates <title>, sets aria-current, and jumps the window to offset 0
-         instantly. That jump is not a scroll animation; without it a visitor
-         who was far down a long view would land in blank space on a short one.
-       - Focus moves to the new view's heading with preventScroll, so keyboard
-         and screen-reader users are not stranded at the top of the document.
+  K) WHY "OUR WORKS" IS A PANEL, NOT A CASCADING DROPDOWN
+     Same hierarchy as a two-level dropdown, one level of disclosure. A
+     second-level flyout has no hover on touch, is easy to lose the pointer
+     out of on desktop, and usually ends up needing separate mobile markup.
 
-     NO-JS FALLBACK - DO NOT BREAK THIS
-       Hiding is applied only under the .js class, which the inline script in
-       <head> adds. With JavaScript off, every view renders as one long page
-       exactly as before. Never move the hiding rules out from under .js.
+  L) ADDING A PAGE TO A DIVISION
+       1. <section data-page="DIVISION/NAME"> inside that [data-division].
+       2. Panel link: href="#/works/DIVISION/NAME"
+       3. Add 'NAME' to that division's array in DIVISIONS in the router.
+       4. Add title entries for BOTH languages in TITLES.
+     Miss step 3 and the link falls back to the overview silently.
 
-     THE REAL COST - SEO
-       The whole site is one URL, one <title> in the served HTML, one meta
-       description. A crawler indexes one page. Hash fragments are not indexed
-       as separate pages. As the IT area grows, that ceiling gets expensive:
-       a page about software work cannot rank on its own.
-       When the IT area passes roughly four sub-views, move to real files
-       (/it/software/index.html) or a static site generator, and keep the same
-       markup. This file is a good staging post, not a destination.
+  M) ADDING A DIVISION - new [data-division] block, new panel column, new key
+     in DIVISIONS, new titles.
 
-  K) ADDING AN IT SUB-PAGE
-       1. Add <section data-subview="NAME" ...> inside the IT view.
-       2. Add a link to the IT sub-nav: href="#/it/NAME".
-       3. Add 'NAME' to SUBROUTES in the router script.
-       4. Add a title for it in TITLES.
-     Miss step 3 and the link silently falls back to the overview.
+  N) BILINGUAL COPY - EN / ID - READ THIS BEFORE EDITING ANY TEXT
+     Every visible string exists twice, as sibling inline spans:
+         <span class="t-en">English</span><span class="t-id">Indonesia</span>
+     The toggle adds .lang-id to <html>; CSS then swaps which span displays.
+
+     THE RULE THAT MATTERS: EDIT BOTH, ALWAYS.
+     The dangerous strings on this site are scope and legal statements - the
+     66221 note, "How the two are contracted", the exclusions lists, "Delivered
+     by Zestha Vutura". If someone corrects the English exclusion and forgets
+     the Indonesian one, the page then makes two different legal claims to two
+     different readers, and the Indonesian one is the version a local client
+     will rely on. Drift here is not a typo, it is a misrepresentation.
+     Before publishing, read the EN and ID versions of every scope statement
+     side by side and confirm they say the same thing.
+
+     t-en / t-id may only go on <span>. The CSS swaps display between inline
+     and none; putting these classes on a flex or grid container will collapse
+     its layout.
+
+     DEFAULT LANGUAGE: English, and with JavaScript off English is all that
+     shows. For a South Jakarta contractor whose clients are Indonesian, that
+     is worth reconsidering - switching the default is one line in the router
+     (see PREFERRED_DEFAULT).
+
+     THE KBLI TABLE IS NOT TRANSLATED - ON PURPOSE.
+     The English uraian on this page are renderings, not official text. The
+     authoritative Indonesian wording is whatever the NIB itself prints.
+     Back-translating the English would produce a table that does not match
+     the document a client is checking against. The Indonesian column is
+     therefore left as placeholders: copy the exact uraian from the NIB.
   ============================================================================
 -->
 
@@ -120,17 +128,13 @@
     theme: {
       extend: {
         colors: {
-          navy:     '#013589',
-          teal:     '#00A796',
-          midnight: '#011E4A',
-          kabut:    '#EEF1F5',
-          putih:    '#FBFCFD',
-          abu:      '#6B7A90'
+          navy: '#013589', teal: '#00A796', midnight: '#011E4A',
+          kabut: '#EEF1F5', putih: '#FBFCFD', abu: '#6B7A90'
         },
         fontFamily: {
           display: ['Sora', 'system-ui', 'sans-serif'],
-          body:    ['"Instrument Sans"', 'system-ui', 'sans-serif'],
-          mono:    ['"DM Mono"', 'ui-monospace', 'monospace']
+          body: ['"Instrument Sans"', 'system-ui', 'sans-serif'],
+          mono: ['"DM Mono"', 'ui-monospace', 'monospace']
         },
         maxWidth: { shell: '78rem' }
       }
@@ -141,7 +145,6 @@
 <style>
   :root { --fv: #013589; }
   .on-dark { --fv: #00A796; }
-
   :focus-visible { outline: 3px solid var(--fv); outline-offset: 3px; }
 
   body { -webkit-font-smoothing: antialiased; }
@@ -151,15 +154,18 @@
   .tnum { font-variant-numeric: tabular-nums; }
 
   /* VIEW SWITCHING - only under .js. See EDITOR'S NOTE (J). */
-  .js [data-view],
-  .js [data-subview]            { display: none; }
+  .js [data-view], .js [data-division], .js [data-page] { display: none; }
   .js [data-view].is-active,
-  .js [data-subview].is-active  { display: block; }
+  .js [data-division].is-active,
+  .js [data-page].is-active { display: block; }
 
-  /* Headings receive focus on view change; never show a ring for that. */
+  /* LANGUAGE SWAP - see EDITOR'S NOTE (N). Spans only. */
+  .t-id { display: none; }
+  .lang-id .t-id { display: inline; }
+  .lang-id .t-en { display: none; }
+
   [data-focus-target]:focus { outline: none; }
 
-  /* Active nav item. */
   [aria-current="page"] {
     color: #013589;
     text-decoration: underline;
@@ -169,87 +175,131 @@
   }
   .on-dark [aria-current="page"] { color: #00A796; }
 
+  [data-lang][aria-pressed="true"] { color: #013589; font-weight: 500; }
+  [data-lang][aria-pressed="false"] { color: #6B7A90; }
+
   .rise { opacity: 0; transform: translateY(12px); animation: rise .8s cubic-bezier(.2,.75,.3,1) forwards; }
   .rise-2 { animation-delay: .12s; }
   .rise-3 { animation-delay: .24s; }
   .rise-4 { animation-delay: .36s; }
   @keyframes rise { to { opacity: 1; transform: none; } }
 
-  @media (prefers-reduced-motion: reduce) {
-    .rise { animation: none; opacity: 1; transform: none; }
-  }
+  @media (prefers-reduced-motion: reduce) { .rise { animation: none; opacity: 1; transform: none; } }
 </style>
 </head>
 
 <body class="bg-kabut font-body text-midnight">
 
-<a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:bg-navy focus:px-4 focus:py-2 focus:font-mono focus:text-xs focus:text-putih">Skip to content</a>
+<a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:bg-navy focus:px-4 focus:py-2 focus:font-mono focus:text-xs focus:text-putih"><span class="t-en">Skip to content</span><span class="t-id">Lewati ke konten</span></a>
 
 <!-- PREVIEW BANNER - DELETE THIS ENTIRE <aside> BEFORE PUBLISHING. -->
 <aside class="bg-teal px-6 py-3 text-center font-mono text-[11px] leading-relaxed text-midnight sm:px-8">
-  <strong class="font-semibold">Preview:</strong> legal identifiers and contact details on this page are placeholder samples, not real data. Replace them before publishing.
+  <span class="t-en"><strong class="font-semibold">Preview:</strong> legal identifiers and contact details on this page are placeholder samples, not real data. Replace them before publishing.</span><span class="t-id"><strong class="font-semibold">Pratinjau:</strong> identitas hukum dan detail kontak di halaman ini masih contoh placeholder, bukan data asli. Ganti sebelum dipublikasikan.</span>
 </aside>
 
-<!-- ==================== NAV ====================
-     Sticky, because with view switching the visitor may be part-way down a
-     view when they need it. Five items; the IT area expands through its own
-     sub-nav rather than by growing this bar.
-     ============================================= -->
-<nav class="sticky top-0 z-40 border-b border-navy/15 bg-putih/95 backdrop-blur">
-  <div class="mx-auto flex max-w-shell flex-wrap items-center justify-between gap-x-8 gap-y-4 px-6 py-5 sm:px-8">
-    <a href="#/" class="shrink-0" data-nav>
-      <img src="logo-aks.png" alt="PT AKS Mitra Berkah — home" width="523" height="267" class="h-11 w-auto sm:h-12">
-    </a>
+<!-- ==================== NAV ==================== -->
+<nav class="sticky top-0 z-40 bg-putih/95 backdrop-blur">
+  <div class="border-b border-navy/15">
+    <div class="mx-auto flex max-w-shell flex-wrap items-center justify-between gap-x-8 gap-y-4 px-6 py-5 sm:px-8">
 
-    <button id="navToggle" type="button" aria-expanded="false" aria-controls="navMenu"
-            class="font-mono text-[11px] eyebrow text-navy lg:hidden">Menu</button>
+      <a href="#/" class="shrink-0 lg:order-1" data-nav>
+        <img src="logo-aks.png" alt="PT AKS Mitra Berkah" width="523" height="267" class="h-11 w-auto sm:h-12">
+      </a>
 
-    <!-- Rendered once, shared by both states. -->
-    <ul id="navMenu" class="hidden w-full flex-col gap-y-3 font-mono text-[11px] eyebrow lg:flex lg:w-auto lg:flex-row lg:flex-wrap lg:gap-x-7 lg:gap-y-2">
-      <li><a href="#/"        data-nav data-route="home"    class="hover:text-navy">Home</a></li>
-      <li><a href="#/it"      data-nav data-route="it"      class="hover:text-navy">IT works</a></li>
-      <li><a href="#/work"    data-nav data-route="work"    class="hover:text-navy">Selected work</a></li>
-      <li><a href="#/company" data-nav data-route="company" class="hover:text-navy">Company data</a></li>
-      <li><a href="#/contact" data-nav data-route="contact" class="hover:text-navy">Contact</a></li>
-    </ul>
+      <!-- Language toggle stays outside the collapsible menu: it must be
+           reachable without opening anything. -->
+      <div class="flex items-center gap-4 font-mono text-[11px] eyebrow lg:order-3">
+        <span class="flex items-center gap-1.5">
+          <button type="button" data-lang="en" aria-pressed="true" lang="en">EN</button>
+          <span aria-hidden="true" class="text-navy/25">/</span>
+          <button type="button" data-lang="id" aria-pressed="false" lang="id">ID</button>
+        </span>
+        <button id="navToggle" type="button" aria-expanded="false" aria-controls="navMenu" class="text-navy lg:hidden">
+          <span class="t-en">Menu</span><span class="t-id">Menu</span>
+        </button>
+      </div>
+
+      <ul id="navMenu" class="hidden w-full flex-col gap-y-3 font-mono text-[11px] eyebrow lg:order-2 lg:flex lg:w-auto lg:flex-row lg:flex-wrap lg:items-center lg:gap-x-7 lg:gap-y-2">
+        <li><a href="#/" data-nav data-route="home" class="hover:text-navy"><span class="t-en">Home</span><span class="t-id">Beranda</span></a></li>
+        <li>
+          <button id="worksToggle" type="button" aria-expanded="false" aria-controls="worksPanel" data-route="works" class="eyebrow hover:text-navy">
+            <span class="t-en">Our Works</span><span class="t-id">Lini Usaha</span> <span aria-hidden="true">+</span>
+          </button>
+        </li>
+        <li><a href="#/projects" data-nav data-route="projects" class="hover:text-navy"><span class="t-en">Projects</span><span class="t-id">Proyek</span></a></li>
+        <li><a href="#/company"  data-nav data-route="company"  class="hover:text-navy"><span class="t-en">Company data</span><span class="t-id">Data perusahaan</span></a></li>
+        <li><a href="#/contact"  data-nav data-route="contact"  class="hover:text-navy"><span class="t-en">Contact</span><span class="t-id">Kontak</span></a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ==================== OUR WORKS PANEL ==================== -->
+  <div id="worksPanel" class="hidden border-b border-navy/15 bg-putih">
+    <div class="mx-auto max-w-shell px-6 py-10 sm:px-8 sm:py-12">
+      <div class="grid gap-10 md:grid-cols-3 lg:gap-14">
+
+        <div>
+          <a href="#/works/construction" data-nav class="font-display text-[1.25rem] font-semibold text-navy hover:text-teal"><span class="t-en">Construction</span><span class="t-id">Konstruksi</span></a>
+          <p class="mt-2 font-mono text-[11px] leading-relaxed text-abu"><span class="t-en">Contracted with PT AKS Mitra Berkah</span><span class="t-id">Dikontrak dengan PT AKS Mitra Berkah</span></p>
+          <ul class="mt-5 space-y-3 text-[0.95rem]">
+            <li><a href="#/works/construction" data-nav data-page-link="construction/overview" class="hover:text-navy"><span class="t-en">What we take on</span><span class="t-id">Apa yang kami kerjakan</span></a></li>
+            <li><a href="#/works/construction/advisory" data-nav data-page-link="construction/advisory" class="hover:text-navy"><span class="t-en">Pre-construction advice</span><span class="t-id">Konsultasi prakonstruksi</span></a></li>
+          </ul>
+        </div>
+
+        <div>
+          <a href="#/works/it" data-nav class="font-display text-[1.25rem] font-semibold text-navy hover:text-teal">IT</a>
+          <p class="mt-2 font-mono text-[11px] leading-relaxed text-abu"><span class="t-en">Split between AKS and Zestha Vutura</span><span class="t-id">Terbagi antara AKS dan Zestha Vutura</span></p>
+          <ul class="mt-5 space-y-3 text-[0.95rem]">
+            <li><a href="#/works/it" data-nav data-page-link="it/overview" class="hover:text-navy"><span class="t-en">Overview</span><span class="t-id">Ringkasan</span></a></li>
+            <li><a href="#/works/it/support"  data-nav data-page-link="it/support"  class="hover:text-navy"><span class="t-en">Supply &amp; support</span><span class="t-id">Suplai &amp; dukungan</span></a></li>
+            <li><a href="#/works/it/software" data-nav data-page-link="it/software" class="hover:text-navy">Software</a></li>
+            <li><a href="#/works/it/data"     data-nav data-page-link="it/data"     class="hover:text-navy">Data</a></li>
+            <li><a href="#/works/it/design"   data-nav data-page-link="it/design"   class="hover:text-navy"><span class="t-en">Design</span><span class="t-id">Desain</span></a></li>
+          </ul>
+        </div>
+
+        <div class="border-t border-navy/15 pt-8 md:border-l md:border-t-0 md:pl-10 md:pt-0">
+          <!-- draft, please adjust -->
+          <p class="font-mono text-[11px] eyebrow text-abu"><span class="t-en">Looking for delivered work?</span><span class="t-id">Mencari pekerjaan yang sudah selesai?</span></p>
+          <p class="mt-4 text-[0.95rem] leading-relaxed text-midnight/80"><span class="t-en">This menu is what we are set up to take on. Completed jobs, and which company delivered each one, are listed separately.</span><span class="t-id">Menu ini berisi apa yang kami siap kerjakan. Pekerjaan yang sudah selesai, dan perusahaan mana yang mengerjakannya, terdaftar terpisah.</span></p>
+          <a href="#/projects" data-nav class="mt-5 inline-flex items-center border-2 border-navy px-6 py-3 font-mono text-[11px] eyebrow text-navy transition-colors hover:bg-navy hover:text-putih"><span class="t-en">Projects</span><span class="t-id">Proyek</span></a>
+        </div>
+
+      </div>
+    </div>
   </div>
 </nav>
 
 <main id="main">
 
-<!-- ============================================================
-     VIEW: HOME
-     Keeps the construction argument in one uninterrupted run:
-     hero -> Scope Chain 01 -> Capabilities 02 -> Why us 03.
-     ============================================================ -->
+<!-- ==================== VIEW: HOME ==================== -->
 <section data-view="home" class="is-active">
 
   <header class="bg-putih">
     <div class="mx-auto max-w-shell px-6 pb-20 pt-16 sm:px-8 sm:pb-24 sm:pt-24">
 
-      <!-- draft, please adjust - this eyebrow still does NOT mention IT.
-           Adding a fourth item repositions the company in the first line a
-           visitor reads. That is a positioning decision, not a formatting one. -->
-      <p class="rise font-mono text-[11px] eyebrow text-teal">Construction &middot; Material supply &middot; South Jakarta</p>
+      <!-- draft, please adjust - still does NOT mention IT. -->
+      <p class="rise font-mono text-[11px] eyebrow text-teal"><span class="t-en">Construction &middot; Material supply &middot; South Jakarta</span><span class="t-id">Konstruksi &middot; Suplai material &middot; Jakarta Selatan</span></p>
 
       <!-- draft, please adjust -->
       <h1 data-focus-target tabindex="-1" class="rise rise-2 tight mt-8 max-w-5xl font-display text-[2.75rem] font-bold text-navy sm:text-[4.5rem] lg:text-[5.5rem]">
-        One contract from drawings to handover.
+        <span class="t-en">One contract from drawings to handover.</span><span class="t-id">Satu kontrak, dari gambar sampai serah terima.</span>
       </h1>
 
       <div class="mt-14 grid gap-12 lg:grid-cols-12 lg:gap-10">
         <!-- draft, please adjust -->
         <p class="rise rise-3 max-w-2xl text-[1.125rem] leading-relaxed text-midnight/80 lg:col-span-7">
-          Small builds rarely fail on craftsmanship. They fail in the gaps — between the person who drew it, the supplier who quoted the materials, and the crew standing on site on Monday morning. We are registered to do all three, so managing those gaps is our job, not yours.
+          <span class="t-en">Small builds rarely fail on craftsmanship. They fail in the gaps — between the person who drew it, the supplier who quoted the materials, and the crew standing on site on Monday morning. We are registered to do all three, so managing those gaps is our job, not yours.</span><span class="t-id">Proyek kecil jarang gagal karena tukangnya. Gagalnya di celah — antara yang menggambar, yang menawarkan materialnya, dan kru yang berdiri di lokasi Senin pagi. Kami terdaftar untuk ketiganya, jadi mengurus celah itu tugas kami, bukan tugas Anda.</span>
         </p>
 
         <div class="rise rise-4 lg:col-span-5 lg:pl-8">
           <div class="flex flex-wrap gap-4">
-            <a href="#/contact" data-nav class="inline-flex items-center bg-navy px-8 py-4 font-mono text-[11px] eyebrow text-putih transition-colors hover:bg-teal">Request a scope review</a>
-            <a href="#/it" data-nav class="inline-flex items-center border-2 border-navy px-8 py-4 font-mono text-[11px] eyebrow text-navy transition-colors hover:bg-navy hover:text-putih">IT works</a>
+            <a href="#/contact" data-nav class="inline-flex items-center bg-navy px-8 py-4 font-mono text-[11px] eyebrow text-putih transition-colors hover:bg-teal"><span class="t-en">Request a scope review</span><span class="t-id">Minta tinjauan lingkup</span></a>
+            <a href="#/works/construction" data-nav class="inline-flex items-center border-2 border-navy px-8 py-4 font-mono text-[11px] eyebrow text-navy transition-colors hover:bg-navy hover:text-putih"><span class="t-en">What we cover</span><span class="t-id">Apa yang kami kerjakan</span></a>
           </div>
           <p class="mt-6 max-w-xs font-mono text-[11px] leading-relaxed text-abu">
-            Send the drawings, or just the idea. You get scope, exclusions, and a materials basis in writing before any price is discussed.
+            <span class="t-en">Send the drawings, or just the idea. You get scope, exclusions, and a materials basis in writing before any price is discussed.</span><span class="t-id">Kirim gambarnya, atau idenya saja. Anda menerima lingkup, pengecualian, dan dasar perhitungan material secara tertulis sebelum harga dibicarakan.</span>
           </p>
         </div>
       </div>
@@ -263,104 +313,40 @@
 
       <div class="flex flex-wrap items-end justify-between gap-6">
         <div>
-          <p class="font-mono text-[11px] eyebrow text-teal">01 &middot; How we are set up</p>
-          <h2 class="tight mt-6 max-w-2xl font-display text-[2.25rem] font-semibold sm:text-[3.25rem]">Three stages. One party carrying them.</h2>
+          <p class="font-mono text-[11px] eyebrow text-teal">01 &middot; <span class="t-en">How we are set up</span><span class="t-id">Cara kami disusun</span></p>
+          <h2 class="tight mt-6 max-w-2xl font-display text-[2.25rem] font-semibold sm:text-[3.25rem]"><span class="t-en">Three stages. One party carrying them.</span><span class="t-id">Tiga tahap. Satu pihak yang memikulnya.</span></h2>
         </div>
         <p class="max-w-sm text-[0.95rem] leading-relaxed text-putih/70">
-          Our registered scope covers planning, wholesale supply, and construction. That combination is unusual for a company this size, and it is the whole reason to hire us.
+          <span class="t-en">Our registered scope covers planning, wholesale supply, and construction. That combination is unusual for a company this size, and it is the whole reason to hire us.</span><span class="t-id">Lingkup terdaftar kami mencakup perencanaan, suplai grosir, dan konstruksi. Kombinasi itu tidak biasa untuk perusahaan seukuran kami, dan justru itu alasan menyewa kami.</span>
         </p>
       </div>
 
       <div class="mt-16 grid gap-px bg-white/15 lg:grid-cols-4">
-
         <div class="bg-midnight p-8 lg:p-9">
           <p class="font-mono text-xs tnum text-teal">STAGE 01</p>
-          <h3 class="mt-5 font-display text-[1.75rem] font-semibold">Plan</h3>
+          <h3 class="mt-5 font-display text-[1.75rem] font-semibold"><span class="t-en">Plan</span><span class="t-id">Rencana</span></h3>
           <!-- draft, please adjust -->
-          <p class="mt-4 text-[0.95rem] leading-relaxed text-putih/70">
-            Scope written out, quantities taken off, budget tested against real material prices — before anyone commits.
-          </p>
+          <p class="mt-4 text-[0.95rem] leading-relaxed text-putih/70"><span class="t-en">Scope written out, quantities taken off, budget tested against real material prices — before anyone commits.</span><span class="t-id">Lingkup ditulis, volume dihitung, anggaran diuji terhadap harga material sebenarnya — sebelum siapa pun terikat.</span></p>
         </div>
-
         <div class="bg-midnight p-8 lg:p-9">
           <p class="font-mono text-xs tnum text-teal">STAGE 02</p>
-          <h3 class="mt-5 font-display text-[1.75rem] font-semibold">Supply</h3>
+          <h3 class="mt-5 font-display text-[1.75rem] font-semibold"><span class="t-en">Supply</span><span class="t-id">Suplai</span></h3>
           <!-- draft, please adjust -->
-          <p class="mt-4 text-[0.95rem] leading-relaxed text-putih/70">
-            Materials bought on our own wholesale registration and delivered to site, with the invoices open to you.
-          </p>
+          <p class="mt-4 text-[0.95rem] leading-relaxed text-putih/70"><span class="t-en">Materials bought on our own wholesale registration and delivered to site, with the invoices open to you.</span><span class="t-id">Material dibeli dengan izin grosir kami sendiri dan dikirim ke lokasi, dengan fakturnya terbuka untuk Anda.</span></p>
         </div>
-
         <div class="bg-midnight p-8 lg:p-9">
           <p class="font-mono text-xs tnum text-teal">STAGE 03</p>
-          <h3 class="mt-5 font-display text-[1.75rem] font-semibold">Build</h3>
+          <h3 class="mt-5 font-display text-[1.75rem] font-semibold"><span class="t-en">Build</span><span class="t-id">Bangun</span></h3>
           <!-- draft, please adjust -->
-          <p class="mt-4 text-[0.95rem] leading-relaxed text-putih/70">
-            Construction and specialist trades executed and supervised against the scope we wrote in stage one.
-          </p>
+          <p class="mt-4 text-[0.95rem] leading-relaxed text-putih/70"><span class="t-en">Construction and specialist trades executed and supervised against the scope we wrote in stage one.</span><span class="t-id">Konstruksi dan pekerjaan spesialis dilaksanakan dan diawasi terhadap lingkup yang kami tulis di tahap satu.</span></p>
         </div>
-
         <div class="bg-teal p-8 text-midnight lg:p-9">
-          <p class="font-mono text-xs eyebrow text-midnight/60">Result</p>
+          <p class="font-mono text-xs eyebrow text-midnight/60"><span class="t-en">Result</span><span class="t-id">Hasil</span></p>
           <p class="mt-5 font-display text-[3.5rem] font-bold leading-none tnum">1</p>
-          <p class="font-display text-[1.5rem] font-semibold leading-tight">contract.<br>1 party accountable.</p>
-          <p class="mt-5 text-[0.9rem] leading-relaxed text-midnight/80">
-            No gap between supplier and builder to argue in. If the material is wrong, it is still our problem.
-          </p>
-        </div>
-
-      </div>
-    </div>
-  </div>
-
-  <!-- CAPABILITIES -->
-  <div class="py-20 sm:py-28">
-    <div class="mx-auto max-w-shell px-6 sm:px-8">
-
-      <p class="font-mono text-[11px] eyebrow text-navy">02 &middot; Capabilities</p>
-      <h2 class="tight mt-6 max-w-3xl font-display text-[2.25rem] font-semibold text-navy sm:text-[3.25rem]">What we are set up to take on</h2>
-
-      <div class="mt-14 grid gap-10 md:grid-cols-3 lg:gap-12">
-
-        <article class="border-t-4 border-teal pt-7">
-          <h3 class="font-display text-[1.75rem] font-semibold">Residential construction</h3>
-          <!-- draft, please adjust -->
-          <p class="mt-4 leading-relaxed text-midnight/80">
-            New-build houses, extensions, and full renovations of occupied homes — including the sequencing that keeps a family living in the building while work runs.
-          </p>
-          <p class="mt-5 font-mono text-[11px] text-abu">Registered scope: 41011</p>
-        </article>
-
-        <article class="border-t-4 border-teal pt-7">
-          <h3 class="font-display text-[1.75rem] font-semibold">Specialist works</h3>
-          <!-- draft, please adjust -->
-          <p class="mt-4 leading-relaxed text-midnight/80">
-            Discrete packages taken on for owners or main contractors: structural repair, waterproofing, finishing trades, and coordination of specialist subcontractors.
-          </p>
-          <p class="mt-5 font-mono text-[11px] text-abu">Registered scope: 43400, 43909</p>
-        </article>
-
-        <article class="border-t-4 border-teal pt-7">
-          <h3 class="font-display text-[1.75rem] font-semibold">Material supply</h3>
-          <!-- draft, please adjust -->
-          <p class="mt-4 leading-relaxed text-midnight/80">
-            Procurement and delivery of building materials, either bundled into a build contract or supplied on its own to owners running their own crew.
-          </p>
-          <p class="mt-5 font-mono text-[11px] text-abu">Registered scope: 46100, 46901, 46902</p>
-        </article>
-
-      </div>
-
-      <!-- draft, please adjust -->
-      <div class="mt-14 border-t border-navy/20 pt-8">
-        <div class="grid gap-6 lg:grid-cols-12">
-          <h3 class="font-display text-[1.5rem] font-semibold lg:col-span-4">Pre-construction advice</h3>
-          <p class="leading-relaxed text-midnight/80 lg:col-span-8">
-            Owners who are not ready to build yet can engage us for the planning stage alone — feasibility, buildability review, quantities, and a defensible budget. If you then take the work to another contractor, the documents are yours. <span class="font-mono text-[11px] text-abu">Registered scope: 70209</span>
-          </p>
+          <p class="font-display text-[1.5rem] font-semibold leading-tight"><span class="t-en">contract.<br>1 party accountable.</span><span class="t-id">kontrak.<br>1 pihak yang bertanggung jawab.</span></p>
+          <p class="mt-5 text-[0.9rem] leading-relaxed text-midnight/80"><span class="t-en">No gap between supplier and builder to argue in. If the material is wrong, it is still our problem.</span><span class="t-id">Tidak ada celah antara pemasok dan pelaksana untuk saling menyalahkan. Kalau materialnya salah, itu tetap masalah kami.</span></p>
         </div>
       </div>
-
     </div>
   </div>
 
@@ -370,49 +356,36 @@
 
       <div class="flex flex-wrap items-end justify-between gap-6">
         <div>
-          <p class="font-mono text-[11px] eyebrow text-navy">03 &middot; Why work with us</p>
-          <h2 class="tight mt-6 max-w-2xl font-display text-[2.25rem] font-semibold text-navy sm:text-[3.25rem]">Four commitments, fixed in writing</h2>
+          <p class="font-mono text-[11px] eyebrow text-navy">02 &middot; <span class="t-en">Why work with us</span><span class="t-id">Kenapa bekerja dengan kami</span></p>
+          <h2 class="tight mt-6 max-w-2xl font-display text-[2.25rem] font-semibold text-navy sm:text-[3.25rem]"><span class="t-en">Four commitments, fixed in writing</span><span class="t-id">Empat komitmen, tertulis</span></h2>
         </div>
         <p class="max-w-sm text-[0.95rem] leading-relaxed text-midnight/70">
-          We are a young company. These are things we can promise on day one and be held to — not claims about a past you cannot check.
+          <span class="t-en">We are a young company. These are things we can promise on day one and be held to — not claims about a past you cannot check.</span><span class="t-id">Kami perusahaan baru. Ini hal-hal yang bisa kami janjikan sejak hari pertama dan bisa ditagih — bukan klaim tentang masa lalu yang tidak bisa Anda periksa.</span>
         </p>
       </div>
 
       <!-- draft, please adjust -->
       <div class="mt-16 grid gap-x-14 gap-y-12 sm:grid-cols-2">
-
         <div>
           <p class="font-display text-[2.5rem] font-bold leading-none tnum text-teal">01</p>
-          <h3 class="mt-4 font-display text-[1.5rem] font-semibold">The director signs and runs the job</h3>
-          <p class="mt-3 leading-relaxed text-midnight/80">
-            One decision-maker, reachable directly. You will not be handed to someone you never met after the contract is signed.
-          </p>
+          <h3 class="mt-4 font-display text-[1.5rem] font-semibold"><span class="t-en">The director signs and runs the job</span><span class="t-id">Direktur yang tanda tangan dan yang menjalankan</span></h3>
+          <p class="mt-3 leading-relaxed text-midnight/80"><span class="t-en">One decision-maker, reachable directly. You will not be handed to someone you never met after the contract is signed.</span><span class="t-id">Satu pengambil keputusan, bisa dihubungi langsung. Anda tidak akan dioper ke orang yang belum pernah Anda temui setelah kontrak diteken.</span></p>
         </div>
-
         <div>
           <p class="font-display text-[2.5rem] font-bold leading-none tnum text-teal">02</p>
-          <h3 class="mt-4 font-display text-[1.5rem] font-semibold">Scope and exclusions before price</h3>
-          <p class="mt-3 leading-relaxed text-midnight/80">
-            What is in, what is out, and what triggers a variation — agreed on paper first. Most disputes on small builds are really disputes about what was excluded.
-          </p>
+          <h3 class="mt-4 font-display text-[1.5rem] font-semibold"><span class="t-en">Scope and exclusions before price</span><span class="t-id">Lingkup dan pengecualian sebelum harga</span></h3>
+          <p class="mt-3 leading-relaxed text-midnight/80"><span class="t-en">What is in, what is out, and what triggers a variation — agreed on paper first. Most disputes on small builds are really disputes about what was excluded.</span><span class="t-id">Apa yang termasuk, apa yang tidak, dan apa yang memicu pekerjaan tambah — disepakati di atas kertas dulu. Sebagian besar sengketa proyek kecil sebenarnya sengketa soal apa yang dikecualikan.</span></p>
         </div>
-
         <div>
           <p class="font-display text-[2.5rem] font-bold leading-none tnum text-teal">03</p>
-          <h3 class="mt-4 font-display text-[1.5rem] font-semibold">Materials at our own trade terms</h3>
-          <p class="mt-3 leading-relaxed text-midnight/80">
-            Wholesale trade sits inside our registered scope, so material margin is a line you can see and question rather than something buried in a lump sum.
-          </p>
+          <h3 class="mt-4 font-display text-[1.5rem] font-semibold"><span class="t-en">Materials at our own trade terms</span><span class="t-id">Material dengan harga dagang kami sendiri</span></h3>
+          <p class="mt-3 leading-relaxed text-midnight/80"><span class="t-en">Wholesale trade sits inside our registered scope, so material margin is a line you can see and question rather than something buried in a lump sum.</span><span class="t-id">Perdagangan grosir ada di dalam lingkup terdaftar kami, jadi margin material jadi baris yang bisa Anda lihat dan tanyakan, bukan sesuatu yang terkubur dalam harga borongan.</span></p>
         </div>
-
         <div>
           <p class="font-display text-[2.5rem] font-bold leading-none tnum text-teal">04</p>
-          <h3 class="mt-4 font-display text-[1.5rem] font-semibold">Permit status stated up front</h3>
-          <p class="mt-3 leading-relaxed text-midnight/80">
-            For work that needs a licence, certification, or permit we do not yet hold, we say so before quoting and tell you who does hold it.
-          </p>
+          <h3 class="mt-4 font-display text-[1.5rem] font-semibold"><span class="t-en">Permit status stated up front</span><span class="t-id">Status izin dinyatakan di muka</span></h3>
+          <p class="mt-3 leading-relaxed text-midnight/80"><span class="t-en">For work that needs a licence, certification, or permit we do not yet hold, we say so before quoting and tell you who does hold it.</span><span class="t-id">Untuk pekerjaan yang butuh lisensi, sertifikasi, atau izin yang belum kami pegang, kami sampaikan sebelum menawar dan menunjukkan siapa yang memegangnya.</span></p>
         </div>
-
       </div>
     </div>
   </div>
@@ -420,249 +393,314 @@
 </section>
 
 
-<!-- ============================================================
-     VIEW: IT WORKS
-     Header stays put; only the sub-view below it changes. This is the
-     area built to grow - see EDITOR'S NOTE (K) for adding a sub-page.
-     ============================================================ -->
-<section data-view="it" class="on-dark bg-navy text-putih">
+<!-- ==================== VIEW: OUR WORKS ==================== -->
+<section data-view="works">
 
-  <div class="mx-auto max-w-shell px-6 pt-20 sm:px-8 sm:pt-28">
-    <p class="font-mono text-[11px] eyebrow text-teal">IT works</p>
-    <!-- draft, please adjust -->
-    <h1 data-focus-target tabindex="-1" class="tight mt-6 max-w-3xl font-display text-[2.25rem] font-semibold sm:text-[3.25rem]">Two companies, one point of contact.</h1>
-    <!-- draft, please adjust -->
-    <p class="mt-8 max-w-2xl text-[1.0625rem] leading-relaxed text-putih/80">
-      Equipment and support are contracted with PT AKS Mitra Berkah. Software, data, and design are delivered by Zestha Vutura, an affiliated company under the same ownership that holds its own registrations for that work.
-    </p>
+  <!-- ---------- DIVISION: CONSTRUCTION ---------- -->
+  <div data-division="construction">
+
+    <div class="bg-putih">
+      <div class="mx-auto max-w-shell px-6 pt-20 sm:px-8 sm:pt-28">
+        <p class="font-mono text-[11px] eyebrow text-navy"><span class="t-en">Our Works &middot; Construction</span><span class="t-id">Lini Usaha &middot; Konstruksi</span></p>
+        <!-- draft, please adjust -->
+        <h1 data-focus-target tabindex="-1" class="tight mt-6 max-w-3xl font-display text-[2.25rem] font-semibold text-navy sm:text-[3.25rem]"><span class="t-en">Built and supplied under one contract.</span><span class="t-id">Dibangun dan disuplai dalam satu kontrak.</span></h1>
+        <ul class="mt-10 flex flex-wrap gap-x-7 gap-y-3 border-t border-navy/15 py-5 font-mono text-[11px] eyebrow">
+          <li><a href="#/works/construction" data-nav data-page-link="construction/overview" class="text-abu hover:text-navy"><span class="t-en">What we take on</span><span class="t-id">Apa yang kami kerjakan</span></a></li>
+          <li><a href="#/works/construction/advisory" data-nav data-page-link="construction/advisory" class="text-abu hover:text-navy"><span class="t-en">Pre-construction advice</span><span class="t-id">Konsultasi prakonstruksi</span></a></li>
+        </ul>
+      </div>
+    </div>
+
+    <section data-page="construction/overview" class="bg-putih pb-20 pt-14 sm:pb-28">
+      <div class="mx-auto max-w-shell px-6 sm:px-8">
+        <div class="grid gap-10 md:grid-cols-3 lg:gap-12">
+          <article class="border-t-4 border-teal pt-7">
+            <h2 class="font-display text-[1.75rem] font-semibold"><span class="t-en">Residential construction</span><span class="t-id">Konstruksi hunian</span></h2>
+            <!-- draft, please adjust -->
+            <p class="mt-4 leading-relaxed text-midnight/80"><span class="t-en">New-build houses, extensions, and full renovations of occupied homes — including the sequencing that keeps a family living in the building while work runs.</span><span class="t-id">Rumah baru, perluasan, dan renovasi menyeluruh rumah yang masih dihuni — termasuk pengaturan urutan kerja yang membuat keluarga tetap bisa tinggal selama pekerjaan berjalan.</span></p>
+            <p class="mt-5 font-mono text-[11px] text-abu"><span class="t-en">Registered scope:</span><span class="t-id">Lingkup terdaftar:</span> 41011</p>
+          </article>
+          <article class="border-t-4 border-teal pt-7">
+            <h2 class="font-display text-[1.75rem] font-semibold"><span class="t-en">Specialist works</span><span class="t-id">Pekerjaan spesialis</span></h2>
+            <!-- draft, please adjust -->
+            <p class="mt-4 leading-relaxed text-midnight/80"><span class="t-en">Discrete packages taken on for owners or main contractors: structural repair, waterproofing, finishing trades, and coordination of specialist subcontractors.</span><span class="t-id">Paket pekerjaan terpisah untuk pemilik atau kontraktor utama: perbaikan struktur, waterproofing, pekerjaan finishing, dan koordinasi subkontraktor spesialis.</span></p>
+            <p class="mt-5 font-mono text-[11px] text-abu"><span class="t-en">Registered scope:</span><span class="t-id">Lingkup terdaftar:</span> 43400, 43909</p>
+          </article>
+          <article class="border-t-4 border-teal pt-7">
+            <h2 class="font-display text-[1.75rem] font-semibold"><span class="t-en">Material supply</span><span class="t-id">Suplai material</span></h2>
+            <!-- draft, please adjust -->
+            <p class="mt-4 leading-relaxed text-midnight/80"><span class="t-en">Procurement and delivery of building materials, either bundled into a build contract or supplied on its own to owners running their own crew.</span><span class="t-id">Pengadaan dan pengiriman material bangunan, digabung ke dalam kontrak pembangunan atau disuplai terpisah untuk pemilik yang menjalankan krunya sendiri.</span></p>
+            <p class="mt-5 font-mono text-[11px] text-abu"><span class="t-en">Registered scope:</span><span class="t-id">Lingkup terdaftar:</span> 46100, 46901, 46902</p>
+          </article>
+        </div>
+
+        <p class="mt-14 max-w-2xl font-mono text-[11px] leading-relaxed text-abu">
+          <span class="t-en">An SBU (Sertifikat Badan Usaha) is not yet held. Where a job requires one, we say so before quoting.</span><span class="t-id">SBU (Sertifikat Badan Usaha) belum dimiliki. Untuk pekerjaan yang mensyaratkannya, kami sampaikan sebelum menawar.</span>
+        </p>
+      </div>
+    </section>
+
+    <section data-page="construction/advisory" class="bg-putih pb-20 pt-14 sm:pb-28">
+      <div class="mx-auto max-w-shell px-6 sm:px-8">
+        <div class="grid gap-12 lg:grid-cols-12">
+          <div class="lg:col-span-5">
+            <h2 class="tight font-display text-[2rem] font-semibold text-navy sm:text-[2.75rem]"><span class="t-en">Pre-construction advice</span><span class="t-id">Konsultasi prakonstruksi</span></h2>
+            <!-- draft, please adjust -->
+            <p class="mt-6 leading-relaxed text-midnight/80">
+              <span class="t-en">Owners who are not ready to build yet can engage us for the planning stage alone. If you then take the work to another contractor, the documents are yours.</span><span class="t-id">Pemilik yang belum siap membangun bisa memakai jasa kami untuk tahap perencanaan saja. Kalau kemudian pekerjaannya Anda bawa ke kontraktor lain, dokumennya milik Anda.</span>
+            </p>
+            <p class="mt-6 font-mono text-[11px] text-abu"><span class="t-en">Registered scope:</span><span class="t-id">Lingkup terdaftar:</span> 70209</p>
+          </div>
+          <div class="lg:col-span-7">
+            <!-- draft, please adjust -->
+            <dl class="font-mono text-[13px]">
+              <div class="border-t border-navy/20 py-5">
+                <dt class="font-semibold text-navy"><span class="t-en">Feasibility</span><span class="t-id">Kelayakan</span></dt>
+                <dd class="mt-2 font-body text-[0.95rem] leading-relaxed text-midnight/80"><span class="t-en">Whether what you want fits the site, the rules, and the money available — answered before drawings are paid for.</span><span class="t-id">Apakah yang Anda inginkan muat di lahan, aturan, dan dana yang tersedia — dijawab sebelum gambar dibayar.</span></dd>
+              </div>
+              <div class="border-t border-navy/20 py-5">
+                <dt class="font-semibold text-navy"><span class="t-en">Buildability review</span><span class="t-id">Tinjauan keterbangunan</span></dt>
+                <dd class="mt-2 font-body text-[0.95rem] leading-relaxed text-midnight/80"><span class="t-en">An existing design read from the site's point of view: access, sequencing, and the details that become variations later.</span><span class="t-id">Desain yang sudah ada dibaca dari sudut pandang lokasi: akses, urutan kerja, dan detail yang belakangan berubah jadi pekerjaan tambah.</span></dd>
+              </div>
+              <div class="border-t border-navy/20 py-5">
+                <dt class="font-semibold text-navy"><span class="t-en">Quantities</span><span class="t-id">Volume pekerjaan</span></dt>
+                <dd class="mt-2 font-body text-[0.95rem] leading-relaxed text-midnight/80"><span class="t-en">Measured take-off you can send to any contractor, so competing quotes are priced against the same scope.</span><span class="t-id">Perhitungan volume yang bisa Anda kirim ke kontraktor mana pun, supaya penawaran yang bersaing dihitung atas lingkup yang sama.</span></dd>
+              </div>
+              <div class="border-y border-navy/20 py-5">
+                <dt class="font-semibold text-navy"><span class="t-en">Budget</span><span class="t-id">Anggaran</span></dt>
+                <dd class="mt-2 font-body text-[0.95rem] leading-relaxed text-midnight/80"><span class="t-en">Priced against real current material rates rather than a rate per square metre, with the assumptions written down.</span><span class="t-id">Dihitung dengan harga material terkini, bukan angka per meter persegi, dengan asumsinya ditulis.</span></dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </section>
+
   </div>
 
-  <!-- SUB-NAV. Add new sub-pages here, and remember step 3 in note (K). -->
-  <div class="mt-14 border-y border-white/15">
-    <div class="mx-auto max-w-shell px-6 sm:px-8">
-      <ul class="flex flex-wrap gap-x-7 gap-y-3 py-5 font-mono text-[11px] eyebrow">
-        <li><a href="#/it"          data-nav data-subroute="overview" class="text-putih/70 hover:text-teal">Overview</a></li>
-        <li><a href="#/it/support"  data-nav data-subroute="support"  class="text-putih/70 hover:text-teal">Supply &amp; support</a></li>
-        <li><a href="#/it/software" data-nav data-subroute="software" class="text-putih/70 hover:text-teal">Software</a></li>
-        <li><a href="#/it/data"     data-nav data-subroute="data"     class="text-putih/70 hover:text-teal">Data</a></li>
-        <li><a href="#/it/design"   data-nav data-subroute="design"   class="text-putih/70 hover:text-teal">Design</a></li>
+  <!-- ---------- DIVISION: IT ---------- -->
+  <div data-division="it" class="on-dark bg-navy text-putih">
+
+    <div class="mx-auto max-w-shell px-6 pt-20 sm:px-8 sm:pt-28">
+      <p class="font-mono text-[11px] eyebrow text-teal"><span class="t-en">Our Works</span><span class="t-id">Lini Usaha</span> &middot; IT</p>
+      <!-- draft, please adjust -->
+      <h1 data-focus-target tabindex="-1" class="tight mt-6 max-w-3xl font-display text-[2.25rem] font-semibold sm:text-[3.25rem]"><span class="t-en">Two companies, one point of contact.</span><span class="t-id">Dua perusahaan, satu titik kontak.</span></h1>
+      <!-- draft, please adjust -->
+      <p class="mt-8 max-w-2xl text-[1.0625rem] leading-relaxed text-putih/80">
+        <span class="t-en">Equipment and support are contracted with PT AKS Mitra Berkah. Software, data, and design are delivered by Zestha Vutura, an affiliated company under the same ownership that holds its own registrations for that work.</span><span class="t-id">Peralatan dan dukungan dikontrak dengan PT AKS Mitra Berkah. Software, data, dan desain dikerjakan Zestha Vutura, perusahaan terafiliasi di bawah kepemilikan yang sama yang memegang izin sendiri untuk pekerjaan itu.</span>
+      </p>
+      <ul class="mt-10 flex flex-wrap gap-x-7 gap-y-3 border-t border-white/15 py-5 font-mono text-[11px] eyebrow">
+        <li><a href="#/works/it"          data-nav data-page-link="it/overview" class="text-putih/70 hover:text-teal"><span class="t-en">Overview</span><span class="t-id">Ringkasan</span></a></li>
+        <li><a href="#/works/it/support"  data-nav data-page-link="it/support"  class="text-putih/70 hover:text-teal"><span class="t-en">Supply &amp; support</span><span class="t-id">Suplai &amp; dukungan</span></a></li>
+        <li><a href="#/works/it/software" data-nav data-page-link="it/software" class="text-putih/70 hover:text-teal">Software</a></li>
+        <li><a href="#/works/it/data"     data-nav data-page-link="it/data"     class="text-putih/70 hover:text-teal">Data</a></li>
+        <li><a href="#/works/it/design"   data-nav data-page-link="it/design"   class="text-putih/70 hover:text-teal"><span class="t-en">Design</span><span class="t-id">Desain</span></a></li>
       </ul>
     </div>
-  </div>
 
-  <!-- SUB-VIEW: OVERVIEW -->
-  <section data-subview="overview" class="is-active py-20 sm:py-24">
-    <div class="mx-auto max-w-shell px-6 sm:px-8">
+    <!-- PAGE: IT OVERVIEW -->
+    <section data-page="it/overview" class="pb-20 pt-14 sm:pb-24">
+      <div class="mx-auto max-w-shell px-6 sm:px-8">
 
-      <p class="font-mono text-[11px] eyebrow text-putih/50">Contracted with PT AKS Mitra Berkah</p>
-      <div class="mt-6 grid gap-px bg-white/15 lg:grid-cols-3">
-        <div class="bg-navy p-8 lg:p-9">
-          <p class="font-mono text-xs tnum text-teal">STAGE 01</p>
-          <h3 class="mt-5 font-display text-[1.75rem] font-semibold">Supply</h3>
-          <!-- draft, please adjust -->
-          <p class="mt-4 text-[0.95rem] leading-relaxed text-putih/70">Workstations, laptops, printers, and peripherals procured on our own wholesale registration, with the supplier invoices open to you.</p>
-          <p class="mt-5 font-mono text-[11px] text-putih/45">46100, 46901, 46902</p>
+        <p class="font-mono text-[11px] eyebrow text-putih/50"><span class="t-en">Contracted with PT AKS Mitra Berkah</span><span class="t-id">Dikontrak dengan PT AKS Mitra Berkah</span></p>
+        <div class="mt-6 grid gap-px bg-white/15 lg:grid-cols-3">
+          <div class="bg-navy p-8 lg:p-9">
+            <p class="font-mono text-xs tnum text-teal">STAGE 01</p>
+            <h2 class="mt-5 font-display text-[1.75rem] font-semibold"><span class="t-en">Supply</span><span class="t-id">Suplai</span></h2>
+            <!-- draft, please adjust -->
+            <p class="mt-4 text-[0.95rem] leading-relaxed text-putih/70"><span class="t-en">Workstations, laptops, printers, and peripherals procured on our own wholesale registration, with the supplier invoices open to you.</span><span class="t-id">Workstation, laptop, printer, dan periferal diadakan dengan izin grosir kami sendiri, dengan faktur pemasoknya terbuka untuk Anda.</span></p>
+            <p class="mt-5 font-mono text-[11px] text-putih/45">46100, 46901, 46902</p>
+          </div>
+          <div class="bg-navy p-8 lg:p-9">
+            <p class="font-mono text-xs tnum text-teal">STAGE 02</p>
+            <h2 class="mt-5 font-display text-[1.75rem] font-semibold"><span class="t-en">Set up</span><span class="t-id">Pemasangan</span></h2>
+            <!-- draft, please adjust -->
+            <p class="mt-4 text-[0.95rem] leading-relaxed text-putih/70"><span class="t-en">Machines configured, software installed and licensed, accounts and shared drives put in place, old equipment migrated and wiped.</span><span class="t-id">Perangkat dikonfigurasi, software dipasang dan dilisensi, akun dan drive bersama disiapkan, perangkat lama dimigrasi lalu dihapus.</span></p>
+            <p class="mt-5 font-mono text-[11px] text-putih/45">62900</p>
+          </div>
+          <div class="bg-navy p-8 lg:p-9">
+            <p class="font-mono text-xs tnum text-teal">STAGE 03</p>
+            <h2 class="mt-5 font-display text-[1.75rem] font-semibold"><span class="t-en">Support</span><span class="t-id">Dukungan</span></h2>
+            <!-- draft, please adjust -->
+            <p class="mt-4 text-[0.95rem] leading-relaxed text-putih/70"><span class="t-en">Faults diagnosed and fixed, backups set up and tested, data recovered when a machine fails.</span><span class="t-id">Gangguan didiagnosis dan diperbaiki, backup disiapkan dan diuji, data dipulihkan saat perangkat rusak.</span></p>
+            <p class="mt-5 font-mono text-[11px] text-putih/45">62900</p>
+          </div>
         </div>
-        <div class="bg-navy p-8 lg:p-9">
-          <p class="font-mono text-xs tnum text-teal">STAGE 02</p>
-          <h3 class="mt-5 font-display text-[1.75rem] font-semibold">Set up</h3>
-          <!-- draft, please adjust -->
-          <p class="mt-4 text-[0.95rem] leading-relaxed text-putih/70">Machines configured, software installed and licensed, accounts and shared drives put in place, old equipment migrated and wiped.</p>
-          <p class="mt-5 font-mono text-[11px] text-putih/45">62900</p>
+
+        <p class="mt-14 font-mono text-[11px] eyebrow text-putih/50"><span class="t-en">Delivered by Zestha Vutura</span><span class="t-id">Dikerjakan oleh Zestha Vutura</span></p>
+        <div class="mt-6 grid gap-px bg-white/15 lg:grid-cols-3">
+          <a href="#/works/it/software" data-nav class="block bg-navy p-8 transition-colors hover:bg-midnight lg:p-9">
+            <p class="font-mono text-xs eyebrow text-teal">SW</p>
+            <h2 class="mt-5 font-display text-[1.75rem] font-semibold">Software</h2>
+            <p class="mt-4 text-[0.95rem] leading-relaxed text-putih/70"><span class="t-en">Web applications, internal tools, and e-commerce, built to be handed over.</span><span class="t-id">Aplikasi web, perkakas internal, dan e-commerce, dibangun untuk diserahterimakan.</span></p>
+          </a>
+          <a href="#/works/it/data" data-nav class="block bg-navy p-8 transition-colors hover:bg-midnight lg:p-9">
+            <p class="font-mono text-xs eyebrow text-teal">DT</p>
+            <h2 class="mt-5 font-display text-[1.75rem] font-semibold">Data</h2>
+            <p class="mt-4 text-[0.95rem] leading-relaxed text-putih/70"><span class="t-en">Reporting built on the systems you already run.</span><span class="t-id">Pelaporan yang dibangun di atas sistem yang sudah Anda jalankan.</span></p>
+          </a>
+          <a href="#/works/it/design" data-nav class="block bg-navy p-8 transition-colors hover:bg-midnight lg:p-9">
+            <p class="font-mono text-xs eyebrow text-teal">DS</p>
+            <h2 class="mt-5 font-display text-[1.75rem] font-semibold"><span class="t-en">Design</span><span class="t-id">Desain</span></h2>
+            <p class="mt-4 text-[0.95rem] leading-relaxed text-putih/70"><span class="t-en">Interface and identity work the build stage can follow without guessing.</span><span class="t-id">Pekerjaan antarmuka dan identitas yang bisa diikuti tahap pembangunan tanpa menebak.</span></p>
+          </a>
         </div>
-        <div class="bg-navy p-8 lg:p-9">
-          <p class="font-mono text-xs tnum text-teal">STAGE 03</p>
-          <h3 class="mt-5 font-display text-[1.75rem] font-semibold">Support</h3>
-          <!-- draft, please adjust -->
-          <p class="mt-4 text-[0.95rem] leading-relaxed text-putih/70">Faults diagnosed and fixed, backups set up and tested, data recovered when a machine fails.</p>
-          <p class="mt-5 font-mono text-[11px] text-putih/45">62900</p>
+
+        <!-- BOUNDARY. Same honesty device as the 66221 note. Do not remove.
+             EN and ID must state the same thing - see EDITOR'S NOTE (N). -->
+        <div class="mt-12 border-t border-white/20 pt-8">
+          <div class="grid gap-6 lg:grid-cols-12">
+            <h2 class="font-display text-[1.5rem] font-semibold lg:col-span-4"><span class="t-en">How the two are contracted</span><span class="t-id">Bagaimana keduanya dikontrak</span></h2>
+            <!-- draft, please adjust -->
+            <div class="lg:col-span-8">
+              <p class="leading-relaxed text-putih/80">
+                <span class="t-en">PT AKS Mitra Berkah and Zestha Vutura are separate companies under common ownership. Our own IT registration covers support, installation, and recovery; it does not cover systems consulting or software development, and we do not sign for those. Where a job needs them, Zestha contracts that part directly, and you will see two agreements rather than one.</span><span class="t-id">PT AKS Mitra Berkah dan Zestha Vutura adalah dua perusahaan terpisah di bawah kepemilikan yang sama. Izin IT kami sendiri mencakup dukungan, instalasi, dan pemulihan; tidak mencakup konsultansi sistem atau pengembangan perangkat lunak, dan kami tidak menandatangani untuk itu. Kalau sebuah pekerjaan membutuhkannya, Zestha yang mengontrak bagian itu langsung, dan Anda akan melihat dua perjanjian, bukan satu.</span>
+              </p>
+              <p class="mt-4 font-mono text-[11px] leading-relaxed text-putih/45">
+                <span class="t-en">Structured cabling and electrical installation are separate registrations again, and are subcontracted.</span><span class="t-id">Pemasangan kabel terstruktur dan instalasi listrik adalah izin terpisah lagi, dan disubkontrakkan.</span>
+              </p>
+            </div>
+          </div>
         </div>
+
       </div>
+    </section>
 
-      <p class="mt-14 font-mono text-[11px] eyebrow text-putih/50">Delivered by Zestha Vutura</p>
-      <div class="mt-6 grid gap-px bg-white/15 lg:grid-cols-3">
-        <a href="#/it/software" data-nav class="block bg-navy p-8 transition-colors hover:bg-midnight lg:p-9">
-          <p class="font-mono text-xs eyebrow text-teal">SW</p>
-          <h3 class="mt-5 font-display text-[1.75rem] font-semibold">Software</h3>
-          <p class="mt-4 text-[0.95rem] leading-relaxed text-putih/70">Web applications, internal tools, and e-commerce, built to be handed over.</p>
-        </a>
-        <a href="#/it/data" data-nav class="block bg-navy p-8 transition-colors hover:bg-midnight lg:p-9">
-          <p class="font-mono text-xs eyebrow text-teal">DT</p>
-          <h3 class="mt-5 font-display text-[1.75rem] font-semibold">Data</h3>
-          <p class="mt-4 text-[0.95rem] leading-relaxed text-putih/70">Reporting built on the systems you already run.</p>
-        </a>
-        <a href="#/it/design" data-nav class="block bg-navy p-8 transition-colors hover:bg-midnight lg:p-9">
-          <p class="font-mono text-xs eyebrow text-teal">DS</p>
-          <h3 class="mt-5 font-display text-[1.75rem] font-semibold">Design</h3>
-          <p class="mt-4 text-[0.95rem] leading-relaxed text-putih/70">Interface and identity work the build stage can follow without guessing.</p>
-        </a>
-      </div>
-
-      <!-- BOUNDARY. Same honesty device as the 66221 note. Do not remove. -->
-      <div class="mt-12 border-t border-white/20 pt-8">
-        <div class="grid gap-6 lg:grid-cols-12">
-          <h3 class="font-display text-[1.5rem] font-semibold lg:col-span-4">How the two are contracted</h3>
-          <!-- draft, please adjust -->
-          <div class="lg:col-span-8">
-            <p class="leading-relaxed text-putih/80">
-              PT AKS Mitra Berkah and Zestha Vutura are separate companies under common ownership. Our own IT registration covers support, installation, and recovery; it does not cover systems consulting or software development, and we do not sign for those. Where a job needs them, Zestha contracts that part directly, and you will see two agreements rather than one.
-            </p>
-            <p class="mt-4 font-mono text-[11px] leading-relaxed text-putih/45">
-              Structured cabling and electrical installation are separate registrations again, and are subcontracted.
+    <!-- PAGE: SUPPLY & SUPPORT -->
+    <section data-page="it/support" class="pb-20 pt-14 sm:pb-24">
+      <div class="mx-auto max-w-shell px-6 sm:px-8">
+        <div class="grid gap-12 lg:grid-cols-12">
+          <div class="lg:col-span-5">
+            <h2 class="tight font-display text-[2rem] font-semibold sm:text-[2.75rem]"><span class="t-en">Supply &amp; support</span><span class="t-id">Suplai &amp; dukungan</span></h2>
+            <!-- draft, please adjust -->
+            <p class="mt-6 leading-relaxed text-putih/80"><span class="t-en">The part contracted directly with PT AKS Mitra Berkah, on the same terms as the building work: written scope, stated exclusions, one party answering the phone.</span><span class="t-id">Bagian yang dikontrak langsung dengan PT AKS Mitra Berkah, dengan syarat yang sama seperti pekerjaan bangunan: lingkup tertulis, pengecualian dinyatakan, satu pihak yang mengangkat telepon.</span></p>
+            <p class="mt-6 font-mono text-[11px] leading-relaxed text-putih/45"><span class="t-en">Registered scope:</span><span class="t-id">Lingkup terdaftar:</span> 62900 &middot; 46100 &middot; 46901 &middot; 46902</p>
+          </div>
+          <div class="lg:col-span-7">
+            <!-- draft, please adjust -->
+            <dl class="font-mono text-[13px]">
+              <div class="border-t border-white/15 py-5">
+                <dt class="font-semibold text-teal"><span class="t-en">Procurement</span><span class="t-id">Pengadaan</span></dt>
+                <dd class="mt-2 font-body text-[0.95rem] leading-relaxed text-putih/75"><span class="t-en">Specification, quotation, and delivery of workstations, laptops, printers, and peripherals. Supplier invoices open to you.</span><span class="t-id">Spesifikasi, penawaran, dan pengiriman workstation, laptop, printer, dan periferal. Faktur pemasok terbuka untuk Anda.</span></dd>
+              </div>
+              <div class="border-t border-white/15 py-5">
+                <dt class="font-semibold text-teal"><span class="t-en">Deployment</span><span class="t-id">Penerapan</span></dt>
+                <dd class="mt-2 font-body text-[0.95rem] leading-relaxed text-putih/75"><span class="t-en">Machines configured and licensed, accounts and shared drives created, data migrated from old equipment, old drives wiped and certified.</span><span class="t-id">Perangkat dikonfigurasi dan dilisensi, akun dan drive bersama dibuat, data dimigrasi dari perangkat lama, drive lama dihapus dan disertifikasi.</span></dd>
+              </div>
+              <div class="border-t border-white/15 py-5">
+                <dt class="font-semibold text-teal"><span class="t-en">Ongoing support</span><span class="t-id">Dukungan berjalan</span></dt>
+                <dd class="mt-2 font-body text-[0.95rem] leading-relaxed text-putih/75"><span class="t-en">Fault diagnosis and repair, on a call-out or a monthly basis. Response times fixed in the agreement rather than promised in conversation.</span><span class="t-id">Diagnosis dan perbaikan gangguan, per panggilan atau bulanan. Waktu tanggap ditetapkan dalam perjanjian, bukan dijanjikan lisan.</span></dd>
+              </div>
+              <div class="border-y border-white/15 py-5">
+                <dt class="font-semibold text-teal"><span class="t-en">Backup &amp; recovery</span><span class="t-id">Backup &amp; pemulihan</span></dt>
+                <dd class="mt-2 font-body text-[0.95rem] leading-relaxed text-putih/75"><span class="t-en">Backups configured and — the part usually skipped — restored from on a schedule, to prove they work. Recovery from failed drives where the media allows it.</span><span class="t-id">Backup dikonfigurasi dan — bagian yang biasanya dilewati — diuji pulihkan secara berkala, untuk membuktikan backup-nya berfungsi. Pemulihan dari drive rusak sejauh medianya memungkinkan.</span></dd>
+              </div>
+            </dl>
+            <p class="mt-6 font-mono text-[11px] leading-relaxed text-putih/45">
+              <span class="t-en">Not included: systems consulting, network or systems design, software development. Those are separate registrations we do not hold.</span><span class="t-id">Tidak termasuk: konsultansi sistem, perancangan jaringan atau sistem, pengembangan perangkat lunak. Itu izin terpisah yang tidak kami pegang.</span>
             </p>
           </div>
         </div>
       </div>
+    </section>
 
-    </div>
-  </section>
-
-  <!-- SUB-VIEW: SUPPLY & SUPPORT -->
-  <section data-subview="support" class="py-20 sm:py-24">
-    <div class="mx-auto max-w-shell px-6 sm:px-8">
-      <div class="grid gap-12 lg:grid-cols-12">
-        <div class="lg:col-span-5">
-          <h2 class="tight font-display text-[2rem] font-semibold sm:text-[2.75rem]">Supply &amp; support</h2>
-          <!-- draft, please adjust -->
-          <p class="mt-6 leading-relaxed text-putih/80">
-            The part contracted directly with PT AKS Mitra Berkah, on the same terms as the building work: written scope, stated exclusions, one party answering the phone.
-          </p>
-          <p class="mt-6 font-mono text-[11px] leading-relaxed text-putih/45">Registered scope: 62900 &middot; 46100 &middot; 46901 &middot; 46902</p>
-        </div>
-        <div class="lg:col-span-7">
-          <dl class="font-mono text-[13px]">
+    <!-- PAGE: SOFTWARE -->
+    <section data-page="it/software" class="pb-20 pt-14 sm:pb-24">
+      <div class="mx-auto max-w-shell px-6 sm:px-8">
+        <div class="grid gap-12 lg:grid-cols-12">
+          <div class="lg:col-span-5">
+            <h2 class="tight font-display text-[2rem] font-semibold sm:text-[2.75rem]">Software</h2>
             <!-- draft, please adjust -->
-            <div class="border-t border-white/15 py-5">
-              <dt class="font-semibold text-teal">Procurement</dt>
-              <dd class="mt-2 font-body text-[0.95rem] leading-relaxed text-putih/75">Specification, quotation, and delivery of workstations, laptops, printers, and peripherals. Supplier invoices open to you.</dd>
-            </div>
-            <div class="border-t border-white/15 py-5">
-              <dt class="font-semibold text-teal">Deployment</dt>
-              <dd class="mt-2 font-body text-[0.95rem] leading-relaxed text-putih/75">Machines configured and licensed, accounts and shared drives created, data migrated from old equipment, old drives wiped and certified.</dd>
-            </div>
-            <div class="border-t border-white/15 py-5">
-              <dt class="font-semibold text-teal">Ongoing support</dt>
-              <dd class="mt-2 font-body text-[0.95rem] leading-relaxed text-putih/75">Fault diagnosis and repair, on a call-out or a monthly basis. Response times fixed in the agreement rather than promised in conversation.</dd>
-            </div>
-            <div class="border-y border-white/15 py-5">
-              <dt class="font-semibold text-teal">Backup &amp; recovery</dt>
-              <dd class="mt-2 font-body text-[0.95rem] leading-relaxed text-putih/75">Backups configured and — the part usually skipped — restored from, on a schedule, to prove they work. Recovery from failed drives where the media allows it.</dd>
-            </div>
-          </dl>
-          <p class="mt-6 font-mono text-[11px] leading-relaxed text-putih/45">
-            Not included: systems consulting, network or systems design, software development. Those are separate registrations we do not hold.
-          </p>
+            <p class="mt-6 leading-relaxed text-putih/80"><span class="t-en">Web applications, internal tools, and e-commerce — built to be handed over: documented, tested, and deployable by someone other than the person who wrote it.</span><span class="t-id">Aplikasi web, perkakas internal, dan e-commerce — dibangun untuk diserahterimakan: terdokumentasi, teruji, dan bisa dideploy oleh orang lain selain penulisnya.</span></p>
+            <p class="mt-6 font-mono text-[11px] leading-relaxed text-putih/45"><span class="t-en">Delivered and contracted by Zestha Vutura.</span><span class="t-id">Dikerjakan dan dikontrak oleh Zestha Vutura.</span></p>
+          </div>
+          <div class="lg:col-span-7">
+            <!-- draft, please adjust -->
+            <ul class="font-mono text-[13px]">
+              <li class="border-t border-white/15 py-4"><span class="t-en">Responsive build, desktop and mobile</span><span class="t-id">Build responsif, desktop dan mobile</span></li>
+              <li class="border-t border-white/15 py-4"><span class="t-en">Search and performance basics covered at launch</span><span class="t-id">Dasar pencarian dan performa ditangani sejak rilis</span></li>
+              <li class="border-t border-white/15 py-4"><span class="t-en">Source code and deployment handed to you, not held hostage</span><span class="t-id">Kode sumber dan deployment diserahkan kepada Anda, tidak ditahan</span></li>
+              <li class="border-t border-white/15 py-4"><span class="t-en">Written handover notes, so the next developer is not starting blind</span><span class="t-id">Catatan serah terima tertulis, supaya developer berikutnya tidak mulai buta</span></li>
+              <li class="border-y border-white/15 py-4"><span class="t-en">Agreed support window after go-live, priced separately</span><span class="t-id">Masa dukungan setelah rilis disepakati, dihitung terpisah</span></li>
+            </ul>
+            <p class="mt-6 font-mono text-[11px] leading-relaxed text-putih/45">
+              <span class="t-en">TO COMPLETE: hosting and domain are a running cost, not a giveaway. State who pays and for how long before this goes live.</span><span class="t-id">TO COMPLETE: hosting dan domain adalah biaya berjalan, bukan hadiah. Tetapkan siapa yang membayar dan sampai kapan sebelum ini terbit.</span>
+            </p>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- SUB-VIEW: SOFTWARE -->
-  <section data-subview="software" class="py-20 sm:py-24">
-    <div class="mx-auto max-w-shell px-6 sm:px-8">
-      <div class="grid gap-12 lg:grid-cols-12">
-        <div class="lg:col-span-5">
-          <h2 class="tight font-display text-[2rem] font-semibold sm:text-[2.75rem]">Software</h2>
-          <!-- draft, please adjust -->
-          <p class="mt-6 leading-relaxed text-putih/80">
-            Web applications, internal tools, and e-commerce — built to be handed over: documented, tested, and deployable by someone other than the person who wrote it.
-          </p>
-          <p class="mt-6 font-mono text-[11px] leading-relaxed text-putih/45">Delivered and contracted by Zestha Vutura.</p>
-        </div>
-        <div class="lg:col-span-7">
-          <!-- draft, please adjust -->
-          <ul class="font-mono text-[13px]">
-            <li class="border-t border-white/15 py-4">Responsive build, desktop and mobile</li>
-            <li class="border-t border-white/15 py-4">Search and performance basics covered at launch</li>
-            <li class="border-t border-white/15 py-4">Source code and deployment handed to you, not held hostage</li>
-            <li class="border-t border-white/15 py-4">Written handover notes, so the next developer is not starting blind</li>
-            <li class="border-y border-white/15 py-4">Agreed support window after go-live, priced separately</li>
-          </ul>
-          <p class="mt-6 font-mono text-[11px] leading-relaxed text-putih/45">
-            TO COMPLETE: hosting and domain arrangements are a running cost, not a giveaway. State who pays and for how long before this goes live.
-          </p>
+    <!-- PAGE: DATA -->
+    <section data-page="it/data" class="pb-20 pt-14 sm:pb-24">
+      <div class="mx-auto max-w-shell px-6 sm:px-8">
+        <div class="grid gap-12 lg:grid-cols-12">
+          <div class="lg:col-span-5">
+            <h2 class="tight font-display text-[2rem] font-semibold sm:text-[2.75rem]">Data</h2>
+            <!-- draft, please adjust -->
+            <p class="mt-6 leading-relaxed text-putih/80"><span class="t-en">Reporting built on the systems you already run: figures pulled, cleaned, and put somewhere a manager can read them without asking anyone first.</span><span class="t-id">Pelaporan yang dibangun di atas sistem yang sudah Anda jalankan: angka ditarik, dibersihkan, dan ditaruh di tempat yang bisa dibaca manajer tanpa bertanya dulu.</span></p>
+            <p class="mt-6 font-mono text-[11px] leading-relaxed text-putih/45"><span class="t-en">Delivered and contracted by Zestha Vutura.</span><span class="t-id">Dikerjakan dan dikontrak oleh Zestha Vutura.</span></p>
+          </div>
+          <div class="lg:col-span-7">
+            <!-- draft, please adjust -->
+            <ul class="font-mono text-[13px]">
+              <li class="border-t border-white/15 py-4"><span class="t-en">Dashboards with filters that match how the work is actually organised</span><span class="t-id">Dasbor dengan filter yang sesuai cara kerja Anda sebenarnya</span></li>
+              <li class="border-t border-white/15 py-4"><span class="t-en">Scheduled pulls from your existing sources, not manual re-entry</span><span class="t-id">Penarikan terjadwal dari sumber yang sudah ada, bukan input ulang manual</span></li>
+              <li class="border-t border-white/15 py-4"><span class="t-en">Definitions written down — what counts as a sale, a job, a month</span><span class="t-id">Definisi ditulis — apa yang dihitung sebagai penjualan, pekerjaan, satu bulan</span></li>
+              <li class="border-y border-white/15 py-4"><span class="t-en">Readable on a phone, because that is where it gets checked</span><span class="t-id">Terbaca di ponsel, karena di situ biasanya dicek</span></li>
+            </ul>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- SUB-VIEW: DATA -->
-  <section data-subview="data" class="py-20 sm:py-24">
-    <div class="mx-auto max-w-shell px-6 sm:px-8">
-      <div class="grid gap-12 lg:grid-cols-12">
-        <div class="lg:col-span-5">
-          <h2 class="tight font-display text-[2rem] font-semibold sm:text-[2.75rem]">Data</h2>
-          <!-- draft, please adjust -->
-          <p class="mt-6 leading-relaxed text-putih/80">
-            Reporting built on the systems you already run: figures pulled, cleaned, and put somewhere a manager can read them without asking anyone first.
-          </p>
-          <p class="mt-6 font-mono text-[11px] leading-relaxed text-putih/45">Delivered and contracted by Zestha Vutura.</p>
-        </div>
-        <div class="lg:col-span-7">
-          <!-- draft, please adjust -->
-          <ul class="font-mono text-[13px]">
-            <li class="border-t border-white/15 py-4">Dashboards with filters that match how the work is actually organised</li>
-            <li class="border-t border-white/15 py-4">Scheduled pulls from your existing sources, not manual re-entry</li>
-            <li class="border-t border-white/15 py-4">Definitions written down — what counts as a sale, a job, a month</li>
-            <li class="border-y border-white/15 py-4">Readable on a phone, because that is where it gets checked</li>
-          </ul>
+    <!-- PAGE: DESIGN -->
+    <section data-page="it/design" class="pb-20 pt-14 sm:pb-24">
+      <div class="mx-auto max-w-shell px-6 sm:px-8">
+        <div class="grid gap-12 lg:grid-cols-12">
+          <div class="lg:col-span-5">
+            <h2 class="tight font-display text-[2rem] font-semibold sm:text-[2.75rem]"><span class="t-en">Design</span><span class="t-id">Desain</span></h2>
+            <!-- draft, please adjust -->
+            <p class="mt-6 leading-relaxed text-putih/80"><span class="t-en">Interface and identity work: layouts, a component kit, and styling rules specific enough that the build stage does not have to guess.</span><span class="t-id">Pekerjaan antarmuka dan identitas: tata letak, kit komponen, dan aturan gaya yang cukup spesifik supaya tahap pembangunan tidak perlu menebak.</span></p>
+            <p class="mt-6 font-mono text-[11px] leading-relaxed text-putih/45"><span class="t-en">Delivered and contracted by Zestha Vutura.</span><span class="t-id">Dikerjakan dan dikontrak oleh Zestha Vutura.</span></p>
+          </div>
+          <div class="lg:col-span-7">
+            <!-- draft, please adjust -->
+            <ul class="font-mono text-[13px]">
+              <li class="border-t border-white/15 py-4"><span class="t-en">Screen layouts for desktop and mobile</span><span class="t-id">Tata letak layar untuk desktop dan mobile</span></li>
+              <li class="border-t border-white/15 py-4"><span class="t-en">Reusable component kit rather than one-off screens</span><span class="t-id">Kit komponen yang bisa dipakai ulang, bukan layar sekali pakai</span></li>
+              <li class="border-t border-white/15 py-4"><span class="t-en">Written styling rules, not just source files</span><span class="t-id">Aturan gaya tertulis, bukan cuma berkas sumber</span></li>
+              <li class="border-y border-white/15 py-4"><span class="t-en">Editable files handed over at the end</span><span class="t-id">Berkas yang bisa disunting diserahkan di akhir</span></li>
+            </ul>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- SUB-VIEW: DESIGN -->
-  <section data-subview="design" class="py-20 sm:py-24">
-    <div class="mx-auto max-w-shell px-6 sm:px-8">
-      <div class="grid gap-12 lg:grid-cols-12">
-        <div class="lg:col-span-5">
-          <h2 class="tight font-display text-[2rem] font-semibold sm:text-[2.75rem]">Design</h2>
-          <!-- draft, please adjust -->
-          <p class="mt-6 leading-relaxed text-putih/80">
-            Interface and identity work: layouts, a component kit, and styling rules specific enough that the build stage does not have to guess.
-          </p>
-          <p class="mt-6 font-mono text-[11px] leading-relaxed text-putih/45">Delivered and contracted by Zestha Vutura.</p>
-        </div>
-        <div class="lg:col-span-7">
-          <!-- draft, please adjust -->
-          <ul class="font-mono text-[13px]">
-            <li class="border-t border-white/15 py-4">Screen layouts for desktop and mobile</li>
-            <li class="border-t border-white/15 py-4">Reusable component kit rather than one-off screens</li>
-            <li class="border-t border-white/15 py-4">Written styling rules, not just source files</li>
-            <li class="border-y border-white/15 py-4">Editable files handed over at the end</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
+  </div>
 
 </section>
 
 
-<!-- ============================================================
-     VIEW: SELECTED WORK
-     Every card states the delivering entity. See EDITOR'S NOTE (H).
-     A card without a "Delivered by" line is a card claiming AKS did it.
-     ============================================================ -->
-<section data-view="work" class="bg-putih py-20 sm:py-28">
+<!-- ==================== VIEW: PROJECTS ==================== -->
+<section data-view="projects" class="bg-putih py-20 sm:py-28">
   <div class="mx-auto max-w-shell px-6 sm:px-8">
 
     <div class="flex flex-wrap items-end justify-between gap-6">
       <div>
-        <p class="font-mono text-[11px] eyebrow text-navy">Selected work</p>
-        <h1 data-focus-target tabindex="-1" class="tight mt-6 max-w-2xl font-display text-[2.25rem] font-semibold text-navy sm:text-[3.25rem]">Work delivered across the group</h1>
+        <p class="font-mono text-[11px] eyebrow text-navy"><span class="t-en">Projects</span><span class="t-id">Proyek</span></p>
+        <h1 data-focus-target tabindex="-1" class="tight mt-6 max-w-2xl font-display text-[2.25rem] font-semibold text-navy sm:text-[3.25rem]"><span class="t-en">Work delivered across the group</span><span class="t-id">Pekerjaan yang dikerjakan lintas grup</span></h1>
       </div>
       <!-- draft, please adjust -->
       <p class="max-w-sm text-[0.95rem] leading-relaxed text-midnight/70">
-        Each entry names the company that delivered it. Construction work contracted with PT AKS Mitra Berkah will appear here as jobs complete.
+        <span class="t-en">Each entry names the company that delivered it. Construction work contracted with PT AKS Mitra Berkah will appear here as jobs complete.</span><span class="t-id">Tiap entri menyebut perusahaan yang mengerjakannya. Pekerjaan konstruksi yang dikontrak dengan PT AKS Mitra Berkah akan muncul di sini seiring selesainya.</span>
       </p>
     </div>
 
     <!-- TO COMPLETE - PROJECTS
-         Three zero-filled samples so the layout can be reviewed. Replace with
-         real entries, or delete the view until there are some. Per card:
-         category, year, name, one line on what was delivered, delivering entity.
-         Client names need the client's permission before they go up. -->
+         Zero-filled samples. Replace with real entries or delete the view.
+         Per card: category, year, name, one line on what was delivered,
+         delivering entity. Client names need the client's permission. -->
     <div class="mt-14 grid gap-px bg-navy/15 sm:grid-cols-2 lg:grid-cols-3">
 
       <article class="bg-putih p-8 lg:p-9">
@@ -670,9 +708,9 @@
           <p class="font-mono text-[11px] eyebrow text-teal">Software</p>
           <p class="font-mono text-[11px] tnum text-abu">20XX</p>
         </div>
-        <h2 class="mt-5 font-display text-[1.5rem] font-semibold">[Project name]</h2>
-        <p class="mt-3 text-[0.95rem] leading-relaxed text-midnight/80">[One line on what was delivered and what it changed for the client.]</p>
-        <p class="mt-6 border-t border-navy/15 pt-4 font-mono text-[11px] text-abu">Delivered by Zestha Vutura</p>
+        <h2 class="mt-5 font-display text-[1.5rem] font-semibold"><span class="t-en">[Project name]</span><span class="t-id">[Nama proyek]</span></h2>
+        <p class="mt-3 text-[0.95rem] leading-relaxed text-midnight/80"><span class="t-en">[One line on what was delivered and what it changed for the client.]</span><span class="t-id">[Satu baris tentang apa yang dikerjakan dan apa yang berubah bagi klien.]</span></p>
+        <p class="mt-6 border-t border-navy/15 pt-4 font-mono text-[11px] text-abu"><span class="t-en">Delivered by Zestha Vutura</span><span class="t-id">Dikerjakan oleh Zestha Vutura</span></p>
       </article>
 
       <article class="bg-putih p-8 lg:p-9">
@@ -680,25 +718,25 @@
           <p class="font-mono text-[11px] eyebrow text-teal">Data</p>
           <p class="font-mono text-[11px] tnum text-abu">20XX</p>
         </div>
-        <h2 class="mt-5 font-display text-[1.5rem] font-semibold">[Project name]</h2>
-        <p class="mt-3 text-[0.95rem] leading-relaxed text-midnight/80">[One line on what was delivered and what it changed for the client.]</p>
-        <p class="mt-6 border-t border-navy/15 pt-4 font-mono text-[11px] text-abu">Delivered by Zestha Vutura</p>
+        <h2 class="mt-5 font-display text-[1.5rem] font-semibold"><span class="t-en">[Project name]</span><span class="t-id">[Nama proyek]</span></h2>
+        <p class="mt-3 text-[0.95rem] leading-relaxed text-midnight/80"><span class="t-en">[One line on what was delivered and what it changed for the client.]</span><span class="t-id">[Satu baris tentang apa yang dikerjakan dan apa yang berubah bagi klien.]</span></p>
+        <p class="mt-6 border-t border-navy/15 pt-4 font-mono text-[11px] text-abu"><span class="t-en">Delivered by Zestha Vutura</span><span class="t-id">Dikerjakan oleh Zestha Vutura</span></p>
       </article>
 
       <article class="bg-putih p-8 lg:p-9">
         <div class="flex items-baseline justify-between gap-4">
-          <p class="font-mono text-[11px] eyebrow text-teal">Design</p>
+          <p class="font-mono text-[11px] eyebrow text-teal"><span class="t-en">Design</span><span class="t-id">Desain</span></p>
           <p class="font-mono text-[11px] tnum text-abu">20XX</p>
         </div>
-        <h2 class="mt-5 font-display text-[1.5rem] font-semibold">[Project name]</h2>
-        <p class="mt-3 text-[0.95rem] leading-relaxed text-midnight/80">[One line on what was delivered and what it changed for the client.]</p>
-        <p class="mt-6 border-t border-navy/15 pt-4 font-mono text-[11px] text-abu">Delivered by Zestha Vutura</p>
+        <h2 class="mt-5 font-display text-[1.5rem] font-semibold"><span class="t-en">[Project name]</span><span class="t-id">[Nama proyek]</span></h2>
+        <p class="mt-3 text-[0.95rem] leading-relaxed text-midnight/80"><span class="t-en">[One line on what was delivered and what it changed for the client.]</span><span class="t-id">[Satu baris tentang apa yang dikerjakan dan apa yang berubah bagi klien.]</span></p>
+        <p class="mt-6 border-t border-navy/15 pt-4 font-mono text-[11px] text-abu"><span class="t-en">Delivered by Zestha Vutura</span><span class="t-id">Dikerjakan oleh Zestha Vutura</span></p>
       </article>
 
     </div>
 
     <p class="mt-8 max-w-2xl font-mono text-[11px] leading-relaxed text-abu">
-      No construction projects are listed yet. That is deliberate — none have completed under this company, and an empty list is worth more than a padded one.
+      <span class="t-en">No construction projects are listed yet. That is deliberate — none have completed under this company, and an empty list is worth more than a padded one.</span><span class="t-id">Belum ada proyek konstruksi yang terdaftar. Itu disengaja — belum ada yang selesai di bawah perusahaan ini, dan daftar kosong lebih berharga daripada daftar yang dipadat-padatkan.</span>
     </p>
 
   </div>
@@ -709,102 +747,108 @@
 <section data-view="company" class="py-20 sm:py-28">
   <div class="mx-auto max-w-shell px-6 sm:px-8">
 
-    <p class="font-mono text-[11px] eyebrow text-navy">Company data</p>
-    <h1 data-focus-target tabindex="-1" class="tight mt-6 max-w-3xl font-display text-[2.25rem] font-semibold text-navy sm:text-[3.25rem]">Everything here is checkable</h1>
+    <p class="font-mono text-[11px] eyebrow text-navy"><span class="t-en">Company data</span><span class="t-id">Data perusahaan</span></p>
+    <h1 data-focus-target tabindex="-1" class="tight mt-6 max-w-3xl font-display text-[2.25rem] font-semibold text-navy sm:text-[3.25rem]"><span class="t-en">Everything here is checkable</span><span class="t-id">Semua di sini bisa diperiksa</span></h1>
     <p class="mt-6 max-w-2xl leading-relaxed text-midnight/75">
-      Registered particulars are published in full so a prospective client can verify us before making contact.
+      <span class="t-en">Registered particulars are published in full so a prospective client can verify us before making contact.</span><span class="t-id">Data terdaftar dipublikasikan lengkap supaya calon klien bisa memverifikasi kami sebelum menghubungi.</span>
     </p>
 
     <div class="mt-14 grid gap-14 lg:grid-cols-12 lg:gap-12">
 
       <div class="lg:col-span-5">
-        <h2 class="font-mono text-[11px] eyebrow text-abu">Legal identity</h2>
+        <h2 class="font-mono text-[11px] eyebrow text-abu"><span class="t-en">Legal identity</span><span class="t-id">Identitas hukum</span></h2>
         <dl class="mt-6 font-mono text-[13px]">
           <div class="flex items-baseline justify-between gap-4 border-t border-navy/20 py-4">
-            <dt class="text-abu">Legal name</dt><dd class="text-right font-semibold">PT AKS Mitra Berkah</dd>
+            <dt class="text-abu"><span class="t-en">Legal name</span><span class="t-id">Nama badan hukum</span></dt><dd class="text-right font-semibold">PT AKS Mitra Berkah</dd>
           </div>
           <div class="flex items-baseline justify-between gap-4 border-t border-navy/20 py-4">
-            <dt class="text-abu">Legal form</dt><dd class="text-right">Perseroan Terbatas (PT)</dd>
+            <dt class="text-abu"><span class="t-en">Legal form</span><span class="t-id">Bentuk badan hukum</span></dt><dd class="text-right">Perseroan Terbatas (PT)</dd>
           </div>
           <div class="flex items-baseline justify-between gap-4 border-t border-navy/20 py-4">
-            <dt class="text-abu">Domicile</dt><dd class="text-right">South Jakarta</dd>
+            <dt class="text-abu"><span class="t-en">Domicile</span><span class="t-id">Domisili</span></dt><dd class="text-right"><span class="t-en">South Jakarta</span><span class="t-id">Jakarta Selatan</span></dd>
           </div>
           <div class="flex items-baseline justify-between gap-4 border-t border-navy/20 py-4">
-            <dt class="text-abu">Established</dt><dd class="tnum text-right">2025</dd>
+            <dt class="text-abu"><span class="t-en">Established</span><span class="t-id">Berdiri</span></dt><dd class="tnum text-right">2025</dd>
           </div>
 
           <!-- TO COMPLETE: the five rows below must come from Berkah's own deed
                and SK. Do not copy them from the Sejahtra deed. -->
           <div class="flex items-baseline justify-between gap-4 border-t border-navy/20 py-4">
-            <dt class="text-abu">Deed of incorporation</dt><dd class="text-right">No. 00 / 2025</dd>
+            <dt class="text-abu"><span class="t-en">Deed of incorporation</span><span class="t-id">Akta pendirian</span></dt><dd class="text-right">No. 00 / 2025</dd>
           </div>
           <div class="flex items-baseline justify-between gap-4 border-t border-navy/20 py-4">
-            <dt class="text-abu">Ministry of Law approval</dt><dd class="text-right">AHU-0000000.AH.01.01.2025</dd>
+            <dt class="text-abu"><span class="t-en">Ministry of Law approval</span><span class="t-id">Pengesahan Kemenkumham</span></dt><dd class="text-right">AHU-0000000.AH.01.01.2025</dd>
           </div>
           <div class="flex items-baseline justify-between gap-4 border-t border-navy/20 py-4">
-            <dt class="text-abu">Business ID (NIB)</dt><dd class="text-right tnum">0000000000000</dd>
+            <dt class="text-abu"><span class="t-en">Business ID (NIB)</span><span class="t-id">NIB</span></dt><dd class="text-right tnum">0000000000000</dd>
           </div>
           <div class="flex items-baseline justify-between gap-4 border-t border-navy/20 py-4">
-            <dt class="text-abu">Tax ID (NPWP)</dt><dd class="text-right tnum">00.000.000.0-000.000</dd>
+            <dt class="text-abu"><span class="t-en">Tax ID (NPWP)</span><span class="t-id">NPWP</span></dt><dd class="text-right tnum">00.000.000.0-000.000</dd>
           </div>
           <div class="flex items-baseline justify-between gap-4 border-y border-navy/20 py-4">
-            <dt class="text-abu">Director</dt><dd class="text-right">[Director’s name]</dd>
+            <dt class="text-abu"><span class="t-en">Director</span><span class="t-id">Direktur</span></dt><dd class="text-right"><span class="t-en">[Director’s name]</span><span class="t-id">[Nama direktur]</span></dd>
           </div>
         </dl>
 
         <!-- draft, please adjust -->
         <p class="mt-8 font-mono text-[11px] leading-relaxed text-abu">
-          Zestha Vutura is a separate legal entity under common ownership. Its own particulars are published on its own site.
+          <span class="t-en">Zestha Vutura is a separate legal entity under common ownership. Its own particulars are published on its own site.</span><span class="t-id">Zestha Vutura adalah badan hukum terpisah di bawah kepemilikan yang sama. Data perusahaannya dipublikasikan di situsnya sendiri.</span>
         </p>
       </div>
 
       <div class="lg:col-span-7">
-        <h2 class="font-mono text-[11px] eyebrow text-abu">Registered business activities (KBLI)</h2>
-        <!-- TO COMPLETE: verify against Berkah's own NIB. See EDITOR'S NOTE (G):
-             62900 is a KBLI 2025 code sitting in a list of KBLI 2020 codes. -->
+        <h2 class="font-mono text-[11px] eyebrow text-abu"><span class="t-en">Registered business activities (KBLI)</span><span class="t-id">Kegiatan usaha terdaftar (KBLI)</span></h2>
+
+        <!-- TO COMPLETE - KBLI URAIAN, INDONESIAN COLUMN
+             The Indonesian text below is a placeholder on purpose. See EDITOR'S
+             NOTE (N): the authoritative wording is whatever the NIB prints.
+             Copy each uraian from the NIB verbatim. Do not translate the
+             English back - that produces a table which does not match the
+             document a client is checking you against.
+             Also unresolved: EDITOR'S NOTE (G), the KBLI 2020 / 2025 mix. -->
         <table class="mt-6 w-full text-left">
-          <caption class="sr-only">Registered business activities and their KBLI codes</caption>
+          <caption class="sr-only"><span class="t-en">Registered business activities and their KBLI codes</span><span class="t-id">Kegiatan usaha terdaftar dan kode KBLI-nya</span></caption>
           <tbody class="align-top">
             <tr class="border-t border-navy/20">
               <th scope="row" class="w-20 py-4 pr-4 font-mono text-[13px] font-normal tnum text-teal">41011</th>
-              <td class="py-4 text-[0.95rem]">Conventional construction of residential buildings</td>
+              <td class="py-4 text-[0.95rem]"><span class="t-en">Conventional construction of residential buildings</span><span class="t-id">[Uraian sesuai NIB]</span></td>
             </tr>
             <tr class="border-t border-navy/20">
               <th scope="row" class="w-20 py-4 pr-4 font-mono text-[13px] font-normal tnum text-teal">43400</th>
-              <td class="py-4 text-[0.95rem]">Specialist construction intermediation services</td>
+              <td class="py-4 text-[0.95rem]"><span class="t-en">Specialist construction intermediation services</span><span class="t-id">[Uraian sesuai NIB]</span></td>
             </tr>
             <tr class="border-t border-navy/20">
               <th scope="row" class="w-20 py-4 pr-4 font-mono text-[13px] font-normal tnum text-teal">43909</th>
-              <td class="py-4 text-[0.95rem]">Other specialist construction works n.e.c.</td>
+              <td class="py-4 text-[0.95rem]"><span class="t-en">Other specialist construction works n.e.c.</span><span class="t-id">[Uraian sesuai NIB]</span></td>
             </tr>
             <tr class="border-t border-navy/20">
               <th scope="row" class="w-20 py-4 pr-4 font-mono text-[13px] font-normal tnum text-teal">70209</th>
-              <td class="py-4 text-[0.95rem]">Other management and business consultancy activities</td>
+              <td class="py-4 text-[0.95rem]"><span class="t-en">Other management and business consultancy activities</span><span class="t-id">[Uraian sesuai NIB]</span></td>
             </tr>
             <tr class="border-t border-navy/20">
               <th scope="row" class="w-20 py-4 pr-4 font-mono text-[13px] font-normal tnum text-teal">62900</th>
               <td class="py-4 text-[0.95rem]">
-                Other information technology and computer service activities
-                <span class="mt-1.5 block font-mono text-[11px] leading-relaxed text-abu">Support, installation, and recovery work only. Systems consulting and software development are separate registrations, held by Zestha Vutura.</span>
+                <span class="t-en">Other information technology and computer service activities</span><span class="t-id">[Uraian sesuai NIB]</span>
+                <span class="mt-1.5 block font-mono text-[11px] leading-relaxed text-abu"><span class="t-en">Support, installation, and recovery work only. Systems consulting and software development are separate registrations, held by Zestha Vutura.</span><span class="t-id">Hanya pekerjaan dukungan, instalasi, dan pemulihan. Konsultansi sistem dan pengembangan perangkat lunak adalah izin terpisah, dipegang Zestha Vutura.</span></span>
               </td>
             </tr>
             <tr class="border-t border-navy/20">
               <th scope="row" class="w-20 py-4 pr-4 font-mono text-[13px] font-normal tnum text-teal">46100</th>
-              <td class="py-4 text-[0.95rem]">Wholesale trade on a fee or contract basis</td>
+              <td class="py-4 text-[0.95rem]"><span class="t-en">Wholesale trade on a fee or contract basis</span><span class="t-id">[Uraian sesuai NIB]</span></td>
             </tr>
             <tr class="border-t border-navy/20">
               <th scope="row" class="w-20 py-4 pr-4 font-mono text-[13px] font-normal tnum text-teal">46901</th>
-              <td class="py-4 text-[0.95rem]">Wholesale of assorted goods, cash-and-carry</td>
+              <td class="py-4 text-[0.95rem]"><span class="t-en">Wholesale of assorted goods, cash-and-carry</span><span class="t-id">[Uraian sesuai NIB]</span></td>
             </tr>
             <tr class="border-t border-navy/20">
               <th scope="row" class="w-20 py-4 pr-4 font-mono text-[13px] font-normal tnum text-teal">46902</th>
-              <td class="py-4 text-[0.95rem]">Wholesale of assorted goods, other than cash-and-carry</td>
+              <td class="py-4 text-[0.95rem]"><span class="t-en">Wholesale of assorted goods, other than cash-and-carry</span><span class="t-id">[Uraian sesuai NIB]</span></td>
             </tr>
             <tr class="border-y border-navy/20">
               <th scope="row" class="w-20 py-4 pr-4 font-mono text-[13px] font-normal tnum text-teal">66221</th>
               <td class="py-4 text-[0.95rem]">
-                Insurance agency activities
-                <span class="mt-1.5 block font-mono text-[11px] leading-relaxed text-abu">Registered scope only, not offered as a service: this requires an agency agreement with a licensed insurer and agent certification, neither of which is in place.</span>
+                <span class="t-en">Insurance agency activities</span><span class="t-id">[Uraian sesuai NIB]</span>
+                <span class="mt-1.5 block font-mono text-[11px] leading-relaxed text-abu"><span class="t-en">Registered scope only, not offered as a service: this requires an agency agreement with a licensed insurer and agent certification, neither of which is in place.</span><span class="t-id">Hanya lingkup terdaftar, tidak ditawarkan sebagai layanan: ini membutuhkan perjanjian keagenan dengan perusahaan asuransi berizin dan sertifikasi agen, keduanya belum ada.</span></span>
               </td>
             </tr>
           </tbody>
@@ -819,16 +863,15 @@
 <!-- ==================== VIEW: CONTACT ==================== -->
 <section data-view="contact" class="on-dark bg-navy py-20 text-putih sm:py-28">
   <div class="mx-auto max-w-shell px-6 sm:px-8">
-
     <div class="grid gap-14 lg:grid-cols-12 lg:gap-12">
 
       <div class="lg:col-span-7">
-        <p class="font-mono text-[11px] eyebrow text-teal">Contact</p>
+        <p class="font-mono text-[11px] eyebrow text-teal"><span class="t-en">Contact</span><span class="t-id">Kontak</span></p>
         <!-- draft, please adjust -->
-        <h1 data-focus-target tabindex="-1" class="tight mt-6 max-w-2xl font-display text-[2.5rem] font-bold sm:text-[3.75rem]">Tell us what you are building.</h1>
+        <h1 data-focus-target tabindex="-1" class="tight mt-6 max-w-2xl font-display text-[2.5rem] font-bold sm:text-[3.75rem]"><span class="t-en">Tell us what you are building.</span><span class="t-id">Ceritakan apa yang mau Anda bangun.</span></h1>
         <!-- draft, please adjust -->
         <p class="mt-8 max-w-xl text-[1.0625rem] leading-relaxed text-putih/85">
-          A sketch and a location are enough to start. We will come back with what falls inside our scope, what has to be subcontracted, what permits the work needs — and only then, a price.
+          <span class="t-en">A sketch and a location are enough to start. We will come back with what falls inside our scope, what has to be subcontracted, what permits the work needs — and only then, a price.</span><span class="t-id">Sketsa dan lokasi sudah cukup untuk memulai. Kami akan kembali dengan apa yang masuk lingkup kami, apa yang harus disubkontrakkan, izin apa yang dibutuhkan pekerjaannya — dan baru setelah itu, harga.</span>
         </p>
       </div>
 
@@ -836,17 +879,17 @@
         <div class="bg-midnight p-8 sm:p-10">
           <dl class="font-mono text-[13px]">
             <div class="pb-5">
-              <dt class="text-[10px] eyebrow text-teal">Office</dt>
+              <dt class="text-[10px] eyebrow text-teal"><span class="t-en">Office</span><span class="t-id">Kantor</span></dt>
               <dd class="mt-2.5 leading-relaxed">
                 Jl. Aselih No. 119, RT 006 / RW 001<br>
                 Cipedak, Jagakarsa<br>
-                South Jakarta 12630, Indonesia
+                <span class="t-en">South Jakarta 12630, Indonesia</span><span class="t-id">Jakarta Selatan 12630, Indonesia</span>
               </dd>
             </div>
 
             <!-- TO COMPLETE: replace both rows with a working number and inbox. -->
             <div class="flex items-baseline justify-between gap-4 border-t border-white/15 py-4">
-              <dt class="text-[10px] eyebrow text-abu">Phone / WhatsApp</dt>
+              <dt class="text-[10px] eyebrow text-abu"><span class="t-en">Phone / WhatsApp</span><span class="t-id">Telepon / WhatsApp</span></dt>
               <dd class="text-right tnum">+62 800 0000 0000</dd>
             </div>
             <div class="flex items-baseline justify-between gap-4 border-t border-white/15 py-4">
@@ -854,9 +897,9 @@
               <dd class="text-right">info@example.com</dd>
             </div>
             <div class="flex items-baseline justify-between gap-4 border-y border-white/15 py-4">
-              <dt class="text-[10px] eyebrow text-abu">Hours</dt>
+              <dt class="text-[10px] eyebrow text-abu"><span class="t-en">Hours</span><span class="t-id">Jam kerja</span></dt>
               <!-- draft, please adjust -->
-              <dd class="text-right">Mon–Fri, 09:00–17:00 WIB</dd>
+              <dd class="text-right"><span class="t-en">Mon–Fri, 09:00–17:00 WIB</span><span class="t-id">Sen–Jum, 09.00–17.00 WIB</span></dd>
             </div>
           </dl>
         </div>
@@ -870,142 +913,231 @@
 
 <footer class="bg-midnight py-12">
   <div class="mx-auto flex max-w-shell flex-wrap items-center justify-between gap-x-8 gap-y-6 px-6 sm:px-8">
-    <a href="#/" data-nav><img src="logo-aks-white.png" alt="PT AKS Mitra Berkah — home" width="523" height="267" class="h-10 w-auto"></a>
+    <a href="#/" data-nav><img src="logo-aks-white.png" alt="PT AKS Mitra Berkah" width="523" height="267" class="h-10 w-auto"></a>
     <p class="max-w-md font-mono text-[10px] leading-relaxed text-abu">
-      PT AKS Mitra Berkah &middot; Registered office: Jagakarsa, South Jakarta, Indonesia.
+      <span class="t-en">PT AKS Mitra Berkah &middot; Registered office: Jagakarsa, South Jakarta, Indonesia.</span><span class="t-id">PT AKS Mitra Berkah &middot; Kantor terdaftar: Jagakarsa, Jakarta Selatan, Indonesia.</span>
     </p>
   </div>
 </footer>
 
 <script>
 /* ============================================================================
-   ROUTER - see EDITOR'S NOTE (J) and (K) before editing.
-   Hash routes: #/  #/it  #/it/software  #/work  #/company  #/contact
+   ROUTER + LANGUAGE - read EDITOR'S NOTES (J), (L), (M), (N) before editing.
    ========================================================================== */
 (function () {
   'use strict';
 
-  var ROUTES    = ['home', 'it', 'work', 'company', 'contact'];
-  var SUBROUTES = ['overview', 'support', 'software', 'data', 'design'];
+  var ROUTES = ['home', 'works', 'projects', 'company', 'contact'];
+
+  var DIVISIONS = {
+    construction: ['overview', 'advisory'],
+    it:           ['overview', 'support', 'software', 'data', 'design']
+  };
+  var DEFAULT_DIVISION = 'construction';
+
+  /* Change this to 'id' to make Indonesian the default. See NOTE (N). */
+  var PREFERRED_DEFAULT = 'en';
+  var STORE_KEY = 'aks-lang';
 
   var TITLES = {
-    'home':        'PT AKS Mitra Berkah — Plan, Supply & Build Under One Contract',
-    'it':          'IT works — PT AKS Mitra Berkah',
-    'it/support':  'Supply & support — PT AKS Mitra Berkah',
-    'it/software': 'Software — PT AKS Mitra Berkah',
-    'it/data':     'Data — PT AKS Mitra Berkah',
-    'it/design':   'Design — PT AKS Mitra Berkah',
-    'work':        'Selected work — PT AKS Mitra Berkah',
-    'company':     'Company data — PT AKS Mitra Berkah',
-    'contact':     'Contact — PT AKS Mitra Berkah'
+    en: {
+      'home':                       'PT AKS Mitra Berkah — Plan, Supply & Build Under One Contract',
+      'works/construction':         'Construction — PT AKS Mitra Berkah',
+      'works/construction/advisory':'Pre-construction advice — PT AKS Mitra Berkah',
+      'works/it':                   'IT works — PT AKS Mitra Berkah',
+      'works/it/support':           'Supply & support — PT AKS Mitra Berkah',
+      'works/it/software':          'Software — PT AKS Mitra Berkah',
+      'works/it/data':              'Data — PT AKS Mitra Berkah',
+      'works/it/design':            'Design — PT AKS Mitra Berkah',
+      'projects':                   'Projects — PT AKS Mitra Berkah',
+      'company':                    'Company data — PT AKS Mitra Berkah',
+      'contact':                    'Contact — PT AKS Mitra Berkah'
+    },
+    id: {
+      'home':                       'PT AKS Mitra Berkah — Satu Kontrak, dari Gambar sampai Serah Terima',
+      'works/construction':         'Konstruksi — PT AKS Mitra Berkah',
+      'works/construction/advisory':'Konsultasi prakonstruksi — PT AKS Mitra Berkah',
+      'works/it':                   'Lini usaha IT — PT AKS Mitra Berkah',
+      'works/it/support':           'Suplai & dukungan — PT AKS Mitra Berkah',
+      'works/it/software':          'Software — PT AKS Mitra Berkah',
+      'works/it/data':              'Data — PT AKS Mitra Berkah',
+      'works/it/design':            'Desain — PT AKS Mitra Berkah',
+      'projects':                   'Proyek — PT AKS Mitra Berkah',
+      'company':                    'Data perusahaan — PT AKS Mitra Berkah',
+      'contact':                    'Kontak — PT AKS Mitra Berkah'
+    }
   };
 
-  var views    = document.querySelectorAll('[data-view]');
-  var subviews = document.querySelectorAll('[data-subview]');
-  var navLinks = document.querySelectorAll('[data-route]');
-  var subLinks = document.querySelectorAll('[data-subroute]');
-  var menu     = document.getElementById('navMenu');
-  var toggle   = document.getElementById('navToggle');
+  var views     = document.querySelectorAll('[data-view]');
+  var divisions = document.querySelectorAll('[data-division]');
+  var pages     = document.querySelectorAll('[data-page]');
+  var navLinks  = document.querySelectorAll('[data-route]');
+  var pageLinks = document.querySelectorAll('[data-page-link]');
+  var langBtns  = document.querySelectorAll('[data-lang]');
+
+  var menu        = document.getElementById('navMenu');
+  var navToggle   = document.getElementById('navToggle');
+  var panel       = document.getElementById('worksPanel');
+  var worksToggle = document.getElementById('worksToggle');
+
+  var lang = PREFERRED_DEFAULT;
   var firstRun = true;
+
+  /* Storage is wrapped because some embedded and privacy-mode contexts throw
+     on access. A failure here must not take the toggle down with it. */
+  function readStored() {
+    try { return window.localStorage.getItem(STORE_KEY); } catch (e) { return null; }
+  }
+  function writeStored(v) {
+    try { window.localStorage.setItem(STORE_KEY, v); } catch (e) { /* ignore */ }
+  }
+
+  function initialLang() {
+    var stored = readStored();
+    if (stored === 'en' || stored === 'id') { return stored; }
+    var nav = (window.navigator.language || '').toLowerCase();
+    if (nav.indexOf('id') === 0) { return 'id'; }
+    return PREFERRED_DEFAULT;
+  }
+
+  function applyLang(next, persist) {
+    lang = (next === 'id') ? 'id' : 'en';
+    document.documentElement.classList.toggle('lang-id', lang === 'id');
+    document.documentElement.setAttribute('lang', lang);
+    for (var i = 0; i < langBtns.length; i++) {
+      langBtns[i].setAttribute('aria-pressed', String(langBtns[i].getAttribute('data-lang') === lang));
+    }
+    if (persist) { writeStored(lang); }
+    setTitle();
+  }
 
   function parseHash() {
     var raw = window.location.hash.replace(/^#\/?/, '');
     var parts = raw.split('/').filter(Boolean);
     var view = ROUTES.indexOf(parts[0]) > -1 ? parts[0] : 'home';
-    var sub = null;
-    if (view === 'it') {
-      sub = SUBROUTES.indexOf(parts[1]) > -1 ? parts[1] : 'overview';
+    var division = null, page = null;
+    if (view === 'works') {
+      division = DIVISIONS.hasOwnProperty(parts[1]) ? parts[1] : DEFAULT_DIVISION;
+      page = DIVISIONS[division].indexOf(parts[2]) > -1 ? parts[2] : 'overview';
     }
-    return { view: view, sub: sub };
+    return { view: view, division: division, page: page };
+  }
+
+  function setTitle() {
+    var r = parseHash();
+    var key = r.view === 'works'
+      ? (r.page === 'overview' ? 'works/' + r.division : 'works/' + r.division + '/' + r.page)
+      : r.view;
+    var map = TITLES[lang] || TITLES.en;
+    if (map[key]) { document.title = map[key]; }
+  }
+
+  function setCurrent(list, attr, value) {
+    for (var i = 0; i < list.length; i++) {
+      if (list[i].getAttribute(attr) === value) { list[i].setAttribute('aria-current', 'page'); }
+      else { list[i].removeAttribute('aria-current'); }
+    }
   }
 
   function render() {
     var r = parseHash();
-    var i, el;
+    var full = r.division ? r.division + '/' + r.page : null;
+    var i;
 
     for (i = 0; i < views.length; i++) {
-      el = views[i];
-      el.classList.toggle('is-active', el.getAttribute('data-view') === r.view);
+      views[i].classList.toggle('is-active', views[i].getAttribute('data-view') === r.view);
     }
-    for (i = 0; i < subviews.length; i++) {
-      el = subviews[i];
-      el.classList.toggle('is-active', r.sub !== null && el.getAttribute('data-subview') === r.sub);
+    for (i = 0; i < divisions.length; i++) {
+      divisions[i].classList.toggle('is-active', divisions[i].getAttribute('data-division') === r.division);
     }
-    for (i = 0; i < navLinks.length; i++) {
-      el = navLinks[i];
-      if (el.getAttribute('data-route') === r.view) { el.setAttribute('aria-current', 'page'); }
-      else { el.removeAttribute('aria-current'); }
-    }
-    for (i = 0; i < subLinks.length; i++) {
-      el = subLinks[i];
-      if (r.sub !== null && el.getAttribute('data-subroute') === r.sub) { el.setAttribute('aria-current', 'page'); }
-      else { el.removeAttribute('aria-current'); }
+    for (i = 0; i < pages.length; i++) {
+      pages[i].classList.toggle('is-active', full !== null && pages[i].getAttribute('data-page') === full);
     }
 
-    var key = r.sub && r.sub !== 'overview' ? r.view + '/' + r.sub : r.view;
-    if (TITLES[key]) { document.title = TITLES[key]; }
+    setCurrent(navLinks, 'data-route', r.view);
+    setCurrent(pageLinks, 'data-page-link', full);
+    setTitle();
 
-    /* Instant jump, not a scroll animation. Without it a visitor deep inside a
-       long view lands in blank space on a short one. */
     if (!firstRun) {
+      /* Instant jump, not a scroll animation. Without it a visitor deep inside
+         a long view lands in blank space on a short one. */
       window.scrollTo(0, 0);
-
-      /* Keyboard and screen-reader users must land in the new view, not stay
-         on the link they just left. preventScroll keeps the jump silent. */
-      var active = document.querySelector('[data-view].is-active [data-focus-target]');
-      if (active) {
-        try { active.focus({ preventScroll: true }); } catch (e) { active.focus(); }
+      var target = document.querySelector('[data-view].is-active [data-focus-target]');
+      if (target) {
+        try { target.focus({ preventScroll: true }); } catch (e) { target.focus(); }
       }
-    }
-
-    /* The hero load-in is a one-time welcome, not a transition. Strip it after
-       the first paint so it does not replay every time Home is revisited. */
-    if (firstRun) {
+    } else {
       window.setTimeout(function () {
-        var r2 = document.querySelectorAll('.rise');
-        for (var j = 0; j < r2.length; j++) { r2[j].classList.remove('rise', 'rise-2', 'rise-3', 'rise-4'); }
+        var els = document.querySelectorAll('.rise');
+        for (var j = 0; j < els.length; j++) { els[j].classList.remove('rise', 'rise-2', 'rise-3', 'rise-4'); }
       }, 1400);
     }
 
+    closePanel();
     closeMenu();
     firstRun = false;
   }
 
   function closeMenu() {
-    if (!menu || !toggle) { return; }
+    if (!menu || !navToggle) { return; }
     menu.classList.add('hidden');
-    toggle.setAttribute('aria-expanded', 'false');
-    toggle.textContent = 'Menu';
+    navToggle.setAttribute('aria-expanded', 'false');
   }
 
-  if (toggle && menu) {
-    toggle.addEventListener('click', function () {
-      var open = menu.classList.toggle('hidden') === false;
-      toggle.setAttribute('aria-expanded', String(open));
-      toggle.textContent = open ? 'Close' : 'Menu';
+  function closePanel() {
+    if (!panel || !worksToggle) { return; }
+    panel.classList.add('hidden');
+    worksToggle.setAttribute('aria-expanded', 'false');
+  }
+
+  for (var b = 0; b < langBtns.length; b++) {
+    langBtns[b].addEventListener('click', function () {
+      applyLang(this.getAttribute('data-lang'), true);
     });
   }
 
-  /* Re-render even when the hash is unchanged, so clicking the current item
-     still closes the mobile menu instead of appearing dead. */
-  document.addEventListener('click', function (e) {
-    var a = e.target.closest ? e.target.closest('a[data-nav]') : null;
-    if (!a) { return; }
-    if (a.getAttribute('href') === window.location.hash) { e.preventDefault(); render(); }
+  if (navToggle && menu) {
+    navToggle.addEventListener('click', function () {
+      var open = menu.classList.toggle('hidden') === false;
+      navToggle.setAttribute('aria-expanded', String(open));
+      if (!open) { closePanel(); }
+    });
+  }
+
+  if (worksToggle && panel) {
+    worksToggle.addEventListener('click', function (e) {
+      e.stopPropagation();
+      var open = panel.classList.toggle('hidden') === false;
+      worksToggle.setAttribute('aria-expanded', String(open));
+    });
+  }
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && panel && !panel.classList.contains('hidden')) {
+      closePanel();
+      if (worksToggle) { worksToggle.focus(); }
+    }
   });
 
-  /* Only hashes shaped like routes drive the router. Without this guard the
-     "Skip to content" link (#main) would silently throw the visitor back to
-     Home from whatever view they were reading. */
+  document.addEventListener('click', function (e) {
+    var t = e.target;
+    if (panel && !panel.classList.contains('hidden')) {
+      if (!panel.contains(t) && t !== worksToggle && !worksToggle.contains(t)) { closePanel(); }
+    }
+    var a = t.closest ? t.closest('a[data-nav]') : null;
+    if (a && a.getAttribute('href') === window.location.hash) { e.preventDefault(); render(); }
+  });
+
+  /* Only route-shaped hashes drive the router, so "Skip to content" (#main)
+     does not throw the visitor back to Home. */
   function isRouteHash() {
     var h = window.location.hash;
     return h === '' || h === '#' || h.indexOf('#/') === 0;
   }
 
-  window.addEventListener('hashchange', function () {
-    if (isRouteHash()) { render(); }
-  });
+  window.addEventListener('hashchange', function () { if (isRouteHash()) { render(); } });
 
+  applyLang(initialLang(), false);
   render();
 })();
 </script>
