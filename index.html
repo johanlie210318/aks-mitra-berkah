@@ -736,42 +736,53 @@
 
   /* ==========================================================================
      PROJECTS - the single source for both grids. See EDITOR'S NOTE (O).
-     TO COMPLETE - PROJECTS: every row below is a zero-filled sample so the
-     grid and its pagination can be reviewed. Replace them with real entries,
-     or empty the array and both grids will show their empty state.
      'by' must be either 'aks' or 'affiliate' - see BY_LABELS. It is never
      optional, and the affiliate is deliberately not named: see note (H).
+
+     image: file next to index.html (like logo-aks.png) or a full https URL.
+            Leave '' to fall back to the coloured placeholder tile.
+     url:   where the card links to when clicked. Leave '' for a non-clickable
+            card (info only, no link).
      ========================================================================== */
   var PROJECTS = [
     { id: 'p1', category: 'software', year: '2025', by: 'affiliate',
+      image: 'posmasjon.png',
+      url: 'https://ketoprak-pos.zestha-vutura.tech/',
       name_en: 'POS Mas Jon', name_id: 'POS Mas Jon',
-      blurb_en: 'Food and Beverage POS, Inventory & Sales Reporting System',
-      blurb_id: 'Mas Jons Ketoprak business needed a modern point-of-sale system that could handle daily transactions while providing detailed financial reporting. The system needed to be simple enough for staff to use during peak hours, yet powerful enough to generate comprehensive business insights. Key challenges included inventory tracking, sales monitoring, and creating detailed financial reports that would help inform business decisions.' },
+      blurb_en: 'Point-of-sale system for daily transactions, menu management, and sales reporting.',
+      blurb_id: 'Sistem kasir untuk transaksi harian, manajemen menu, dan laporan penjualan.' },
     { id: 'p2', category: 'data', year: '20XX', by: 'affiliate',
+      image: '', url: '',
       name_en: '[Project title]', name_id: '[Judul proyek]',
       blurb_en: '[Short project summary]',
       blurb_id: '[Ringkasan singkat proyek]' },
     { id: 'p3', category: 'design', year: '20XX', by: 'affiliate',
+      image: '', url: '',
       name_en: '[Project title]', name_id: '[Judul proyek]',
       blurb_en: '[Short project summary]',
       blurb_id: '[Ringkasan singkat proyek]' },
     { id: 'p4', category: 'software', year: '20XX', by: 'affiliate',
+      image: '', url: '',
       name_en: '[Project title]', name_id: '[Judul proyek]',
       blurb_en: '[Short project summary]',
       blurb_id: '[Ringkasan singkat proyek]' },
     { id: 'p5', category: 'data', year: '20XX', by: 'affiliate',
+      image: '', url: '',
       name_en: '[Project title]', name_id: '[Judul proyek]',
       blurb_en: '[Short project summary]',
       blurb_id: '[Ringkasan singkat proyek]' },
     { id: 'p6', category: 'design', year: '20XX', by: 'affiliate',
+      image: '', url: '',
       name_en: '[Project title]', name_id: '[Judul proyek]',
       blurb_en: '[Short project summary]',
       blurb_id: '[Ringkasan singkat proyek]' },
     { id: 'p7', category: 'software', year: '20XX', by: 'affiliate',
+      image: '', url: '',
       name_en: '[Project title]', name_id: '[Judul proyek]',
       blurb_en: '[Short project summary]',
       blurb_id: '[Ringkasan singkat proyek]' },
     { id: 'p8', category: 'data', year: '20XX', by: 'affiliate',
+      image: '', url: '',
       name_en: '[Project title]', name_id: '[Judul proyek]',
       blurb_en: '[Short project summary]',
       blurb_id: '[Ringkasan singkat proyek]' }
@@ -883,23 +894,36 @@
     var bg = PLACEHOLDER_COLORS[p.category] || '6B7A90';
 
     if (dark) {
-      var card = el('article', 'group relative aspect-[4/3] overflow-hidden rounded-[1.25rem] border border-teal/15 bg-midnight');
+      /* Card becomes a real link (<a>) when a url is provided, so the arrow
+         button in the corner is not just decoration. Non-clickable projects
+         stay as <article>, same look, no cursor/hover-link behaviour. */
+      var card = el(p.url ? 'a' : 'article',
+        'group relative block aspect-[4/3] overflow-hidden rounded-[1.25rem] border border-teal/15 bg-midnight');
+      if (p.url) {
+        card.href = p.url;
+        card.target = '_blank';
+        card.rel = 'noopener noreferrer';
+      }
+
       var img = el('img');
-      img.src = 'https://placehold.co/800x600/' + bg + '/' + bg;
+      img.src = p.image ? p.image : ('https://placehold.co/800x600/' + bg + '/' + bg);
       img.alt = '';
       img.loading = 'lazy';
       img.decoding = 'async';
-      img.className = 'absolute inset-0 h-full w-full object-cover opacity-80 transition-transform duration-500 group-hover:scale-[1.03]';
+      img.className = 'absolute inset-0 h-full w-full object-cover ' + (p.image ? '' : 'opacity-80 ') + 'transition-transform duration-500 group-hover:scale-[1.03]';
       card.appendChild(img);
 
       /* Fixed, not hover-dependent: title and badge must stay readable in
-         every state, not just on hover. */
+         every state, not just on hover. Real photos need this even more
+         than the flat placeholder colour did. */
       var shade = el('div', 'absolute inset-0 bg-gradient-to-t from-midnight from-10% via-midnight/70 via-45% to-midnight/10');
       card.appendChild(shade);
 
       var top = el('div', 'absolute inset-x-4 top-4 flex items-center justify-between');
       top.appendChild(el('span', 'rounded-full border border-teal/25 bg-midnight px-3 py-1.5 font-mono text-[10px] font-semibold uppercase tracking-[0.12em] text-teal', labelText));
-      top.appendChild(el('span', 'flex h-10 w-10 items-center justify-center rounded-full border border-teal/25 bg-midnight text-lg text-teal transition-transform group-hover:rotate-45', '↗'));
+      if (p.url) {
+        top.appendChild(el('span', 'flex h-10 w-10 items-center justify-center rounded-full border border-teal/25 bg-midnight text-lg text-teal transition-transform group-hover:rotate-45', '↗'));
+      }
       card.appendChild(top);
 
       var body = el('div', 'absolute inset-x-5 bottom-5');
@@ -911,9 +935,14 @@
       return card;
     }
 
-    var cardLight = el('article', 'bg-putih overflow-hidden');
+    var cardLight = el(p.url ? 'a' : 'article', 'block bg-putih overflow-hidden');
+    if (p.url) {
+      cardLight.href = p.url;
+      cardLight.target = '_blank';
+      cardLight.rel = 'noopener noreferrer';
+    }
     var imgLight = el('img');
-    imgLight.src = 'https://placehold.co/640x400/' + bg + '/' + bg;
+    imgLight.src = p.image ? p.image : ('https://placehold.co/640x400/' + bg + '/' + bg);
     imgLight.alt = '';
     imgLight.loading = 'lazy';
     imgLight.decoding = 'async';
