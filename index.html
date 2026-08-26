@@ -112,7 +112,6 @@
             <span class="t-en">Our Works</span><span class="t-id">Lini Usaha</span> <span aria-hidden="true">+</span>
           </button>
         </li>
-        <li><a href="#/projects" data-nav data-route="projects" class="hover:text-navy"><span class="t-en">Projects</span><span class="t-id">Proyek</span></a></li>
         <li><a href="#/company"  data-nav data-route="company"  class="hover:text-navy"><span class="t-en">Company information</span><span class="t-id">Informasi perusahaan</span></a></li>
         <li><a href="#/contact"  data-nav data-route="contact"  class="hover:text-navy"><span class="t-en">Contact</span><span class="t-id">Kontak</span></a></li>
       </ul>
@@ -145,7 +144,8 @@
         </div>
 
         <div class="border-t border-navy/15 pt-8 md:border-l md:border-t-0 md:pl-10 md:pt-0">
-
+          <p class="font-mono text-[11px] eyebrow text-abu"><span class="t-en">Finished work</span><span class="t-id">Hasil kerja</span></p>
+          <p class="mt-2 text-[0.95rem] leading-relaxed text-midnight/80"><span class="t-en">See completed projects across construction and IT.</span><span class="t-id">Lihat proyek yang sudah selesai, konstruksi maupun IT.</span></p>
           <a href="#/projects" data-nav class="mt-5 inline-flex items-center border-2 border-navy px-6 py-3 font-mono text-[11px] eyebrow text-navy transition-colors hover:bg-navy hover:text-putih"><span class="t-en">Projects</span><span class="t-id">Proyek</span></a>
         </div>
 
@@ -468,9 +468,9 @@
 
     <section data-page="it/projects" class="pb-20 pt-14 sm:pb-24">
       <div class="mx-auto max-w-shell px-6 sm:px-8">
-        <div class="rounded-[2rem] border border-white/10 bg-black/20 p-5 sm:p-7">
+        <div class="rounded-[2rem] border border-teal/15 bg-midnight/60 p-5 sm:p-7">
           <div class="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
-            <label class="flex h-12 w-full max-w-md items-center gap-3 rounded-full border border-white/15 bg-black/25 px-5 text-putih/55">
+            <label class="flex h-12 w-full max-w-md items-center gap-3 rounded-full border border-teal/20 bg-midnight/70 px-5 text-putih/55">
               <svg aria-hidden="true" viewBox="0 0 24 24" class="h-4 w-4 shrink-0" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="11" cy="11" r="6.5"></circle><path d="m16 16 4 4"></path></svg>
               <span class="sr-only"><span class="t-en">Search projects</span><span class="t-id">Cari proyek</span></span>
               <input id="it-project-search" type="search" autocomplete="off" class="min-w-0 flex-1 bg-transparent text-sm text-putih outline-none placeholder:text-putih/40" placeholder="Cari proyek..." data-placeholder-en="Search projects..." data-placeholder-id="Cari proyek...">
@@ -882,7 +882,7 @@
     var bg = PLACEHOLDER_COLORS[p.category] || '6B7A90';
 
     if (dark) {
-      var card = el('article', 'group relative aspect-[4/3] overflow-hidden rounded-[1.25rem] border border-white/10 bg-black/30');
+      var card = el('article', 'group relative aspect-[4/3] overflow-hidden rounded-[1.25rem] border border-teal/15 bg-midnight');
       var img = el('img');
       img.src = 'https://placehold.co/800x600/' + bg + '/FBFCFD?text=' + encodeURIComponent(labelText);
       img.alt = '';
@@ -891,12 +891,14 @@
       img.className = 'absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]';
       card.appendChild(img);
 
-      var shade = el('div', 'absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-black/5');
+      var shade = el('div', 'absolute inset-0 bg-gradient-to-t from-midnight via-midnight/45 to-transparent mix-blend-multiply');
       card.appendChild(shade);
+      var tint = el('div', 'absolute inset-0 bg-gradient-to-t from-navy/70 via-transparent to-transparent');
+      card.appendChild(tint);
 
       var top = el('div', 'absolute inset-x-4 top-4 flex items-center justify-between');
-      top.appendChild(el('span', 'rounded-full border border-white/15 bg-white/20 px-3 py-1.5 font-mono text-[10px] font-semibold uppercase tracking-[0.12em] text-white backdrop-blur-sm', labelText));
-      top.appendChild(el('span', 'flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-black/20 text-lg text-white backdrop-blur-sm transition-transform group-hover:rotate-45', '↗'));
+      top.appendChild(el('span', 'rounded-full border border-teal/25 bg-midnight/60 px-3 py-1.5 font-mono text-[10px] font-semibold uppercase tracking-[0.12em] text-teal backdrop-blur-sm', labelText));
+      top.appendChild(el('span', 'flex h-10 w-10 items-center justify-center rounded-full border border-teal/25 bg-midnight/60 text-lg text-teal backdrop-blur-sm transition-transform group-hover:rotate-45', '↗'));
       card.appendChild(top);
 
       var body = el('div', 'absolute inset-x-5 bottom-5');
