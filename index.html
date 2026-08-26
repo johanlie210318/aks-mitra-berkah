@@ -40,11 +40,18 @@
      restate ALL NINE codes in that edition.
 
   H) GROUP STRUCTURE - LOAD-BEARING
-     PT AKS Mitra Berkah and Zestha Vutura are separate legal entities under
-     common ownership. Work delivered by Zestha was contracted, invoiced and
-     taxed by Zestha. Every project card carries a "Delivered by" line, and
-     the IT division separates what AKS is registered for from what the
-     affiliate delivers. Do not remove either device.
+     Some of the work shown here is delivered by a separate legal entity under
+     common ownership. It is deliberately NOT NAMED anywhere on this site, in
+     the copy or in these comments - HTML comments are served to the browser
+     and show up in view-source, so a name left in here is a name published.
+     What must survive: the distinction itself. Work delivered by the affiliate
+     was contracted, invoiced and taxed by the affiliate, not by AKS. Every
+     project card carries a "Delivered by" line, and the IT division separates
+     what AKS is registered for from what the affiliate delivers.
+     Removing the name is a branding decision and is fine. Removing the
+     distinction is not - it would leave AKS presenting another company's work
+     and unregistered services as its own.
+     The affiliate is identified to a client before signing; the copy says so.
 
   I) PROJECT CARDS ARE PLACEHOLDERS - search for: TO COMPLETE - PROJECTS
 
@@ -87,8 +94,9 @@
      so do not reintroduce one.
 
      FIELDS: id, category, year, name_en/name_id, blurb_en/blurb_id, by.
-     'by' is the delivering entity and is not optional. See note (H): a card
-     without it is a card claiming AKS did the work.
+     'by' is either 'aks' or 'affiliate' and is not optional. See note (H): a
+     card without it is a card claiming AKS did the work. Do not put a company
+     name in this field - the affiliate is not named on this site.
 
      PAGINATION: PAGE_SIZE controls it, and the controls hide themselves when
      everything fits on one page. Do not lower PAGE_SIZE to make pagination
@@ -108,7 +116,7 @@
      THE RULE THAT MATTERS: EDIT BOTH, ALWAYS.
      The dangerous strings on this site are scope and legal statements - the
      66221 note, "How the two are contracted", the exclusions lists, "Delivered
-     by Zestha Vutura". If someone corrects the English exclusion and forgets
+     by an affiliated company". If someone corrects the English exclusion and forgets
      the Indonesian one, the page then makes two different legal claims to two
      different readers, and the Indonesian one is the version a local client
      will rely on. Drift here is not a typo, it is a misrepresentation.
@@ -271,7 +279,7 @@
 
         <div>
           <a href="#/works/it" data-nav class="font-display text-[1.25rem] font-semibold text-navy hover:text-teal">IT</a>
-          <p class="mt-2 font-mono text-[11px] leading-relaxed text-abu"><span class="t-en">Split between AKS and Zestha Vutura</span><span class="t-id">Terbagi antara AKS dan Zestha Vutura</span></p>
+          <p class="mt-2 font-mono text-[11px] leading-relaxed text-abu"><span class="t-en">Split between AKS and an affiliate</span><span class="t-id">Terbagi antara AKS dan perusahaan terafiliasi</span></p>
           <ul class="mt-5 space-y-3 text-[0.95rem]">
             <li><a href="#/works/it" data-nav data-page-link="it/overview" class="hover:text-navy"><span class="t-en">Overview</span><span class="t-id">Ringkasan</span></a></li>
             <li><a href="#/works/it/support"  data-nav data-page-link="it/support"  class="hover:text-navy"><span class="t-en">Supply &amp; support</span><span class="t-id">Suplai &amp; dukungan</span></a></li>
@@ -510,7 +518,7 @@
       <h1 data-focus-target tabindex="-1" class="tight mt-6 max-w-3xl font-display text-[2.25rem] font-semibold sm:text-[3.25rem]"><span class="t-en">Two companies, one point of contact.</span><span class="t-id">Dua perusahaan, satu titik kontak.</span></h1>
       <!-- draft, please adjust -->
       <p class="mt-8 max-w-2xl text-[1.0625rem] leading-relaxed text-putih/80">
-        <span class="t-en">Equipment and support are contracted with PT AKS Mitra Berkah. Software, data, and design are delivered by Zestha Vutura, an affiliated company under the same ownership that holds its own registrations for that work.</span><span class="t-id">Peralatan dan dukungan dikontrak dengan PT AKS Mitra Berkah. Software, data, dan desain dikerjakan Zestha Vutura, perusahaan terafiliasi di bawah kepemilikan yang sama yang memegang izin sendiri untuk pekerjaan itu.</span>
+        <span class="t-en">Equipment and support are contracted with PT AKS Mitra Berkah. Software, data, and design are delivered by an affiliated company under common ownership, which holds its own registrations for that work and is named to you before anything is signed.</span><span class="t-id">Peralatan dan dukungan dikontrak dengan PT AKS Mitra Berkah. Software, data, dan desain dikerjakan perusahaan terafiliasi di bawah kepemilikan yang sama, yang memegang izin sendiri untuk pekerjaan itu dan namanya kami sampaikan sebelum ada yang ditandatangani.</span>
       </p>
       <ul class="mt-10 flex flex-wrap gap-x-7 gap-y-3 border-t border-white/15 py-5 font-mono text-[11px] eyebrow">
         <li><a href="#/works/it"          data-nav data-page-link="it/overview" class="text-putih/70 hover:text-teal"><span class="t-en">Overview</span><span class="t-id">Ringkasan</span></a></li>
@@ -551,7 +559,7 @@
           </div>
         </div>
 
-        <p class="mt-14 font-mono text-[11px] eyebrow text-putih/50"><span class="t-en">Delivered by Zestha Vutura</span><span class="t-id">Dikerjakan oleh Zestha Vutura</span></p>
+        <p class="mt-14 font-mono text-[11px] eyebrow text-putih/50"><span class="t-en">Delivered by an affiliated company</span><span class="t-id">Dikerjakan oleh perusahaan terafiliasi</span></p>
         <div class="mt-6 grid gap-px bg-white/15 lg:grid-cols-3">
           <a href="#/works/it/software" data-nav class="block bg-navy p-8 transition-colors hover:bg-midnight lg:p-9">
             <p class="font-mono text-xs eyebrow text-teal">SW</p>
@@ -578,7 +586,7 @@
             <!-- draft, please adjust -->
             <div class="lg:col-span-8">
               <p class="leading-relaxed text-putih/80">
-                <span class="t-en">PT AKS Mitra Berkah and Zestha Vutura are separate companies under common ownership. Our own IT registration covers support, installation, and recovery; it does not cover systems consulting or software development, and we do not sign for those. Where a job needs them, Zestha contracts that part directly, and you will see two agreements rather than one.</span><span class="t-id">PT AKS Mitra Berkah dan Zestha Vutura adalah dua perusahaan terpisah di bawah kepemilikan yang sama. Izin IT kami sendiri mencakup dukungan, instalasi, dan pemulihan; tidak mencakup konsultansi sistem atau pengembangan perangkat lunak, dan kami tidak menandatangani untuk itu. Kalau sebuah pekerjaan membutuhkannya, Zestha yang mengontrak bagian itu langsung, dan Anda akan melihat dua perjanjian, bukan satu.</span>
+                <span class="t-en">PT AKS Mitra Berkah and the affiliated company are separate legal entities under common ownership. Our own IT registration covers support, installation, and recovery; it does not cover systems consulting or software development, and we do not sign for those. Where a job needs them, the affiliate contracts that part directly, and you will see two agreements rather than one. Its name, deed, and registrations are given to you before you sign either.</span><span class="t-id">PT AKS Mitra Berkah dan perusahaan terafiliasi adalah dua badan hukum terpisah di bawah kepemilikan yang sama. Izin IT kami sendiri mencakup dukungan, instalasi, dan pemulihan; tidak mencakup konsultansi sistem atau pengembangan perangkat lunak, dan kami tidak menandatangani untuk itu. Kalau sebuah pekerjaan membutuhkannya, perusahaan terafiliasi yang mengontrak bagian itu langsung, dan Anda akan melihat dua perjanjian, bukan satu. Nama, akta, dan izinnya kami berikan sebelum Anda menandatangani keduanya.</span>
               </p>
               <p class="mt-4 font-mono text-[11px] leading-relaxed text-putih/45">
                 <span class="t-en">Structured cabling and electrical installation are separate registrations again, and are subcontracted.</span><span class="t-id">Pemasangan kabel terstruktur dan instalasi listrik adalah izin terpisah lagi, dan disubkontrakkan.</span>
@@ -636,7 +644,7 @@
             <h2 class="tight font-display text-[2rem] font-semibold sm:text-[2.75rem]">Software</h2>
             <!-- draft, please adjust -->
             <p class="mt-6 leading-relaxed text-putih/80"><span class="t-en">Web applications, internal tools, and e-commerce — built to be handed over: documented, tested, and deployable by someone other than the person who wrote it.</span><span class="t-id">Aplikasi web, perkakas internal, dan e-commerce — dibangun untuk diserahterimakan: terdokumentasi, teruji, dan bisa dideploy oleh orang lain selain penulisnya.</span></p>
-            <p class="mt-6 font-mono text-[11px] leading-relaxed text-putih/45"><span class="t-en">Delivered and contracted by Zestha Vutura.</span><span class="t-id">Dikerjakan dan dikontrak oleh Zestha Vutura.</span></p>
+            <p class="mt-6 font-mono text-[11px] leading-relaxed text-putih/45"><span class="t-en">Delivered and contracted by an affiliated company under common ownership.</span><span class="t-id">Dikerjakan dan dikontrak oleh perusahaan terafiliasi di bawah kepemilikan yang sama.</span></p>
           </div>
           <div class="lg:col-span-7">
             <!-- draft, please adjust -->
@@ -663,7 +671,7 @@
             <h2 class="tight font-display text-[2rem] font-semibold sm:text-[2.75rem]">Data</h2>
             <!-- draft, please adjust -->
             <p class="mt-6 leading-relaxed text-putih/80"><span class="t-en">Reporting built on the systems you already run: figures pulled, cleaned, and put somewhere a manager can read them without asking anyone first.</span><span class="t-id">Pelaporan yang dibangun di atas sistem yang sudah Anda jalankan: angka ditarik, dibersihkan, dan ditaruh di tempat yang bisa dibaca manajer tanpa bertanya dulu.</span></p>
-            <p class="mt-6 font-mono text-[11px] leading-relaxed text-putih/45"><span class="t-en">Delivered and contracted by Zestha Vutura.</span><span class="t-id">Dikerjakan dan dikontrak oleh Zestha Vutura.</span></p>
+            <p class="mt-6 font-mono text-[11px] leading-relaxed text-putih/45"><span class="t-en">Delivered and contracted by an affiliated company under common ownership.</span><span class="t-id">Dikerjakan dan dikontrak oleh perusahaan terafiliasi di bawah kepemilikan yang sama.</span></p>
           </div>
           <div class="lg:col-span-7">
             <!-- draft, please adjust -->
@@ -686,7 +694,7 @@
             <h2 class="tight font-display text-[2rem] font-semibold sm:text-[2.75rem]"><span class="t-en">Design</span><span class="t-id">Desain</span></h2>
             <!-- draft, please adjust -->
             <p class="mt-6 leading-relaxed text-putih/80"><span class="t-en">Interface and identity work: layouts, a component kit, and styling rules specific enough that the build stage does not have to guess.</span><span class="t-id">Pekerjaan antarmuka dan identitas: tata letak, kit komponen, dan aturan gaya yang cukup spesifik supaya tahap pembangunan tidak perlu menebak.</span></p>
-            <p class="mt-6 font-mono text-[11px] leading-relaxed text-putih/45"><span class="t-en">Delivered and contracted by Zestha Vutura.</span><span class="t-id">Dikerjakan dan dikontrak oleh Zestha Vutura.</span></p>
+            <p class="mt-6 font-mono text-[11px] leading-relaxed text-putih/45"><span class="t-en">Delivered and contracted by an affiliated company under common ownership.</span><span class="t-id">Dikerjakan dan dikontrak oleh perusahaan terafiliasi di bawah kepemilikan yang sama.</span></p>
           </div>
           <div class="lg:col-span-7">
             <!-- draft, please adjust -->
@@ -709,7 +717,7 @@
           <h2 class="tight font-display text-[2rem] font-semibold sm:text-[2.75rem]"><span class="t-en">IT projects</span><span class="t-id">Proyek IT</span></h2>
           <!-- draft, please adjust -->
           <p class="max-w-sm text-[0.95rem] leading-relaxed text-putih/70">
-            <span class="t-en">Software, data, and design work. Each entry names the company that delivered it.</span><span class="t-id">Pekerjaan software, data, dan desain. Tiap entri menyebut perusahaan yang mengerjakannya.</span>
+            <span class="t-en">Software, data, and design work. Each entry states whether we delivered it or an affiliated company did.</span><span class="t-id">Pekerjaan software, data, dan desain. Tiap entri menyatakan apakah kami yang mengerjakannya atau perusahaan terafiliasi.</span>
           </p>
         </div>
 
@@ -737,7 +745,7 @@
       </div>
       <!-- draft, please adjust -->
       <p class="max-w-sm text-[0.95rem] leading-relaxed text-midnight/70">
-        <span class="t-en">Each entry names the company that delivered it. Construction work contracted with PT AKS Mitra Berkah will appear here as jobs complete.</span><span class="t-id">Tiap entri menyebut perusahaan yang mengerjakannya. Pekerjaan konstruksi yang dikontrak dengan PT AKS Mitra Berkah akan muncul di sini seiring selesainya.</span>
+        <span class="t-en">Each entry states whether we delivered it or an affiliated company did. Construction work contracted with PT AKS Mitra Berkah will appear here as jobs complete.</span><span class="t-id">Tiap entri menyatakan apakah kami yang mengerjakannya atau perusahaan terafiliasi. Pekerjaan konstruksi yang dikontrak dengan PT AKS Mitra Berkah akan muncul di sini seiring selesainya.</span>
       </p>
     </div>
 
@@ -806,7 +814,7 @@
 
         <!-- draft, please adjust -->
         <p class="mt-8 font-mono text-[11px] leading-relaxed text-abu">
-          <span class="t-en">Zestha Vutura is a separate legal entity under common ownership. Its own particulars are published on its own site.</span><span class="t-id">Zestha Vutura adalah badan hukum terpisah di bawah kepemilikan yang sama. Data perusahaannya dipublikasikan di situsnya sendiri.</span>
+          <span class="t-en">Software, data, and design work is delivered by a separate legal entity under common ownership. Its name and registered particulars are provided on request, and before any agreement is signed.</span><span class="t-id">Pekerjaan software, data, dan desain dikerjakan badan hukum terpisah di bawah kepemilikan yang sama. Nama dan data terdaftarnya diberikan atas permintaan, dan sebelum perjanjian apa pun ditandatangani.</span>
         </p>
       </div>
 
@@ -843,7 +851,7 @@
               <th scope="row" class="w-20 py-4 pr-4 font-mono text-[13px] font-normal tnum text-teal">62900</th>
               <td class="py-4 text-[0.95rem]">
                 <span class="t-en">Other information technology and computer service activities</span><span class="t-id">[Uraian sesuai NIB]</span>
-                <span class="mt-1.5 block font-mono text-[11px] leading-relaxed text-abu"><span class="t-en">Support, installation, and recovery work only. Systems consulting and software development are separate registrations, held by Zestha Vutura.</span><span class="t-id">Hanya pekerjaan dukungan, instalasi, dan pemulihan. Konsultansi sistem dan pengembangan perangkat lunak adalah izin terpisah, dipegang Zestha Vutura.</span></span>
+                <span class="mt-1.5 block font-mono text-[11px] leading-relaxed text-abu"><span class="t-en">Support, installation, and recovery work only. Systems consulting and software development are separate registrations, held by an affiliated company.</span><span class="t-id">Hanya pekerjaan dukungan, instalasi, dan pemulihan. Konsultansi sistem dan pengembangan perangkat lunak adalah izin terpisah, dipegang perusahaan terafiliasi.</span></span>
               </td>
             </tr>
             <tr class="border-t border-navy/20">
@@ -989,38 +997,39 @@
      TO COMPLETE - PROJECTS: every row below is a zero-filled sample so the
      grid and its pagination can be reviewed. Replace them with real entries,
      or empty the array and both grids will show their empty state.
-     'by' is the delivering entity and is never optional.
+     'by' must be either 'aks' or 'affiliate' - see BY_LABELS. It is never
+     optional, and the affiliate is deliberately not named: see note (H).
      ========================================================================== */
   var PROJECTS = [
-    { id: 'p1', category: 'software', year: '20XX', by: 'Zestha Vutura',
+    { id: 'p1', category: 'software', year: '20XX', by: 'affiliate',
       name_en: '[Project name]', name_id: '[Nama proyek]',
       blurb_en: '[One line on what was delivered and what it changed for the client.]',
       blurb_id: '[Satu baris tentang apa yang dikerjakan dan apa yang berubah bagi klien.]' },
-    { id: 'p2', category: 'data', year: '20XX', by: 'Zestha Vutura',
+    { id: 'p2', category: 'data', year: '20XX', by: 'affiliate',
       name_en: '[Project name]', name_id: '[Nama proyek]',
       blurb_en: '[One line on what was delivered and what it changed for the client.]',
       blurb_id: '[Satu baris tentang apa yang dikerjakan dan apa yang berubah bagi klien.]' },
-    { id: 'p3', category: 'design', year: '20XX', by: 'Zestha Vutura',
+    { id: 'p3', category: 'design', year: '20XX', by: 'affiliate',
       name_en: '[Project name]', name_id: '[Nama proyek]',
       blurb_en: '[One line on what was delivered and what it changed for the client.]',
       blurb_id: '[Satu baris tentang apa yang dikerjakan dan apa yang berubah bagi klien.]' },
-    { id: 'p4', category: 'software', year: '20XX', by: 'Zestha Vutura',
+    { id: 'p4', category: 'software', year: '20XX', by: 'affiliate',
       name_en: '[Project name]', name_id: '[Nama proyek]',
       blurb_en: '[One line on what was delivered and what it changed for the client.]',
       blurb_id: '[Satu baris tentang apa yang dikerjakan dan apa yang berubah bagi klien.]' },
-    { id: 'p5', category: 'data', year: '20XX', by: 'Zestha Vutura',
+    { id: 'p5', category: 'data', year: '20XX', by: 'affiliate',
       name_en: '[Project name]', name_id: '[Nama proyek]',
       blurb_en: '[One line on what was delivered and what it changed for the client.]',
       blurb_id: '[Satu baris tentang apa yang dikerjakan dan apa yang berubah bagi klien.]' },
-    { id: 'p6', category: 'design', year: '20XX', by: 'Zestha Vutura',
+    { id: 'p6', category: 'design', year: '20XX', by: 'affiliate',
       name_en: '[Project name]', name_id: '[Nama proyek]',
       blurb_en: '[One line on what was delivered and what it changed for the client.]',
       blurb_id: '[Satu baris tentang apa yang dikerjakan dan apa yang berubah bagi klien.]' },
-    { id: 'p7', category: 'software', year: '20XX', by: 'Zestha Vutura',
+    { id: 'p7', category: 'software', year: '20XX', by: 'affiliate',
       name_en: '[Project name]', name_id: '[Nama proyek]',
       blurb_en: '[One line on what was delivered and what it changed for the client.]',
       blurb_id: '[Satu baris tentang apa yang dikerjakan dan apa yang berubah bagi klien.]' },
-    { id: 'p8', category: 'data', year: '20XX', by: 'Zestha Vutura',
+    { id: 'p8', category: 'data', year: '20XX', by: 'affiliate',
       name_en: '[Project name]', name_id: '[Nama proyek]',
       blurb_en: '[One line on what was delivered and what it changed for the client.]',
       blurb_id: '[Satu baris tentang apa yang dikerjakan dan apa yang berubah bagi klien.]' }
@@ -1031,6 +1040,14 @@
   /* Raising this is cheaper than adding pages. A portfolio under a dozen
      entries reads better as a single grid - see EDITOR'S NOTE (O). */
   var PAGE_SIZE = 6;
+
+  /* Deliberately generic: the affiliate is not named on this site, but the
+     fact that it is a different legal entity must still reach the reader.
+     See EDITOR'S NOTE (H). */
+  var BY_LABELS = {
+    aks:       { en: 'PT AKS Mitra Berkah', id: 'PT AKS Mitra Berkah' },
+    affiliate: { en: 'an affiliated company', id: 'perusahaan terafiliasi' }
+  };
 
   var CATEGORY_LABELS = {
     software: { en: 'Software',    id: 'Software' },
@@ -1117,8 +1134,12 @@
     card.appendChild(el('p', 'mt-3 text-[0.95rem] leading-relaxed ' + (dark ? 'text-putih/70' : 'text-midnight/80'),
       lang === 'id' ? p.blurb_id : p.blurb_en));
 
-    /* Attribution is structural, not decorative. See EDITOR'S NOTE (H). */
-    var byLine = (lang === 'id' ? 'Dikerjakan oleh ' : 'Delivered by ') + p.by;
+    /* Attribution is structural, not decorative. See EDITOR'S NOTE (H).
+       An unrecognised 'by' value renders visibly rather than silently, so a
+       bad entry is caught in review instead of shipping. */
+    var byLabel = BY_LABELS[p.by];
+    var byText = byLabel ? (byLabel[lang] || byLabel.en) : '[check "by" field]';
+    var byLine = (lang === 'id' ? 'Dikerjakan oleh ' : 'Delivered by ') + byText;
     card.appendChild(el('p',
       'mt-6 border-t pt-4 font-mono text-[11px] ' + (dark ? 'border-white/15 text-putih/45' : 'border-navy/15 text-abu'),
       byLine));
