@@ -870,10 +870,11 @@
     return items;
   }
 
-  /* Placeholder images only - swap for real project photos later. Colour
-     keys off the brand palette so it doesn't look like a random stock photo. */
+  /* Placeholder images only - swap for real project photos later. All four
+     are dark, muted, and close in brightness so the cards read as one set
+     instead of one tile popping out against the others. */
   var PLACEHOLDER_COLORS = {
-    software: '013589', data: '00A796', design: '011E4A', construction: '6B7A90'
+    software: '0B2452', data: '0B3B38', design: '081226', construction: '2C3542'
   };
 
   function buildCard(p, dark) {
@@ -884,21 +885,21 @@
     if (dark) {
       var card = el('article', 'group relative aspect-[4/3] overflow-hidden rounded-[1.25rem] border border-teal/15 bg-midnight');
       var img = el('img');
-      img.src = 'https://placehold.co/800x600/' + bg + '/FBFCFD?text=' + encodeURIComponent(labelText);
+      img.src = 'https://placehold.co/800x600/' + bg + '/' + bg;
       img.alt = '';
       img.loading = 'lazy';
       img.decoding = 'async';
-      img.className = 'absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]';
+      img.className = 'absolute inset-0 h-full w-full object-cover opacity-80 transition-transform duration-500 group-hover:scale-[1.03]';
       card.appendChild(img);
 
-      var shade = el('div', 'absolute inset-0 bg-gradient-to-t from-midnight via-midnight/45 to-transparent mix-blend-multiply');
+      /* Fixed, not hover-dependent: title and badge must stay readable in
+         every state, not just on hover. */
+      var shade = el('div', 'absolute inset-0 bg-gradient-to-t from-midnight from-10% via-midnight/70 via-45% to-midnight/10');
       card.appendChild(shade);
-      var tint = el('div', 'absolute inset-0 bg-gradient-to-t from-navy/70 via-transparent to-transparent');
-      card.appendChild(tint);
 
       var top = el('div', 'absolute inset-x-4 top-4 flex items-center justify-between');
-      top.appendChild(el('span', 'rounded-full border border-teal/25 bg-midnight/60 px-3 py-1.5 font-mono text-[10px] font-semibold uppercase tracking-[0.12em] text-teal backdrop-blur-sm', labelText));
-      top.appendChild(el('span', 'flex h-10 w-10 items-center justify-center rounded-full border border-teal/25 bg-midnight/60 text-lg text-teal backdrop-blur-sm transition-transform group-hover:rotate-45', '↗'));
+      top.appendChild(el('span', 'rounded-full border border-teal/25 bg-midnight px-3 py-1.5 font-mono text-[10px] font-semibold uppercase tracking-[0.12em] text-teal', labelText));
+      top.appendChild(el('span', 'flex h-10 w-10 items-center justify-center rounded-full border border-teal/25 bg-midnight text-lg text-teal transition-transform group-hover:rotate-45', '↗'));
       card.appendChild(top);
 
       var body = el('div', 'absolute inset-x-5 bottom-5');
@@ -912,7 +913,7 @@
 
     var cardLight = el('article', 'bg-putih overflow-hidden');
     var imgLight = el('img');
-    imgLight.src = 'https://placehold.co/640x400/' + bg + '/FBFCFD?text=' + encodeURIComponent(labelText);
+    imgLight.src = 'https://placehold.co/640x400/' + bg + '/' + bg;
     imgLight.alt = '';
     imgLight.loading = 'lazy';
     imgLight.decoding = 'async';
