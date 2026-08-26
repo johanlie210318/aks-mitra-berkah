@@ -55,6 +55,17 @@
   F) Copy that is written rather than taken from a document is flagged with
      an HTML comment reading: draft, please adjust
      Search that phrase and review each one before publishing.
+
+  G) KBLI VINTAGE CONFLICT - UNRESOLVED, READ BEFORE PUBLISHING
+     62900 (IT services) has been added to the activities table on request.
+     62900 is a KBLI 2025 code; its KBLI 2020 predecessor was 62090.
+     The other eight codes in that table (41011, 43400, 43909, 70209,
+     46100, 46901, 46902, 66221) are KBLI 2020 codes.
+     A published table cannot mix two vintages - the section it sits in is
+     headed "Everything here is checkable", and a reader pulling the NIB
+     will find codes that do not match. Before launch, open the NIB, note
+     which edition of KBLI it was issued under, and restate ALL NINE codes
+     in that edition. Do not convert them by hand from memory.
   ============================================================================
 -->
 
@@ -390,7 +401,10 @@
 
         <div class="lg:col-span-7">
           <h3 class="font-mono text-[11px] eyebrow text-abu">Registered business activities (KBLI)</h3>
-          <!-- TO COMPLETE: verify this list against Berkah's own NIB before launch. -->
+          <!-- TO COMPLETE: verify this list against Berkah's own NIB before launch.
+               See EDITOR'S NOTE (G) at the top of this file: 62900 is a KBLI 2025
+               code sitting in a list of KBLI 2020 codes. All nine must be restated
+               in whichever edition the NIB actually uses. -->
           <table class="mt-6 w-full text-left">
             <caption class="sr-only">Registered business activities and their KBLI codes</caption>
             <tbody class="align-top">
@@ -410,6 +424,18 @@
                 <th scope="row" class="w-20 py-4 pr-4 font-mono text-[13px] font-normal tnum text-teal">70209</th>
                 <td class="py-4 text-[0.95rem]">Other management and business consultancy activities</td>
               </tr>
+
+              <!-- ADDED ON REQUEST. There is no matching entry in the Capabilities
+                   section above; either add one or the code sits unexplained.
+                   Wording below follows the official scope: this code covers IT
+                   support, setup and installation work. It does NOT cover
+                   information systems consulting or planning, and it does not
+                   cover software development - those are separate codes. -->
+              <tr class="border-t border-navy/20">
+                <th scope="row" class="w-20 py-4 pr-4 font-mono text-[13px] font-normal tnum text-teal">62900</th>
+                <td class="py-4 text-[0.95rem]">Other information technology and computer service activities</td>
+              </tr>
+
               <tr class="border-t border-navy/20">
                 <th scope="row" class="w-20 py-4 pr-4 font-mono text-[13px] font-normal tnum text-teal">46100</th>
                 <td class="py-4 text-[0.95rem]">Wholesale trade on a fee or contract basis</td>
