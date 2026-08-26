@@ -15,10 +15,6 @@
        logo-aks-white.png  white knockout                           -> navy sections
      The black wordmark is invisible on navy, which is why the white
      version exists. Do not swap them.
-     Folder layout:
-       index.html
-       logo-aks.png
-       logo-aks-white.png
      If you move the logos into a subfolder, update both src attributes
      (search this file for: logo-aks).
 
@@ -28,44 +24,82 @@
 
   C) MUST BE COMPLETED BEFORE LAUNCH
      Search for: TO COMPLETE
-     Seven fields now hold PLACEHOLDER SAMPLES so the layout can be reviewed
-     as if finished. They are deliberately zero-filled but format-correct:
-       Deed no.       No. 00 / 2025
-       AHU approval   AHU-0000000.AH.01.01.2025
-       NIB            0000000000000
-       NPWP           00.000.000.0-000.000
-       Director       [Director's name]
-       Phone          +62 800 0000 0000
-       Email          info@example.com   (example.com is reserved for docs)
-     None of these are real. Publishing invented AHU / NIB / NPWP numbers
-     misstates the company's legal status. Replace all seven, then delete
-     the preview banner sitting directly above the nav.
+     Seven fields hold PLACEHOLDER SAMPLES so the layout can be reviewed as if
+     finished. They are deliberately zero-filled but format-correct:
+       Deed no. / AHU approval / NIB / NPWP / Director / Phone / Email
+     None are real. Publishing invented AHU / NIB / NPWP numbers misstates the
+     company's legal status. Replace all seven, then delete the preview banner
+     sitting directly above the nav.
 
   D) LEGAL DATA DELIBERATELY LEFT BLANK
-     The deed supplied earlier was issued in the name of PT AKS MITRA
-     SEJAHTRA, not Berkah. Deed number, notary, capital figures, and officer
-     names have therefore been left as blanks rather than copied across -
-     those items appear in contracts and due diligence, and must come from
-     Berkah's own deed and SK.
+     The deed supplied earlier was issued in the name of PT AKS MITRA SEJAHTRA,
+     not Berkah. Deed number, notary, capital figures and officer names must
+     come from Berkah's own deed and SK.
 
   E) NO INVENTED CREDENTIALS
      No project count, no client logos, no "X years of experience", no
-     certification badges - none of that is evidenced. Add only when real.
+     certification badges. Add only when real.
 
-  F) Copy that is written rather than taken from a document is flagged with
-     an HTML comment reading: draft, please adjust
-     Search that phrase and review each one before publishing.
+  F) Copy written rather than taken from a document is flagged with an HTML
+     comment reading: draft, please adjust
 
   G) KBLI VINTAGE CONFLICT - UNRESOLVED, READ BEFORE PUBLISHING
-     62900 (IT services) has been added to the activities table on request.
-     62900 is a KBLI 2025 code; its KBLI 2020 predecessor was 62090.
-     The other eight codes in that table (41011, 43400, 43909, 70209,
-     46100, 46901, 46902, 66221) are KBLI 2020 codes.
-     A published table cannot mix two vintages - the section it sits in is
-     headed "Everything here is checkable", and a reader pulling the NIB
-     will find codes that do not match. Before launch, open the NIB, note
-     which edition of KBLI it was issued under, and restate ALL NINE codes
-     in that edition. Do not convert them by hand from memory.
+     62900 is a KBLI 2025 code; its KBLI 2020 predecessor was 62090. The other
+     eight codes in the activities table are KBLI 2020 codes. A published table
+     cannot mix two vintages under a heading reading "Everything here is
+     checkable". Open the NIB, note which edition it was issued under, and
+     restate ALL NINE codes in that edition. Do not convert them by hand.
+
+  H) GROUP STRUCTURE - THE LOAD-BEARING DISTINCTION ON THIS PAGE
+     PT AKS Mitra Berkah and Zestha Vutura are separate legal entities under
+     common ownership. Work delivered by Zestha was contracted, invoiced and
+     taxed by Zestha, not by AKS. Every project card therefore carries a
+     "Delivered by" line, and the IT view splits the offer into what AKS is
+     registered for and what the affiliate delivers. Do not remove either
+     device. They are also what closes the KBLI gap: AKS needs no software or
+     consulting codes, because AKS is not the entity selling those.
+
+  I) PROJECT CARDS ARE PLACEHOLDERS
+     Search for: TO COMPLETE - PROJECTS
+     Real entries need, per project: name, category, year, one line on what was
+     delivered, and the delivering entity. Client names need the client's
+     permission. Publishing invented client work loses tenders.
+
+  J) NAVIGATION IS NOW A VIEW SWITCHER, NOT A SCROLL
+     Clicking a menu item swaps which view is displayed instead of scrolling to
+     an anchor. Read this whole note before editing the nav or the router.
+
+     HOW IT WORKS
+       - Each top-level view is a <section data-view="NAME">.
+       - The IT view contains sub-views: <section data-subview="NAME">.
+       - Routes are hash based:  #/it  and  #/it/software
+       - The router at the foot of the body reads the hash, toggles .is-active,
+         updates <title>, sets aria-current, and jumps the window to offset 0
+         instantly. That jump is not a scroll animation; without it a visitor
+         who was far down a long view would land in blank space on a short one.
+       - Focus moves to the new view's heading with preventScroll, so keyboard
+         and screen-reader users are not stranded at the top of the document.
+
+     NO-JS FALLBACK - DO NOT BREAK THIS
+       Hiding is applied only under the .js class, which the inline script in
+       <head> adds. With JavaScript off, every view renders as one long page
+       exactly as before. Never move the hiding rules out from under .js.
+
+     THE REAL COST - SEO
+       The whole site is one URL, one <title> in the served HTML, one meta
+       description. A crawler indexes one page. Hash fragments are not indexed
+       as separate pages. As the IT area grows, that ceiling gets expensive:
+       a page about software work cannot rank on its own.
+       When the IT area passes roughly four sub-views, move to real files
+       (/it/software/index.html) or a static site generator, and keep the same
+       markup. This file is a good staging post, not a destination.
+
+  K) ADDING AN IT SUB-PAGE
+       1. Add <section data-subview="NAME" ...> inside the IT view.
+       2. Add a link to the IT sub-nav: href="#/it/NAME".
+       3. Add 'NAME' to SUBROUTES in the router script.
+       4. Add a title for it in TITLES.
+     Miss step 3 and the link silently falls back to the overview.
   ============================================================================
 -->
 
@@ -76,6 +110,9 @@
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+
+<!-- Adds .js before first paint so hidden views never flash on screen. -->
+<script>document.documentElement.className += ' js';</script>
 
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
@@ -105,10 +142,7 @@
   :root { --fv: #013589; }
   .on-dark { --fv: #00A796; }
 
-  :focus-visible {
-    outline: 3px solid var(--fv);
-    outline-offset: 3px;
-  }
+  :focus-visible { outline: 3px solid var(--fv); outline-offset: 3px; }
 
   body { -webkit-font-smoothing: antialiased; }
 
@@ -116,7 +150,25 @@
   .eyebrow { letter-spacing: .15em; text-transform: uppercase; }
   .tnum { font-variant-numeric: tabular-nums; }
 
-  /* Single orchestrated moment: staged load-in on the hero only. */
+  /* VIEW SWITCHING - only under .js. See EDITOR'S NOTE (J). */
+  .js [data-view],
+  .js [data-subview]            { display: none; }
+  .js [data-view].is-active,
+  .js [data-subview].is-active  { display: block; }
+
+  /* Headings receive focus on view change; never show a ring for that. */
+  [data-focus-target]:focus { outline: none; }
+
+  /* Active nav item. */
+  [aria-current="page"] {
+    color: #013589;
+    text-decoration: underline;
+    text-decoration-color: #00A796;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
+  }
+  .on-dark [aria-current="page"] { color: #00A796; }
+
   .rise { opacity: 0; transform: translateY(12px); animation: rise .8s cubic-bezier(.2,.75,.3,1) forwards; }
   .rise-2 { animation-delay: .12s; }
   .rise-3 { animation-delay: .24s; }
@@ -133,66 +185,80 @@
 
 <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:bg-navy focus:px-4 focus:py-2 focus:font-mono focus:text-xs focus:text-putih">Skip to content</a>
 
-<!-- ============================================================
-     PREVIEW BANNER - DELETE THIS ENTIRE <aside> BEFORE PUBLISHING.
-     Every legal identifier and contact detail on this page is a
-     placeholder sample, not real data.
-     ============================================================ -->
+<!-- PREVIEW BANNER - DELETE THIS ENTIRE <aside> BEFORE PUBLISHING. -->
 <aside class="bg-teal px-6 py-3 text-center font-mono text-[11px] leading-relaxed text-midnight sm:px-8">
   <strong class="font-semibold">Preview:</strong> legal identifiers and contact details on this page are placeholder samples, not real data. Replace them before publishing.
 </aside>
 
-<!-- ==================== NAV ==================== -->
-<nav class="border-b border-navy/15 bg-putih">
+<!-- ==================== NAV ====================
+     Sticky, because with view switching the visitor may be part-way down a
+     view when they need it. Five items; the IT area expands through its own
+     sub-nav rather than by growing this bar.
+     ============================================= -->
+<nav class="sticky top-0 z-40 border-b border-navy/15 bg-putih/95 backdrop-blur">
   <div class="mx-auto flex max-w-shell flex-wrap items-center justify-between gap-x-8 gap-y-4 px-6 py-5 sm:px-8">
-    <a href="#main" class="shrink-0">
-      <img src="logo-aks.png" alt="PT AKS Mitra Berkah" width="523" height="267" class="h-11 w-auto sm:h-12">
+    <a href="#/" class="shrink-0" data-nav>
+      <img src="logo-aks.png" alt="PT AKS Mitra Berkah — home" width="523" height="267" class="h-11 w-auto sm:h-12">
     </a>
-    <ul class="flex flex-wrap gap-x-7 gap-y-2 font-mono text-[11px] eyebrow">
-      <li><a href="#approach" class="hover:text-navy">Approach</a></li>
-      <li><a href="#capabilities" class="hover:text-navy">Capabilities</a></li>
-      <li><a href="#why" class="hover:text-navy">Why us</a></li>
-      <li><a href="#company" class="hover:text-navy">Company data</a></li>
-      <li><a href="#contact" class="text-navy underline decoration-teal decoration-2 underline-offset-4">Contact</a></li>
+
+    <button id="navToggle" type="button" aria-expanded="false" aria-controls="navMenu"
+            class="font-mono text-[11px] eyebrow text-navy lg:hidden">Menu</button>
+
+    <!-- Rendered once, shared by both states. -->
+    <ul id="navMenu" class="hidden w-full flex-col gap-y-3 font-mono text-[11px] eyebrow lg:flex lg:w-auto lg:flex-row lg:flex-wrap lg:gap-x-7 lg:gap-y-2">
+      <li><a href="#/"        data-nav data-route="home"    class="hover:text-navy">Home</a></li>
+      <li><a href="#/it"      data-nav data-route="it"      class="hover:text-navy">IT works</a></li>
+      <li><a href="#/work"    data-nav data-route="work"    class="hover:text-navy">Selected work</a></li>
+      <li><a href="#/company" data-nav data-route="company" class="hover:text-navy">Company data</a></li>
+      <li><a href="#/contact" data-nav data-route="contact" class="hover:text-navy">Contact</a></li>
     </ul>
   </div>
 </nav>
 
-<!-- ==================== HERO ==================== -->
-<header id="main" class="bg-putih">
-  <div class="mx-auto max-w-shell px-6 pb-20 pt-16 sm:px-8 sm:pb-24 sm:pt-24">
+<main id="main">
 
-    <p class="rise font-mono text-[11px] eyebrow text-teal">Construction &middot; Material supply &middot; South Jakarta</p>
+<!-- ============================================================
+     VIEW: HOME
+     Keeps the construction argument in one uninterrupted run:
+     hero -> Scope Chain 01 -> Capabilities 02 -> Why us 03.
+     ============================================================ -->
+<section data-view="home" class="is-active">
 
-    <!-- draft, please adjust -->
-    <h1 class="rise rise-2 tight mt-8 max-w-5xl font-display text-[2.75rem] font-bold text-navy sm:text-[4.5rem] lg:text-[5.5rem]">
-      One contract from drawings to handover.
-    </h1>
+  <header class="bg-putih">
+    <div class="mx-auto max-w-shell px-6 pb-20 pt-16 sm:px-8 sm:pb-24 sm:pt-24">
 
-    <div class="mt-14 grid gap-12 lg:grid-cols-12 lg:gap-10">
+      <!-- draft, please adjust - this eyebrow still does NOT mention IT.
+           Adding a fourth item repositions the company in the first line a
+           visitor reads. That is a positioning decision, not a formatting one. -->
+      <p class="rise font-mono text-[11px] eyebrow text-teal">Construction &middot; Material supply &middot; South Jakarta</p>
+
       <!-- draft, please adjust -->
-      <p class="rise rise-3 max-w-2xl text-[1.125rem] leading-relaxed text-midnight/80 lg:col-span-7">
-        Small builds rarely fail on craftsmanship. They fail in the gaps — between the person who drew it, the supplier who quoted the materials, and the crew standing on site on Monday morning. We are registered to do all three, so managing those gaps is our job, not yours.
-      </p>
+      <h1 data-focus-target tabindex="-1" class="rise rise-2 tight mt-8 max-w-5xl font-display text-[2.75rem] font-bold text-navy sm:text-[4.5rem] lg:text-[5.5rem]">
+        One contract from drawings to handover.
+      </h1>
 
-      <div class="rise rise-4 lg:col-span-5 lg:pl-8">
-        <div class="flex flex-wrap gap-4">
-          <a href="#contact" class="inline-flex items-center bg-navy px-8 py-4 font-mono text-[11px] eyebrow text-putih transition-colors hover:bg-teal">Request a scope review</a>
-          <a href="#capabilities" class="inline-flex items-center border-2 border-navy px-8 py-4 font-mono text-[11px] eyebrow text-navy transition-colors hover:bg-navy hover:text-putih">What we cover</a>
-        </div>
-        <p class="mt-6 max-w-xs font-mono text-[11px] leading-relaxed text-abu">
-          Send the drawings, or just the idea. You get scope, exclusions, and a materials basis in writing before any price is discussed.
+      <div class="mt-14 grid gap-12 lg:grid-cols-12 lg:gap-10">
+        <!-- draft, please adjust -->
+        <p class="rise rise-3 max-w-2xl text-[1.125rem] leading-relaxed text-midnight/80 lg:col-span-7">
+          Small builds rarely fail on craftsmanship. They fail in the gaps — between the person who drew it, the supplier who quoted the materials, and the crew standing on site on Monday morning. We are registered to do all three, so managing those gaps is our job, not yours.
         </p>
+
+        <div class="rise rise-4 lg:col-span-5 lg:pl-8">
+          <div class="flex flex-wrap gap-4">
+            <a href="#/contact" data-nav class="inline-flex items-center bg-navy px-8 py-4 font-mono text-[11px] eyebrow text-putih transition-colors hover:bg-teal">Request a scope review</a>
+            <a href="#/it" data-nav class="inline-flex items-center border-2 border-navy px-8 py-4 font-mono text-[11px] eyebrow text-navy transition-colors hover:bg-navy hover:text-putih">IT works</a>
+          </div>
+          <p class="mt-6 max-w-xs font-mono text-[11px] leading-relaxed text-abu">
+            Send the drawings, or just the idea. You get scope, exclusions, and a materials basis in writing before any price is discussed.
+          </p>
+        </div>
       </div>
+
     </div>
+  </header>
 
-  </div>
-</header>
-
-<main>
-
-  <!-- ==================== SIGNATURE: THE SCOPE CHAIN ==================== -->
-  <section id="approach" class="on-dark bg-midnight py-20 text-putih sm:py-28">
+  <!-- SIGNATURE: THE SCOPE CHAIN -->
+  <div class="on-dark bg-midnight py-20 text-putih sm:py-28">
     <div class="mx-auto max-w-shell px-6 sm:px-8">
 
       <div class="flex flex-wrap items-end justify-between gap-6">
@@ -245,10 +311,10 @@
 
       </div>
     </div>
-  </section>
+  </div>
 
-  <!-- ==================== CAPABILITIES ==================== -->
-  <section id="capabilities" class="py-20 sm:py-28">
+  <!-- CAPABILITIES -->
+  <div class="py-20 sm:py-28">
     <div class="mx-auto max-w-shell px-6 sm:px-8">
 
       <p class="font-mono text-[11px] eyebrow text-navy">02 &middot; Capabilities</p>
@@ -296,10 +362,10 @@
       </div>
 
     </div>
-  </section>
+  </div>
 
-  <!-- ==================== WHY US ==================== -->
-  <section id="why" class="bg-putih py-20 sm:py-28">
+  <!-- WHY US -->
+  <div class="bg-putih py-20 sm:py-28">
     <div class="mx-auto max-w-shell px-6 sm:px-8">
 
       <div class="flex flex-wrap items-end justify-between gap-6">
@@ -349,180 +415,600 @@
 
       </div>
     </div>
-  </section>
+  </div>
 
-  <!-- ==================== COMPANY DATA ==================== -->
-  <section id="company" class="py-20 sm:py-28">
+</section>
+
+
+<!-- ============================================================
+     VIEW: IT WORKS
+     Header stays put; only the sub-view below it changes. This is the
+     area built to grow - see EDITOR'S NOTE (K) for adding a sub-page.
+     ============================================================ -->
+<section data-view="it" class="on-dark bg-navy text-putih">
+
+  <div class="mx-auto max-w-shell px-6 pt-20 sm:px-8 sm:pt-28">
+    <p class="font-mono text-[11px] eyebrow text-teal">IT works</p>
+    <!-- draft, please adjust -->
+    <h1 data-focus-target tabindex="-1" class="tight mt-6 max-w-3xl font-display text-[2.25rem] font-semibold sm:text-[3.25rem]">Two companies, one point of contact.</h1>
+    <!-- draft, please adjust -->
+    <p class="mt-8 max-w-2xl text-[1.0625rem] leading-relaxed text-putih/80">
+      Equipment and support are contracted with PT AKS Mitra Berkah. Software, data, and design are delivered by Zestha Vutura, an affiliated company under the same ownership that holds its own registrations for that work.
+    </p>
+  </div>
+
+  <!-- SUB-NAV. Add new sub-pages here, and remember step 3 in note (K). -->
+  <div class="mt-14 border-y border-white/15">
+    <div class="mx-auto max-w-shell px-6 sm:px-8">
+      <ul class="flex flex-wrap gap-x-7 gap-y-3 py-5 font-mono text-[11px] eyebrow">
+        <li><a href="#/it"          data-nav data-subroute="overview" class="text-putih/70 hover:text-teal">Overview</a></li>
+        <li><a href="#/it/support"  data-nav data-subroute="support"  class="text-putih/70 hover:text-teal">Supply &amp; support</a></li>
+        <li><a href="#/it/software" data-nav data-subroute="software" class="text-putih/70 hover:text-teal">Software</a></li>
+        <li><a href="#/it/data"     data-nav data-subroute="data"     class="text-putih/70 hover:text-teal">Data</a></li>
+        <li><a href="#/it/design"   data-nav data-subroute="design"   class="text-putih/70 hover:text-teal">Design</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- SUB-VIEW: OVERVIEW -->
+  <section data-subview="overview" class="is-active py-20 sm:py-24">
     <div class="mx-auto max-w-shell px-6 sm:px-8">
 
-      <p class="font-mono text-[11px] eyebrow text-navy">04 &middot; Company data</p>
-      <h2 class="tight mt-6 max-w-3xl font-display text-[2.25rem] font-semibold text-navy sm:text-[3.25rem]">Everything here is checkable</h2>
-      <p class="mt-6 max-w-2xl leading-relaxed text-midnight/75">
-        Registered particulars are published in full so a prospective client can verify us before making contact.
-      </p>
+      <p class="font-mono text-[11px] eyebrow text-putih/50">Contracted with PT AKS Mitra Berkah</p>
+      <div class="mt-6 grid gap-px bg-white/15 lg:grid-cols-3">
+        <div class="bg-navy p-8 lg:p-9">
+          <p class="font-mono text-xs tnum text-teal">STAGE 01</p>
+          <h3 class="mt-5 font-display text-[1.75rem] font-semibold">Supply</h3>
+          <!-- draft, please adjust -->
+          <p class="mt-4 text-[0.95rem] leading-relaxed text-putih/70">Workstations, laptops, printers, and peripherals procured on our own wholesale registration, with the supplier invoices open to you.</p>
+          <p class="mt-5 font-mono text-[11px] text-putih/45">46100, 46901, 46902</p>
+        </div>
+        <div class="bg-navy p-8 lg:p-9">
+          <p class="font-mono text-xs tnum text-teal">STAGE 02</p>
+          <h3 class="mt-5 font-display text-[1.75rem] font-semibold">Set up</h3>
+          <!-- draft, please adjust -->
+          <p class="mt-4 text-[0.95rem] leading-relaxed text-putih/70">Machines configured, software installed and licensed, accounts and shared drives put in place, old equipment migrated and wiped.</p>
+          <p class="mt-5 font-mono text-[11px] text-putih/45">62900</p>
+        </div>
+        <div class="bg-navy p-8 lg:p-9">
+          <p class="font-mono text-xs tnum text-teal">STAGE 03</p>
+          <h3 class="mt-5 font-display text-[1.75rem] font-semibold">Support</h3>
+          <!-- draft, please adjust -->
+          <p class="mt-4 text-[0.95rem] leading-relaxed text-putih/70">Faults diagnosed and fixed, backups set up and tested, data recovered when a machine fails.</p>
+          <p class="mt-5 font-mono text-[11px] text-putih/45">62900</p>
+        </div>
+      </div>
 
-      <div class="mt-14 grid gap-14 lg:grid-cols-12 lg:gap-12">
+      <p class="mt-14 font-mono text-[11px] eyebrow text-putih/50">Delivered by Zestha Vutura</p>
+      <div class="mt-6 grid gap-px bg-white/15 lg:grid-cols-3">
+        <a href="#/it/software" data-nav class="block bg-navy p-8 transition-colors hover:bg-midnight lg:p-9">
+          <p class="font-mono text-xs eyebrow text-teal">SW</p>
+          <h3 class="mt-5 font-display text-[1.75rem] font-semibold">Software</h3>
+          <p class="mt-4 text-[0.95rem] leading-relaxed text-putih/70">Web applications, internal tools, and e-commerce, built to be handed over.</p>
+        </a>
+        <a href="#/it/data" data-nav class="block bg-navy p-8 transition-colors hover:bg-midnight lg:p-9">
+          <p class="font-mono text-xs eyebrow text-teal">DT</p>
+          <h3 class="mt-5 font-display text-[1.75rem] font-semibold">Data</h3>
+          <p class="mt-4 text-[0.95rem] leading-relaxed text-putih/70">Reporting built on the systems you already run.</p>
+        </a>
+        <a href="#/it/design" data-nav class="block bg-navy p-8 transition-colors hover:bg-midnight lg:p-9">
+          <p class="font-mono text-xs eyebrow text-teal">DS</p>
+          <h3 class="mt-5 font-display text-[1.75rem] font-semibold">Design</h3>
+          <p class="mt-4 text-[0.95rem] leading-relaxed text-putih/70">Interface and identity work the build stage can follow without guessing.</p>
+        </a>
+      </div>
 
+      <!-- BOUNDARY. Same honesty device as the 66221 note. Do not remove. -->
+      <div class="mt-12 border-t border-white/20 pt-8">
+        <div class="grid gap-6 lg:grid-cols-12">
+          <h3 class="font-display text-[1.5rem] font-semibold lg:col-span-4">How the two are contracted</h3>
+          <!-- draft, please adjust -->
+          <div class="lg:col-span-8">
+            <p class="leading-relaxed text-putih/80">
+              PT AKS Mitra Berkah and Zestha Vutura are separate companies under common ownership. Our own IT registration covers support, installation, and recovery; it does not cover systems consulting or software development, and we do not sign for those. Where a job needs them, Zestha contracts that part directly, and you will see two agreements rather than one.
+            </p>
+            <p class="mt-4 font-mono text-[11px] leading-relaxed text-putih/45">
+              Structured cabling and electrical installation are separate registrations again, and are subcontracted.
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SUB-VIEW: SUPPLY & SUPPORT -->
+  <section data-subview="support" class="py-20 sm:py-24">
+    <div class="mx-auto max-w-shell px-6 sm:px-8">
+      <div class="grid gap-12 lg:grid-cols-12">
         <div class="lg:col-span-5">
-          <h3 class="font-mono text-[11px] eyebrow text-abu">Legal identity</h3>
-          <dl class="mt-6 font-mono text-[13px]">
-            <div class="flex items-baseline justify-between gap-4 border-t border-navy/20 py-4">
-              <dt class="text-abu">Legal name</dt><dd class="text-right font-semibold">PT AKS Mitra Berkah</dd>
+          <h2 class="tight font-display text-[2rem] font-semibold sm:text-[2.75rem]">Supply &amp; support</h2>
+          <!-- draft, please adjust -->
+          <p class="mt-6 leading-relaxed text-putih/80">
+            The part contracted directly with PT AKS Mitra Berkah, on the same terms as the building work: written scope, stated exclusions, one party answering the phone.
+          </p>
+          <p class="mt-6 font-mono text-[11px] leading-relaxed text-putih/45">Registered scope: 62900 &middot; 46100 &middot; 46901 &middot; 46902</p>
+        </div>
+        <div class="lg:col-span-7">
+          <dl class="font-mono text-[13px]">
+            <!-- draft, please adjust -->
+            <div class="border-t border-white/15 py-5">
+              <dt class="font-semibold text-teal">Procurement</dt>
+              <dd class="mt-2 font-body text-[0.95rem] leading-relaxed text-putih/75">Specification, quotation, and delivery of workstations, laptops, printers, and peripherals. Supplier invoices open to you.</dd>
             </div>
-            <div class="flex items-baseline justify-between gap-4 border-t border-navy/20 py-4">
-              <dt class="text-abu">Legal form</dt><dd class="text-right">Perseroan Terbatas (PT)</dd>
+            <div class="border-t border-white/15 py-5">
+              <dt class="font-semibold text-teal">Deployment</dt>
+              <dd class="mt-2 font-body text-[0.95rem] leading-relaxed text-putih/75">Machines configured and licensed, accounts and shared drives created, data migrated from old equipment, old drives wiped and certified.</dd>
             </div>
-            <div class="flex items-baseline justify-between gap-4 border-t border-navy/20 py-4">
-              <dt class="text-abu">Domicile</dt><dd class="text-right">South Jakarta</dd>
+            <div class="border-t border-white/15 py-5">
+              <dt class="font-semibold text-teal">Ongoing support</dt>
+              <dd class="mt-2 font-body text-[0.95rem] leading-relaxed text-putih/75">Fault diagnosis and repair, on a call-out or a monthly basis. Response times fixed in the agreement rather than promised in conversation.</dd>
             </div>
-            <div class="flex items-baseline justify-between gap-4 border-t border-navy/20 py-4">
-              <dt class="text-abu">Established</dt><dd class="tnum text-right">2025</dd>
+            <div class="border-y border-white/15 py-5">
+              <dt class="font-semibold text-teal">Backup &amp; recovery</dt>
+              <dd class="mt-2 font-body text-[0.95rem] leading-relaxed text-putih/75">Backups configured and — the part usually skipped — restored from, on a schedule, to prove they work. Recovery from failed drives where the media allows it.</dd>
+            </div>
+          </dl>
+          <p class="mt-6 font-mono text-[11px] leading-relaxed text-putih/45">
+            Not included: systems consulting, network or systems design, software development. Those are separate registrations we do not hold.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SUB-VIEW: SOFTWARE -->
+  <section data-subview="software" class="py-20 sm:py-24">
+    <div class="mx-auto max-w-shell px-6 sm:px-8">
+      <div class="grid gap-12 lg:grid-cols-12">
+        <div class="lg:col-span-5">
+          <h2 class="tight font-display text-[2rem] font-semibold sm:text-[2.75rem]">Software</h2>
+          <!-- draft, please adjust -->
+          <p class="mt-6 leading-relaxed text-putih/80">
+            Web applications, internal tools, and e-commerce — built to be handed over: documented, tested, and deployable by someone other than the person who wrote it.
+          </p>
+          <p class="mt-6 font-mono text-[11px] leading-relaxed text-putih/45">Delivered and contracted by Zestha Vutura.</p>
+        </div>
+        <div class="lg:col-span-7">
+          <!-- draft, please adjust -->
+          <ul class="font-mono text-[13px]">
+            <li class="border-t border-white/15 py-4">Responsive build, desktop and mobile</li>
+            <li class="border-t border-white/15 py-4">Search and performance basics covered at launch</li>
+            <li class="border-t border-white/15 py-4">Source code and deployment handed to you, not held hostage</li>
+            <li class="border-t border-white/15 py-4">Written handover notes, so the next developer is not starting blind</li>
+            <li class="border-y border-white/15 py-4">Agreed support window after go-live, priced separately</li>
+          </ul>
+          <p class="mt-6 font-mono text-[11px] leading-relaxed text-putih/45">
+            TO COMPLETE: hosting and domain arrangements are a running cost, not a giveaway. State who pays and for how long before this goes live.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SUB-VIEW: DATA -->
+  <section data-subview="data" class="py-20 sm:py-24">
+    <div class="mx-auto max-w-shell px-6 sm:px-8">
+      <div class="grid gap-12 lg:grid-cols-12">
+        <div class="lg:col-span-5">
+          <h2 class="tight font-display text-[2rem] font-semibold sm:text-[2.75rem]">Data</h2>
+          <!-- draft, please adjust -->
+          <p class="mt-6 leading-relaxed text-putih/80">
+            Reporting built on the systems you already run: figures pulled, cleaned, and put somewhere a manager can read them without asking anyone first.
+          </p>
+          <p class="mt-6 font-mono text-[11px] leading-relaxed text-putih/45">Delivered and contracted by Zestha Vutura.</p>
+        </div>
+        <div class="lg:col-span-7">
+          <!-- draft, please adjust -->
+          <ul class="font-mono text-[13px]">
+            <li class="border-t border-white/15 py-4">Dashboards with filters that match how the work is actually organised</li>
+            <li class="border-t border-white/15 py-4">Scheduled pulls from your existing sources, not manual re-entry</li>
+            <li class="border-t border-white/15 py-4">Definitions written down — what counts as a sale, a job, a month</li>
+            <li class="border-y border-white/15 py-4">Readable on a phone, because that is where it gets checked</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SUB-VIEW: DESIGN -->
+  <section data-subview="design" class="py-20 sm:py-24">
+    <div class="mx-auto max-w-shell px-6 sm:px-8">
+      <div class="grid gap-12 lg:grid-cols-12">
+        <div class="lg:col-span-5">
+          <h2 class="tight font-display text-[2rem] font-semibold sm:text-[2.75rem]">Design</h2>
+          <!-- draft, please adjust -->
+          <p class="mt-6 leading-relaxed text-putih/80">
+            Interface and identity work: layouts, a component kit, and styling rules specific enough that the build stage does not have to guess.
+          </p>
+          <p class="mt-6 font-mono text-[11px] leading-relaxed text-putih/45">Delivered and contracted by Zestha Vutura.</p>
+        </div>
+        <div class="lg:col-span-7">
+          <!-- draft, please adjust -->
+          <ul class="font-mono text-[13px]">
+            <li class="border-t border-white/15 py-4">Screen layouts for desktop and mobile</li>
+            <li class="border-t border-white/15 py-4">Reusable component kit rather than one-off screens</li>
+            <li class="border-t border-white/15 py-4">Written styling rules, not just source files</li>
+            <li class="border-y border-white/15 py-4">Editable files handed over at the end</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</section>
+
+
+<!-- ============================================================
+     VIEW: SELECTED WORK
+     Every card states the delivering entity. See EDITOR'S NOTE (H).
+     A card without a "Delivered by" line is a card claiming AKS did it.
+     ============================================================ -->
+<section data-view="work" class="bg-putih py-20 sm:py-28">
+  <div class="mx-auto max-w-shell px-6 sm:px-8">
+
+    <div class="flex flex-wrap items-end justify-between gap-6">
+      <div>
+        <p class="font-mono text-[11px] eyebrow text-navy">Selected work</p>
+        <h1 data-focus-target tabindex="-1" class="tight mt-6 max-w-2xl font-display text-[2.25rem] font-semibold text-navy sm:text-[3.25rem]">Work delivered across the group</h1>
+      </div>
+      <!-- draft, please adjust -->
+      <p class="max-w-sm text-[0.95rem] leading-relaxed text-midnight/70">
+        Each entry names the company that delivered it. Construction work contracted with PT AKS Mitra Berkah will appear here as jobs complete.
+      </p>
+    </div>
+
+    <!-- TO COMPLETE - PROJECTS
+         Three zero-filled samples so the layout can be reviewed. Replace with
+         real entries, or delete the view until there are some. Per card:
+         category, year, name, one line on what was delivered, delivering entity.
+         Client names need the client's permission before they go up. -->
+    <div class="mt-14 grid gap-px bg-navy/15 sm:grid-cols-2 lg:grid-cols-3">
+
+      <article class="bg-putih p-8 lg:p-9">
+        <div class="flex items-baseline justify-between gap-4">
+          <p class="font-mono text-[11px] eyebrow text-teal">Software</p>
+          <p class="font-mono text-[11px] tnum text-abu">20XX</p>
+        </div>
+        <h2 class="mt-5 font-display text-[1.5rem] font-semibold">[Project name]</h2>
+        <p class="mt-3 text-[0.95rem] leading-relaxed text-midnight/80">[One line on what was delivered and what it changed for the client.]</p>
+        <p class="mt-6 border-t border-navy/15 pt-4 font-mono text-[11px] text-abu">Delivered by Zestha Vutura</p>
+      </article>
+
+      <article class="bg-putih p-8 lg:p-9">
+        <div class="flex items-baseline justify-between gap-4">
+          <p class="font-mono text-[11px] eyebrow text-teal">Data</p>
+          <p class="font-mono text-[11px] tnum text-abu">20XX</p>
+        </div>
+        <h2 class="mt-5 font-display text-[1.5rem] font-semibold">[Project name]</h2>
+        <p class="mt-3 text-[0.95rem] leading-relaxed text-midnight/80">[One line on what was delivered and what it changed for the client.]</p>
+        <p class="mt-6 border-t border-navy/15 pt-4 font-mono text-[11px] text-abu">Delivered by Zestha Vutura</p>
+      </article>
+
+      <article class="bg-putih p-8 lg:p-9">
+        <div class="flex items-baseline justify-between gap-4">
+          <p class="font-mono text-[11px] eyebrow text-teal">Design</p>
+          <p class="font-mono text-[11px] tnum text-abu">20XX</p>
+        </div>
+        <h2 class="mt-5 font-display text-[1.5rem] font-semibold">[Project name]</h2>
+        <p class="mt-3 text-[0.95rem] leading-relaxed text-midnight/80">[One line on what was delivered and what it changed for the client.]</p>
+        <p class="mt-6 border-t border-navy/15 pt-4 font-mono text-[11px] text-abu">Delivered by Zestha Vutura</p>
+      </article>
+
+    </div>
+
+    <p class="mt-8 max-w-2xl font-mono text-[11px] leading-relaxed text-abu">
+      No construction projects are listed yet. That is deliberate — none have completed under this company, and an empty list is worth more than a padded one.
+    </p>
+
+  </div>
+</section>
+
+
+<!-- ==================== VIEW: COMPANY DATA ==================== -->
+<section data-view="company" class="py-20 sm:py-28">
+  <div class="mx-auto max-w-shell px-6 sm:px-8">
+
+    <p class="font-mono text-[11px] eyebrow text-navy">Company data</p>
+    <h1 data-focus-target tabindex="-1" class="tight mt-6 max-w-3xl font-display text-[2.25rem] font-semibold text-navy sm:text-[3.25rem]">Everything here is checkable</h1>
+    <p class="mt-6 max-w-2xl leading-relaxed text-midnight/75">
+      Registered particulars are published in full so a prospective client can verify us before making contact.
+    </p>
+
+    <div class="mt-14 grid gap-14 lg:grid-cols-12 lg:gap-12">
+
+      <div class="lg:col-span-5">
+        <h2 class="font-mono text-[11px] eyebrow text-abu">Legal identity</h2>
+        <dl class="mt-6 font-mono text-[13px]">
+          <div class="flex items-baseline justify-between gap-4 border-t border-navy/20 py-4">
+            <dt class="text-abu">Legal name</dt><dd class="text-right font-semibold">PT AKS Mitra Berkah</dd>
+          </div>
+          <div class="flex items-baseline justify-between gap-4 border-t border-navy/20 py-4">
+            <dt class="text-abu">Legal form</dt><dd class="text-right">Perseroan Terbatas (PT)</dd>
+          </div>
+          <div class="flex items-baseline justify-between gap-4 border-t border-navy/20 py-4">
+            <dt class="text-abu">Domicile</dt><dd class="text-right">South Jakarta</dd>
+          </div>
+          <div class="flex items-baseline justify-between gap-4 border-t border-navy/20 py-4">
+            <dt class="text-abu">Established</dt><dd class="tnum text-right">2025</dd>
+          </div>
+
+          <!-- TO COMPLETE: the five rows below must come from Berkah's own deed
+               and SK. Do not copy them from the Sejahtra deed. -->
+          <div class="flex items-baseline justify-between gap-4 border-t border-navy/20 py-4">
+            <dt class="text-abu">Deed of incorporation</dt><dd class="text-right">No. 00 / 2025</dd>
+          </div>
+          <div class="flex items-baseline justify-between gap-4 border-t border-navy/20 py-4">
+            <dt class="text-abu">Ministry of Law approval</dt><dd class="text-right">AHU-0000000.AH.01.01.2025</dd>
+          </div>
+          <div class="flex items-baseline justify-between gap-4 border-t border-navy/20 py-4">
+            <dt class="text-abu">Business ID (NIB)</dt><dd class="text-right tnum">0000000000000</dd>
+          </div>
+          <div class="flex items-baseline justify-between gap-4 border-t border-navy/20 py-4">
+            <dt class="text-abu">Tax ID (NPWP)</dt><dd class="text-right tnum">00.000.000.0-000.000</dd>
+          </div>
+          <div class="flex items-baseline justify-between gap-4 border-y border-navy/20 py-4">
+            <dt class="text-abu">Director</dt><dd class="text-right">[Director’s name]</dd>
+          </div>
+        </dl>
+
+        <!-- draft, please adjust -->
+        <p class="mt-8 font-mono text-[11px] leading-relaxed text-abu">
+          Zestha Vutura is a separate legal entity under common ownership. Its own particulars are published on its own site.
+        </p>
+      </div>
+
+      <div class="lg:col-span-7">
+        <h2 class="font-mono text-[11px] eyebrow text-abu">Registered business activities (KBLI)</h2>
+        <!-- TO COMPLETE: verify against Berkah's own NIB. See EDITOR'S NOTE (G):
+             62900 is a KBLI 2025 code sitting in a list of KBLI 2020 codes. -->
+        <table class="mt-6 w-full text-left">
+          <caption class="sr-only">Registered business activities and their KBLI codes</caption>
+          <tbody class="align-top">
+            <tr class="border-t border-navy/20">
+              <th scope="row" class="w-20 py-4 pr-4 font-mono text-[13px] font-normal tnum text-teal">41011</th>
+              <td class="py-4 text-[0.95rem]">Conventional construction of residential buildings</td>
+            </tr>
+            <tr class="border-t border-navy/20">
+              <th scope="row" class="w-20 py-4 pr-4 font-mono text-[13px] font-normal tnum text-teal">43400</th>
+              <td class="py-4 text-[0.95rem]">Specialist construction intermediation services</td>
+            </tr>
+            <tr class="border-t border-navy/20">
+              <th scope="row" class="w-20 py-4 pr-4 font-mono text-[13px] font-normal tnum text-teal">43909</th>
+              <td class="py-4 text-[0.95rem]">Other specialist construction works n.e.c.</td>
+            </tr>
+            <tr class="border-t border-navy/20">
+              <th scope="row" class="w-20 py-4 pr-4 font-mono text-[13px] font-normal tnum text-teal">70209</th>
+              <td class="py-4 text-[0.95rem]">Other management and business consultancy activities</td>
+            </tr>
+            <tr class="border-t border-navy/20">
+              <th scope="row" class="w-20 py-4 pr-4 font-mono text-[13px] font-normal tnum text-teal">62900</th>
+              <td class="py-4 text-[0.95rem]">
+                Other information technology and computer service activities
+                <span class="mt-1.5 block font-mono text-[11px] leading-relaxed text-abu">Support, installation, and recovery work only. Systems consulting and software development are separate registrations, held by Zestha Vutura.</span>
+              </td>
+            </tr>
+            <tr class="border-t border-navy/20">
+              <th scope="row" class="w-20 py-4 pr-4 font-mono text-[13px] font-normal tnum text-teal">46100</th>
+              <td class="py-4 text-[0.95rem]">Wholesale trade on a fee or contract basis</td>
+            </tr>
+            <tr class="border-t border-navy/20">
+              <th scope="row" class="w-20 py-4 pr-4 font-mono text-[13px] font-normal tnum text-teal">46901</th>
+              <td class="py-4 text-[0.95rem]">Wholesale of assorted goods, cash-and-carry</td>
+            </tr>
+            <tr class="border-t border-navy/20">
+              <th scope="row" class="w-20 py-4 pr-4 font-mono text-[13px] font-normal tnum text-teal">46902</th>
+              <td class="py-4 text-[0.95rem]">Wholesale of assorted goods, other than cash-and-carry</td>
+            </tr>
+            <tr class="border-y border-navy/20">
+              <th scope="row" class="w-20 py-4 pr-4 font-mono text-[13px] font-normal tnum text-teal">66221</th>
+              <td class="py-4 text-[0.95rem]">
+                Insurance agency activities
+                <span class="mt-1.5 block font-mono text-[11px] leading-relaxed text-abu">Registered scope only, not offered as a service: this requires an agency agreement with a licensed insurer and agent certification, neither of which is in place.</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ==================== VIEW: CONTACT ==================== -->
+<section data-view="contact" class="on-dark bg-navy py-20 text-putih sm:py-28">
+  <div class="mx-auto max-w-shell px-6 sm:px-8">
+
+    <div class="grid gap-14 lg:grid-cols-12 lg:gap-12">
+
+      <div class="lg:col-span-7">
+        <p class="font-mono text-[11px] eyebrow text-teal">Contact</p>
+        <!-- draft, please adjust -->
+        <h1 data-focus-target tabindex="-1" class="tight mt-6 max-w-2xl font-display text-[2.5rem] font-bold sm:text-[3.75rem]">Tell us what you are building.</h1>
+        <!-- draft, please adjust -->
+        <p class="mt-8 max-w-xl text-[1.0625rem] leading-relaxed text-putih/85">
+          A sketch and a location are enough to start. We will come back with what falls inside our scope, what has to be subcontracted, what permits the work needs — and only then, a price.
+        </p>
+      </div>
+
+      <div class="lg:col-span-5">
+        <div class="bg-midnight p-8 sm:p-10">
+          <dl class="font-mono text-[13px]">
+            <div class="pb-5">
+              <dt class="text-[10px] eyebrow text-teal">Office</dt>
+              <dd class="mt-2.5 leading-relaxed">
+                Jl. Aselih No. 119, RT 006 / RW 001<br>
+                Cipedak, Jagakarsa<br>
+                South Jakarta 12630, Indonesia
+              </dd>
             </div>
 
-            <!-- TO COMPLETE: the five rows below must come from Berkah's own deed
-                 and SK. Do not copy them from the Sejahtra deed. -->
-            <div class="flex items-baseline justify-between gap-4 border-t border-navy/20 py-4">
-              <dt class="text-abu">Deed of incorporation</dt><dd class="text-right">No. 00 / 2025</dd>
+            <!-- TO COMPLETE: replace both rows with a working number and inbox. -->
+            <div class="flex items-baseline justify-between gap-4 border-t border-white/15 py-4">
+              <dt class="text-[10px] eyebrow text-abu">Phone / WhatsApp</dt>
+              <dd class="text-right tnum">+62 800 0000 0000</dd>
             </div>
-            <div class="flex items-baseline justify-between gap-4 border-t border-navy/20 py-4">
-              <dt class="text-abu">Ministry of Law approval</dt><dd class="text-right">AHU-0000000.AH.01.01.2025</dd>
+            <div class="flex items-baseline justify-between gap-4 border-t border-white/15 py-4">
+              <dt class="text-[10px] eyebrow text-abu">Email</dt>
+              <dd class="text-right">info@example.com</dd>
             </div>
-            <div class="flex items-baseline justify-between gap-4 border-t border-navy/20 py-4">
-              <dt class="text-abu">Business ID (NIB)</dt><dd class="text-right tnum">0000000000000</dd>
-            </div>
-            <div class="flex items-baseline justify-between gap-4 border-t border-navy/20 py-4">
-              <dt class="text-abu">Tax ID (NPWP)</dt><dd class="text-right tnum">00.000.000.0-000.000</dd>
-            </div>
-            <div class="flex items-baseline justify-between gap-4 border-y border-navy/20 py-4">
-              <dt class="text-abu">Director</dt><dd class="text-right">[Director’s name]</dd>
+            <div class="flex items-baseline justify-between gap-4 border-y border-white/15 py-4">
+              <dt class="text-[10px] eyebrow text-abu">Hours</dt>
+              <!-- draft, please adjust -->
+              <dd class="text-right">Mon–Fri, 09:00–17:00 WIB</dd>
             </div>
           </dl>
         </div>
-
-        <div class="lg:col-span-7">
-          <h3 class="font-mono text-[11px] eyebrow text-abu">Registered business activities (KBLI)</h3>
-          <!-- TO COMPLETE: verify this list against Berkah's own NIB before launch.
-               See EDITOR'S NOTE (G) at the top of this file: 62900 is a KBLI 2025
-               code sitting in a list of KBLI 2020 codes. All nine must be restated
-               in whichever edition the NIB actually uses. -->
-          <table class="mt-6 w-full text-left">
-            <caption class="sr-only">Registered business activities and their KBLI codes</caption>
-            <tbody class="align-top">
-              <tr class="border-t border-navy/20">
-                <th scope="row" class="w-20 py-4 pr-4 font-mono text-[13px] font-normal tnum text-teal">41011</th>
-                <td class="py-4 text-[0.95rem]">Conventional construction of residential buildings</td>
-              </tr>
-              <tr class="border-t border-navy/20">
-                <th scope="row" class="w-20 py-4 pr-4 font-mono text-[13px] font-normal tnum text-teal">43400</th>
-                <td class="py-4 text-[0.95rem]">Specialist construction intermediation services</td>
-              </tr>
-              <tr class="border-t border-navy/20">
-                <th scope="row" class="w-20 py-4 pr-4 font-mono text-[13px] font-normal tnum text-teal">43909</th>
-                <td class="py-4 text-[0.95rem]">Other specialist construction works n.e.c.</td>
-              </tr>
-              <tr class="border-t border-navy/20">
-                <th scope="row" class="w-20 py-4 pr-4 font-mono text-[13px] font-normal tnum text-teal">70209</th>
-                <td class="py-4 text-[0.95rem]">Other management and business consultancy activities</td>
-              </tr>
-
-              <!-- ADDED ON REQUEST. There is no matching entry in the Capabilities
-                   section above; either add one or the code sits unexplained.
-                   Wording below follows the official scope: this code covers IT
-                   support, setup and installation work. It does NOT cover
-                   information systems consulting or planning, and it does not
-                   cover software development - those are separate codes. -->
-              <tr class="border-t border-navy/20">
-                <th scope="row" class="w-20 py-4 pr-4 font-mono text-[13px] font-normal tnum text-teal">62900</th>
-                <td class="py-4 text-[0.95rem]">Other information technology and computer service activities</td>
-              </tr>
-
-              <tr class="border-t border-navy/20">
-                <th scope="row" class="w-20 py-4 pr-4 font-mono text-[13px] font-normal tnum text-teal">46100</th>
-                <td class="py-4 text-[0.95rem]">Wholesale trade on a fee or contract basis</td>
-              </tr>
-              <tr class="border-t border-navy/20">
-                <th scope="row" class="w-20 py-4 pr-4 font-mono text-[13px] font-normal tnum text-teal">46901</th>
-                <td class="py-4 text-[0.95rem]">Wholesale of assorted goods, cash-and-carry</td>
-              </tr>
-              <tr class="border-t border-navy/20">
-                <th scope="row" class="w-20 py-4 pr-4 font-mono text-[13px] font-normal tnum text-teal">46902</th>
-                <td class="py-4 text-[0.95rem]">Wholesale of assorted goods, other than cash-and-carry</td>
-              </tr>
-              <tr class="border-y border-navy/20">
-                <th scope="row" class="w-20 py-4 pr-4 font-mono text-[13px] font-normal tnum text-teal">66221</th>
-                <td class="py-4 text-[0.95rem]">
-                  Insurance agency activities
-                  <span class="mt-1.5 block font-mono text-[11px] leading-relaxed text-abu">Registered scope only, not offered as a service: this requires an agency agreement with a licensed insurer and agent certification, neither of which is in place.</span>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
       </div>
+
     </div>
-  </section>
-
-  <!-- ==================== CONTACT ==================== -->
-  <section id="contact" class="on-dark bg-navy py-20 text-putih sm:py-28">
-    <div class="mx-auto max-w-shell px-6 sm:px-8">
-
-      <div class="grid gap-14 lg:grid-cols-12 lg:gap-12">
-
-        <div class="lg:col-span-7">
-          <p class="font-mono text-[11px] eyebrow text-teal">05 &middot; Contact</p>
-          <!-- draft, please adjust -->
-          <h2 class="tight mt-6 max-w-2xl font-display text-[2.5rem] font-bold sm:text-[3.75rem]">Tell us what you are building.</h2>
-          <!-- draft, please adjust -->
-          <p class="mt-8 max-w-xl text-[1.0625rem] leading-relaxed text-putih/85">
-            A sketch and a location are enough to start. We will come back with what falls inside our scope, what has to be subcontracted, what permits the work needs — and only then, a price.
-          </p>
-        </div>
-
-        <div class="lg:col-span-5">
-          <div class="bg-midnight p-8 sm:p-10">
-            <dl class="font-mono text-[13px]">
-              <div class="pb-5">
-                <dt class="text-[10px] eyebrow text-teal">Office</dt>
-                <dd class="mt-2.5 leading-relaxed">
-                  Jl. Aselih No. 119, RT 006 / RW 001<br>
-                  Cipedak, Jagakarsa<br>
-                  South Jakarta 12630, Indonesia
-                </dd>
-              </div>
-
-              <!-- TO COMPLETE: replace both rows with a working number and inbox. -->
-              <div class="flex items-baseline justify-between gap-4 border-t border-white/15 py-4">
-                <dt class="text-[10px] eyebrow text-abu">Phone / WhatsApp</dt>
-                <dd class="text-right tnum">+62 800 0000 0000</dd>
-              </div>
-              <div class="flex items-baseline justify-between gap-4 border-t border-white/15 py-4">
-                <dt class="text-[10px] eyebrow text-abu">Email</dt>
-                <dd class="text-right">info@example.com</dd>
-              </div>
-              <div class="flex items-baseline justify-between gap-4 border-y border-white/15 py-4">
-                <dt class="text-[10px] eyebrow text-abu">Hours</dt>
-                <!-- draft, please adjust -->
-                <dd class="text-right">Mon–Fri, 09:00–17:00 WIB</dd>
-              </div>
-            </dl>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
+  </div>
+</section>
 
 </main>
 
 <footer class="bg-midnight py-12">
   <div class="mx-auto flex max-w-shell flex-wrap items-center justify-between gap-x-8 gap-y-6 px-6 sm:px-8">
-    <img src="logo-aks-white.png" alt="PT AKS Mitra Berkah" width="523" height="267" class="h-10 w-auto">
+    <a href="#/" data-nav><img src="logo-aks-white.png" alt="PT AKS Mitra Berkah — home" width="523" height="267" class="h-10 w-auto"></a>
     <p class="max-w-md font-mono text-[10px] leading-relaxed text-abu">
       PT AKS Mitra Berkah &middot; Registered office: Jagakarsa, South Jakarta, Indonesia.
     </p>
   </div>
 </footer>
+
+<script>
+/* ============================================================================
+   ROUTER - see EDITOR'S NOTE (J) and (K) before editing.
+   Hash routes: #/  #/it  #/it/software  #/work  #/company  #/contact
+   ========================================================================== */
+(function () {
+  'use strict';
+
+  var ROUTES    = ['home', 'it', 'work', 'company', 'contact'];
+  var SUBROUTES = ['overview', 'support', 'software', 'data', 'design'];
+
+  var TITLES = {
+    'home':        'PT AKS Mitra Berkah — Plan, Supply & Build Under One Contract',
+    'it':          'IT works — PT AKS Mitra Berkah',
+    'it/support':  'Supply & support — PT AKS Mitra Berkah',
+    'it/software': 'Software — PT AKS Mitra Berkah',
+    'it/data':     'Data — PT AKS Mitra Berkah',
+    'it/design':   'Design — PT AKS Mitra Berkah',
+    'work':        'Selected work — PT AKS Mitra Berkah',
+    'company':     'Company data — PT AKS Mitra Berkah',
+    'contact':     'Contact — PT AKS Mitra Berkah'
+  };
+
+  var views    = document.querySelectorAll('[data-view]');
+  var subviews = document.querySelectorAll('[data-subview]');
+  var navLinks = document.querySelectorAll('[data-route]');
+  var subLinks = document.querySelectorAll('[data-subroute]');
+  var menu     = document.getElementById('navMenu');
+  var toggle   = document.getElementById('navToggle');
+  var firstRun = true;
+
+  function parseHash() {
+    var raw = window.location.hash.replace(/^#\/?/, '');
+    var parts = raw.split('/').filter(Boolean);
+    var view = ROUTES.indexOf(parts[0]) > -1 ? parts[0] : 'home';
+    var sub = null;
+    if (view === 'it') {
+      sub = SUBROUTES.indexOf(parts[1]) > -1 ? parts[1] : 'overview';
+    }
+    return { view: view, sub: sub };
+  }
+
+  function render() {
+    var r = parseHash();
+    var i, el;
+
+    for (i = 0; i < views.length; i++) {
+      el = views[i];
+      el.classList.toggle('is-active', el.getAttribute('data-view') === r.view);
+    }
+    for (i = 0; i < subviews.length; i++) {
+      el = subviews[i];
+      el.classList.toggle('is-active', r.sub !== null && el.getAttribute('data-subview') === r.sub);
+    }
+    for (i = 0; i < navLinks.length; i++) {
+      el = navLinks[i];
+      if (el.getAttribute('data-route') === r.view) { el.setAttribute('aria-current', 'page'); }
+      else { el.removeAttribute('aria-current'); }
+    }
+    for (i = 0; i < subLinks.length; i++) {
+      el = subLinks[i];
+      if (r.sub !== null && el.getAttribute('data-subroute') === r.sub) { el.setAttribute('aria-current', 'page'); }
+      else { el.removeAttribute('aria-current'); }
+    }
+
+    var key = r.sub && r.sub !== 'overview' ? r.view + '/' + r.sub : r.view;
+    if (TITLES[key]) { document.title = TITLES[key]; }
+
+    /* Instant jump, not a scroll animation. Without it a visitor deep inside a
+       long view lands in blank space on a short one. */
+    if (!firstRun) {
+      window.scrollTo(0, 0);
+
+      /* Keyboard and screen-reader users must land in the new view, not stay
+         on the link they just left. preventScroll keeps the jump silent. */
+      var active = document.querySelector('[data-view].is-active [data-focus-target]');
+      if (active) {
+        try { active.focus({ preventScroll: true }); } catch (e) { active.focus(); }
+      }
+    }
+
+    /* The hero load-in is a one-time welcome, not a transition. Strip it after
+       the first paint so it does not replay every time Home is revisited. */
+    if (firstRun) {
+      window.setTimeout(function () {
+        var r2 = document.querySelectorAll('.rise');
+        for (var j = 0; j < r2.length; j++) { r2[j].classList.remove('rise', 'rise-2', 'rise-3', 'rise-4'); }
+      }, 1400);
+    }
+
+    closeMenu();
+    firstRun = false;
+  }
+
+  function closeMenu() {
+    if (!menu || !toggle) { return; }
+    menu.classList.add('hidden');
+    toggle.setAttribute('aria-expanded', 'false');
+    toggle.textContent = 'Menu';
+  }
+
+  if (toggle && menu) {
+    toggle.addEventListener('click', function () {
+      var open = menu.classList.toggle('hidden') === false;
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.textContent = open ? 'Close' : 'Menu';
+    });
+  }
+
+  /* Re-render even when the hash is unchanged, so clicking the current item
+     still closes the mobile menu instead of appearing dead. */
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest ? e.target.closest('a[data-nav]') : null;
+    if (!a) { return; }
+    if (a.getAttribute('href') === window.location.hash) { e.preventDefault(); render(); }
+  });
+
+  /* Only hashes shaped like routes drive the router. Without this guard the
+     "Skip to content" link (#main) would silently throw the visitor back to
+     Home from whatever view they were reading. */
+  function isRouteHash() {
+    var h = window.location.hash;
+    return h === '' || h === '#' || h.indexOf('#/') === 0;
+  }
+
+  window.addEventListener('hashchange', function () {
+    if (isRouteHash()) { render(); }
+  });
+
+  render();
+})();
+</script>
 
 </body>
 </html>
