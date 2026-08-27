@@ -163,6 +163,11 @@
 
   <div id="worksPanel" class="hidden max-h-[70vh] overflow-y-auto border-b border-navy/15 bg-putih lg:max-h-none lg:overflow-visible">
     <div class="mx-auto max-w-shell px-5 py-8 sm:px-8 sm:py-12">
+
+      <a href="#/works" data-nav data-page-link="all" class="mb-7 inline-flex items-center gap-2 border-b-2 border-teal pb-1 font-mono text-[11px] eyebrow text-navy hover:text-teal sm:mb-9">
+        <span class="t-en">All services</span><span class="t-id">Semua layanan</span> <span aria-hidden="true">&rarr;</span>
+      </a>
+
       <div class="grid gap-8 md:grid-cols-3 lg:gap-14">
 
         <div>
@@ -218,7 +223,7 @@
         <div class="rise rise-4 lg:col-span-5 lg:pl-8">
           <div class="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
             <a href="#/contact" data-nav class="inline-flex items-center justify-center bg-navy px-8 py-4 font-mono text-[11px] eyebrow text-putih transition-colors hover:bg-teal"><span class="t-en">Discuss your project</span><span class="t-id">Diskusikan proyek Anda</span></a>
-            <a href="#/works/construction" data-nav class="inline-flex items-center justify-center border-2 border-navy px-8 py-4 font-mono text-[11px] eyebrow text-navy transition-colors hover:bg-navy hover:text-putih"><span class="t-en">Our services</span><span class="t-id">Layanan kami</span></a>
+            <a href="#/works" data-nav class="inline-flex items-center justify-center border-2 border-navy px-8 py-4 font-mono text-[11px] eyebrow text-navy transition-colors hover:bg-navy hover:text-putih"><span class="t-en">Our services</span><span class="t-id">Layanan kami</span></a>
           </div>
           <p class="mt-6 max-w-sm font-mono text-[11px] leading-relaxed text-abu">
             <span class="t-en">Send us the drawings, plans, or a brief description. We will review the scope and materials before preparing a quotation.</span><span class="t-id">Kirim gambar, rencana, atau gambaran singkat proyek Anda. Kami akan meninjau lingkup dan kebutuhan material sebelum menyiapkan penawaran.</span>
@@ -309,6 +314,109 @@
 </section>
 
 <section data-view="works">
+
+  <!-- WORKS LANDING (#/works). Both business lines on one page, then the
+       portfolio underneath. Previously #/works silently redirected to
+       Construction, so IT was unreachable from the hero button. -->
+  <div data-division="all" class="bg-putih">
+    <div class="mx-auto max-w-shell px-5 pb-16 pt-14 sm:px-8 sm:pb-28 sm:pt-28">
+
+      <p class="font-mono text-[11px] eyebrow text-navy"><span class="t-en">Our Works</span><span class="t-id">Lini Usaha</span></p>
+      <h1 data-focus-target tabindex="-1" class="tight mt-5 max-w-3xl font-display text-[1.875rem] font-semibold text-navy sm:mt-6 sm:text-[3.25rem]">
+        <span class="t-en">Two lines of work, one company.</span><span class="t-id">Dua lini usaha, satu perusahaan.</span>
+      </h1>
+      <p class="mt-5 max-w-2xl leading-relaxed text-midnight/75 sm:mt-6">
+        <span class="t-en">We build, and we build software. Each line runs under its own contract and its own team, with the same director accountable for both.</span><span class="t-id">Kami membangun, dan kami membangun software. Masing-masing lini berjalan dengan kontrak dan tim tersendiri, dengan direktur yang sama bertanggung jawab atas keduanya.</span>
+      </p>
+
+      <div class="mt-10 grid gap-px bg-navy/15 sm:mt-14 lg:grid-cols-2">
+
+        <article class="bg-putih p-6 sm:p-9 lg:p-10">
+          <p class="font-mono text-[11px] eyebrow text-teal"><span class="t-en">Business line</span><span class="t-id">Lini usaha</span></p>
+          <h2 class="mt-4 font-display text-[1.75rem] font-semibold text-navy sm:text-[2.25rem]"><span class="t-en">Construction</span><span class="t-id">Konstruksi</span></h2>
+          <p class="mt-4 leading-relaxed text-midnight/80">
+            <span class="t-en">Planning, material supply, and construction under one contract, for homes and specialist work packages in Greater Jakarta.</span><span class="t-id">Perencanaan, pengadaan material, dan konstruksi dalam satu kontrak, untuk hunian dan paket pekerjaan spesialis di Jabodetabek.</span>
+          </p>
+
+          <dl class="mt-7 font-mono text-[12px]">
+            <div class="flex items-baseline justify-between gap-4 border-t border-navy/20 py-3.5">
+              <dt><span class="t-en">Residential construction</span><span class="t-id">Konstruksi hunian</span></dt>
+              <dd class="shrink-0 tnum text-abu">41011</dd>
+            </div>
+            <div class="flex items-baseline justify-between gap-4 border-t border-navy/20 py-3.5">
+              <dt><span class="t-en">Specialist works</span><span class="t-id">Pekerjaan spesialis</span></dt>
+              <dd class="shrink-0 tnum text-abu">43400, 43909</dd>
+            </div>
+            <div class="flex items-baseline justify-between gap-4 border-t border-navy/20 py-3.5">
+              <dt><span class="t-en">Material supply</span><span class="t-id">Suplai material</span></dt>
+              <dd class="shrink-0 tnum text-abu">46100, 46901</dd>
+            </div>
+            <div class="flex items-baseline justify-between gap-4 border-y border-navy/20 py-3.5">
+              <dt><span class="t-en">Pre-construction advice</span><span class="t-id">Konsultasi prakonstruksi</span></dt>
+              <dd class="shrink-0 tnum text-abu">70209</dd>
+            </div>
+          </dl>
+
+          <a href="#/works/construction" data-nav class="mt-8 inline-flex w-full items-center justify-center bg-navy px-7 py-4 font-mono text-[11px] eyebrow text-putih transition-colors hover:bg-teal sm:w-auto">
+            <span class="t-en">See construction services</span><span class="t-id">Lihat layanan konstruksi</span>
+          </a>
+        </article>
+
+        <article class="bg-putih p-6 sm:p-9 lg:p-10">
+          <p class="font-mono text-[11px] eyebrow text-teal"><span class="t-en">Business line</span><span class="t-id">Lini usaha</span></p>
+          <h2 class="mt-4 font-display text-[1.75rem] font-semibold text-navy sm:text-[2.25rem]">IT</h2>
+          <p class="mt-4 leading-relaxed text-midnight/80">
+            <span class="t-en">Websites, internal tools, and business applications, built around how your team already works. Source code and documentation are handed over at the end.</span><span class="t-id">Website, tools internal, dan aplikasi bisnis, dibangun mengikuti cara kerja tim Anda. Source code dan dokumentasi diserahkan di akhir proyek.</span>
+          </p>
+
+          <dl class="mt-7 font-mono text-[12px]">
+            <div class="flex items-baseline justify-between gap-4 border-t border-navy/20 py-3.5">
+              <dt>Software</dt>
+              <dd class="shrink-0 tnum text-abu">62900</dd>
+            </div>
+            <div class="flex items-baseline justify-between gap-4 border-t border-navy/20 py-3.5">
+              <dt>Data</dt>
+              <dd class="shrink-0 tnum text-abu">62900</dd>
+            </div>
+            <div class="flex items-baseline justify-between gap-4 border-y border-navy/20 py-3.5">
+              <dt><span class="t-en">Design</span><span class="t-id">Desain</span></dt>
+              <dd class="shrink-0 tnum text-abu">62900</dd>
+            </div>
+          </dl>
+
+          <a href="#/works/it" data-nav class="mt-8 inline-flex w-full items-center justify-center bg-navy px-7 py-4 font-mono text-[11px] eyebrow text-putih transition-colors hover:bg-teal sm:w-auto">
+            <span class="t-en">See IT services</span><span class="t-id">Lihat layanan IT</span>
+          </a>
+        </article>
+
+      </div>
+
+      <!-- Portfolio strip. The heading says IT because every entry is IT.
+           Calling it "our projects" on a page that opens with construction
+           would promise buildings this grid cannot show. -->
+      <div class="mt-16 border-t border-navy/15 pt-12 sm:mt-24 sm:pt-16">
+        <div class="flex flex-wrap items-end justify-between gap-6">
+          <div>
+            <p class="font-mono text-[11px] eyebrow text-navy"><span class="t-en">Delivered work</span><span class="t-id">Pekerjaan terlaksana</span></p>
+            <h2 class="tight mt-5 max-w-2xl font-display text-[1.75rem] font-semibold text-navy sm:mt-6 sm:text-[2.5rem]">
+              <span class="t-en">IT projects we have delivered</span><span class="t-id">Proyek IT yang telah kami kerjakan</span>
+            </h2>
+          </div>
+          <p class="max-w-sm text-[0.95rem] leading-relaxed text-midnight/70">
+            <span class="t-en">Construction work is not published here yet. Site references and past client contacts are available on request.</span><span class="t-id">Pekerjaan konstruksi belum ditampilkan di sini. Referensi lokasi dan kontak klien sebelumnya dapat kami berikan bila diminta.</span>
+          </p>
+        </div>
+
+        <div id="grid-works" class="mt-10 grid gap-5 sm:mt-12 sm:grid-cols-2 sm:gap-px sm:bg-navy/15 lg:grid-cols-3"></div>
+
+        <div class="mt-8 flex flex-wrap items-center justify-between gap-4">
+          <p id="status-works" class="font-mono text-[11px] text-abu" aria-live="polite"></p>
+          <nav id="pager-works" class="flex flex-wrap items-center gap-2 font-mono text-[11px]"></nav>
+        </div>
+      </div>
+
+    </div>
+  </div>
 
   <div data-division="construction">
 
@@ -739,7 +847,8 @@
     construction: ['overview', 'advisory'],
     it:           ['software', 'data', 'design', 'projects']
   };
-  var DEFAULT_DIVISION = 'construction';
+  /* No DEFAULT_DIVISION any more: #/works resolves to the 'all' landing block
+     in the markup, which is not listed in DIVISIONS because it has no pages. */
 
   /* Change this to 'id' to make Indonesian the default. See NOTE (N). */
   var PREFERRED_DEFAULT = 'en';
@@ -748,6 +857,7 @@
   var TITLES = {
     en: {
       'home':                       'PT AKS Mitra Berkah — Construction, Supply & IT Services',
+      'works':                      'Our services — PT AKS Mitra Berkah',
       'works/construction':         'Construction — PT AKS Mitra Berkah',
       'works/construction/advisory':'Pre-construction advice — PT AKS Mitra Berkah',
       'works/it':                   'IT — PT AKS Mitra Berkah',
@@ -761,6 +871,7 @@
     },
     id: {
       'home':                       'PT AKS Mitra Berkah — Konstruksi, Pengadaan & Layanan IT',
+      'works':                      'Layanan kami — PT AKS Mitra Berkah',
       'works/construction':         'Konstruksi — PT AKS Mitra Berkah',
       'works/construction/advisory':'Konsultasi prakonstruksi — PT AKS Mitra Berkah',
       'works/it':                   'IT — PT AKS Mitra Berkah',
@@ -828,9 +939,11 @@
   };
 
   var GRIDS = [
-    { key: 'all', grid: 'grid-all', pager: 'pager-all', status: 'status-all', filter: null,           dark: false, page: 1 },
-    { key: 'it',  grid: 'grid-it',  pager: 'pager-it',  status: 'status-it',  filter: IT_CATEGORIES,  dark: true,  page: 1 }
+    { key: 'all',   grid: 'grid-all',   pager: 'pager-all',   status: 'status-all',   filter: null,          dark: false, page: 1 },
+    { key: 'works', grid: 'grid-works', pager: 'pager-works', status: 'status-works', filter: null,          dark: false, page: 1 },
+    { key: 'it',    grid: 'grid-it',    pager: 'pager-it',    status: 'status-it',    filter: IT_CATEGORIES, dark: true,  page: 1 }
   ];
+  var IT_GRID = GRIDS[2];   /* referenced by the filter + search handlers */
 
   var views     = document.querySelectorAll('[data-view]');
   var divisions = document.querySelectorAll('[data-division]');
@@ -1086,8 +1199,8 @@
     if (input) {
       input.addEventListener('input', function () {
         IT_PROJECT_QUERY = input.value || '';
-        GRIDS[1].page = 1;
-        renderGrid(GRIDS[1]);
+        IT_GRID.page = 1;
+        renderGrid(IT_GRID);
       });
     }
 
@@ -1095,7 +1208,7 @@
     for (var i = 0; i < buttons.length; i++) {
       buttons[i].addEventListener('click', function () {
         IT_PROJECT_FILTER = this.getAttribute('data-it-filter') || 'all';
-        GRIDS[1].page = 1;
+        IT_GRID.page = 1;
         for (var j = 0; j < buttons.length; j++) {
           var active = buttons[j].getAttribute('data-it-filter') === IT_PROJECT_FILTER;
           buttons[j].classList.toggle('border-teal', active);
@@ -1105,7 +1218,7 @@
           buttons[j].classList.toggle('text-putih/65', !active);
           buttons[j].setAttribute('aria-pressed', String(active));
         }
-        renderGrid(GRIDS[1]);
+        renderGrid(IT_GRID);
       });
     }
   }
@@ -1116,17 +1229,28 @@
     var view = ROUTES.indexOf(parts[0]) > -1 ? parts[0] : 'home';
     var division = null, page = null;
     if (view === 'works') {
-      division = DIVISIONS.hasOwnProperty(parts[1]) ? parts[1] : DEFAULT_DIVISION;
-      page = DIVISIONS[division].indexOf(parts[2]) > -1 ? parts[2] : (division === 'it' ? 'software' : 'overview');
+      /* Bare #/works is now a real destination, not a redirect. Anything that
+         is not a known division falls back to it rather than to Construction,
+         so a stale or mistyped link no longer hides the IT line. */
+      if (DIVISIONS.hasOwnProperty(parts[1])) {
+        division = parts[1];
+        page = DIVISIONS[division].indexOf(parts[2]) > -1 ? parts[2] : (division === 'it' ? 'software' : 'overview');
+      } else {
+        division = 'all';
+        page = null;
+      }
     }
     return { view: view, division: division, page: page };
   }
 
   function setTitle() {
     var r = parseHash();
-    var key = r.view === 'works'
-      ? (r.page === 'overview' ? 'works/' + r.division : 'works/' + r.division + '/' + r.page)
-      : r.view;
+    var key = r.view;
+    if (r.view === 'works') {
+      if (r.division === 'all') { key = 'works'; }
+      else if (r.page === 'overview') { key = 'works/' + r.division; }
+      else { key = 'works/' + r.division + '/' + r.page; }
+    }
     var map = TITLES[lang] || TITLES.en;
     if (map[key]) { document.title = map[key]; }
   }
@@ -1140,7 +1264,11 @@
 
   function render() {
     var r = parseHash();
-    var full = r.division ? r.division + '/' + r.page : null;
+    /* The landing division has no sub-page, so its key is just 'all'. Without
+       this the key became the string 'all/null' and nothing matched. */
+    var full = null;
+    if (r.division === 'all') { full = 'all'; }
+    else if (r.division) { full = r.division + '/' + r.page; }
     var i;
 
     for (i = 0; i < views.length; i++) {
