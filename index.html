@@ -94,9 +94,6 @@
   }
   .on-dark [aria-current="page"] { color: #00A796; }
 
-  [data-lang][aria-pressed="true"] { color: #013589; font-weight: 500; }
-  [data-lang][aria-pressed="false"] { color: #6B7A90; }
-
   /* Chevron on the Our Works disclosure. Rotation is the only state signal, so
      it must survive reduced-motion (transform still applies, just instantly). */
   [aria-expanded="true"] .chev { transform: rotate(180deg); }
@@ -128,11 +125,16 @@
       <!-- Language switch + burger. Both sit in one 44px-high row so the tap
            targets stop overlapping the logo on narrow screens. -->
       <div class="flex items-center gap-2 lg:order-3 lg:gap-4">
-        <span class="flex items-center gap-1 font-mono text-[11px] eyebrow">
-          <button type="button" data-lang="en" aria-pressed="true" lang="en" class="px-1.5 py-2.5">EN</button>
-          <span aria-hidden="true" class="text-navy/25">/</span>
-          <button type="button" data-lang="id" aria-pressed="false" lang="id" class="px-1.5 py-2.5">ID</button>
-        </span>
+        <!-- One control, not two. The glyph carries the meaning; the code
+             states which language you are currently reading. The action lives
+             in aria-label so it is not lost on a screen reader. -->
+        <button id="langToggle" type="button"
+                class="-mr-1 flex h-11 items-center gap-1.5 px-2 text-navy transition-colors hover:text-teal">
+          <svg aria-hidden="true" viewBox="0 0 24 24" class="h-[18px] w-[18px]" fill="currentColor">
+            <path d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z"/>
+          </svg>
+          <span id="langCode" class="font-mono text-[12px] font-medium eyebrow">EN</span>
+        </button>
 
         <button id="navToggle" type="button" aria-expanded="false" aria-controls="navMenu"
                 class="-mr-2 flex h-11 w-11 items-center justify-center text-navy lg:hidden">
@@ -910,7 +912,8 @@
   var pages     = document.querySelectorAll('[data-page]');
   var navLinks  = document.querySelectorAll('[data-route]');
   var pageLinks = document.querySelectorAll('[data-page-link]');
-  var langBtns  = document.querySelectorAll('[data-lang]');
+  var langToggle = document.getElementById('langToggle');
+  var langCode   = document.getElementById('langCode');
 
   var menu        = document.getElementById('navMenu');
   var navToggle   = document.getElementById('navToggle');
@@ -944,8 +947,13 @@
     lang = (next === 'id') ? 'id' : 'en';
     document.documentElement.classList.toggle('lang-id', lang === 'id');
     document.documentElement.setAttribute('lang', lang);
-    for (var i = 0; i < langBtns.length; i++) {
-      langBtns[i].setAttribute('aria-pressed', String(langBtns[i].getAttribute('data-lang') === lang));
+    if (langCode) { langCode.textContent = lang.toUpperCase(); }
+    if (langToggle) {
+      /* Visible text = the language you are in. Accessible name = what the
+         button will do, which the two-letter code alone never conveyed. */
+      langToggle.setAttribute('aria-label', lang === 'id'
+        ? 'Bahasa: Indonesia. Ganti ke Bahasa Inggris.'
+        : 'Language: English. Switch to Indonesian.');
     }
 
     /* Placeholders are attributes, not spans, so the .t-en/.t-id swap cannot
@@ -1291,9 +1299,9 @@
     worksToggle.setAttribute('aria-expanded', 'false');
   }
 
-  for (var b = 0; b < langBtns.length; b++) {
-    langBtns[b].addEventListener('click', function () {
-      applyLang(this.getAttribute('data-lang'), true);
+  if (langToggle) {
+    langToggle.addEventListener('click', function () {
+      applyLang(lang === 'id' ? 'en' : 'id', true);
     });
   }
 
