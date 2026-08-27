@@ -146,58 +146,57 @@
         </button>
       </div>
 
-      <ul id="navMenu" class="hidden w-full flex-col divide-y divide-navy/10 border-t border-navy/10 pb-2 pt-1 lg:order-2 lg:flex lg:w-auto lg:flex-row lg:flex-wrap lg:items-center lg:gap-x-7 lg:gap-y-2 lg:divide-y-0 lg:border-0 lg:pb-0 lg:pt-0">
+      <ul id="navMenu" class="hidden max-h-[calc(100dvh-4.5rem)] w-full flex-col divide-y divide-navy/10 overflow-y-auto border-t border-navy/10 pb-2 pt-1 lg:order-2 lg:max-h-none lg:overflow-visible lg:flex lg:w-auto lg:flex-row lg:flex-wrap lg:items-center lg:gap-x-7 lg:gap-y-2 lg:divide-y-0 lg:border-0 lg:pb-0 lg:pt-0">
         <li><a href="#/" data-nav data-route="home" class="nav-link hover:text-navy"><span class="t-en">Home</span><span class="t-id">Beranda</span></a></li>
-        <li>
+        <li class="lg:static">
           <button id="worksToggle" type="button" aria-expanded="false" aria-controls="worksPanel" data-route="works"
                   class="nav-link flex w-full items-center justify-between gap-2 hover:text-navy lg:w-auto lg:justify-start">
             <span><span class="t-en">Our Works</span><span class="t-id">Lini Usaha</span></span>
             <svg class="chev h-4 w-4 shrink-0 lg:h-3 lg:w-3" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg>
           </button>
+      <div id="worksPanel" class="hidden bg-kabut/50 lg:absolute lg:inset-x-0 lg:top-full lg:z-40 lg:border-b lg:border-navy/15 lg:bg-putih">
+        <div class="mx-auto max-w-shell border-l-2 border-teal/50 px-4 py-6 sm:px-6 lg:border-l-0 lg:px-8 lg:py-12">
+
+          <a href="#/works" data-nav data-page-link="all" class="mb-7 inline-flex items-center gap-2 border-b-2 border-teal pb-1 font-mono text-[11px] eyebrow text-navy hover:text-teal sm:mb-9">
+            <span class="t-en">All services</span><span class="t-id">Semua layanan</span> <span aria-hidden="true">&rarr;</span>
+          </a>
+
+          <div class="grid gap-7 lg:grid-cols-3 lg:gap-14">
+
+            <div>
+              <a href="#/works/construction" data-nav class="font-display text-[1.25rem] font-semibold text-navy hover:text-teal"><span class="t-en">Construction</span><span class="t-id">Konstruksi</span></a>
+              <ul class="mt-3 space-y-1 text-[1rem] sm:mt-5 sm:space-y-3 sm:text-[0.95rem]">
+                <li><a href="#/works/construction" data-nav data-page-link="construction/overview" class="block py-1.5 hover:text-navy"><span class="t-en">What we take on</span><span class="t-id">Layanan kami</span></a></li>
+                <li><a href="#/works/construction/advisory" data-nav data-page-link="construction/advisory" class="block py-1.5 hover:text-navy"><span class="t-en">Pre-construction advice</span><span class="t-id">Konsultasi prakonstruksi</span></a></li>
+              </ul>
+            </div>
+
+            <div>
+              <a href="#/works/it" data-nav class="font-display text-[1.25rem] font-semibold text-navy hover:text-teal">IT</a>
+              <p class="mt-2 font-mono text-[11px] leading-relaxed text-abu">
+                <span class="t-en">Software, data, and design for business needs</span><span class="t-id">Software, data, dan desain untuk kebutuhan bisnis</span>
+              </p>
+              <ul class="mt-3 space-y-1 text-[1rem] sm:mt-5 sm:space-y-3 sm:text-[0.95rem]">
+                <li><a href="#/works/it/software" data-nav data-page-link="it/software" class="block py-1.5 hover:text-navy">Software</a></li>
+                <li><a href="#/works/it/data" data-nav data-page-link="it/data" class="block py-1.5 hover:text-navy">Data</a></li>
+                <li><a href="#/works/it/design" data-nav data-page-link="it/design" class="block py-1.5 hover:text-navy"><span class="t-en">Design</span><span class="t-id">Desain</span></a></li>
+                <li><a href="#/works/it/projects" data-nav data-page-link="it/projects" class="block py-1.5 hover:text-navy"><span class="t-en">Projects</span><span class="t-id">Proyek</span></a></li>
+              </ul>
+            </div>
+
+            <div class="border-t border-navy/15 pt-6 lg:border-l lg:border-t-0 lg:pl-10 lg:pt-0">
+              <p class="font-mono text-[11px] eyebrow text-abu"><span class="t-en">Finished work</span><span class="t-id">Hasil kerja</span></p>
+              <p class="mt-2 text-[0.95rem] leading-relaxed text-midnight/80"><span class="t-en">See completed projects across construction and IT.</span><span class="t-id">Lihat proyek yang sudah selesai, konstruksi maupun IT.</span></p>
+              <a href="#/projects" data-nav class="mt-5 inline-flex w-full items-center justify-center border-2 border-navy px-6 py-3 font-mono text-[11px] eyebrow text-navy transition-colors hover:bg-navy hover:text-putih sm:w-auto"><span class="t-en">Projects</span><span class="t-id">Proyek</span></a>
+            </div>
+
+          </div>
+        </div>
+      </div>
         </li>
         <li><a href="#/company"  data-nav data-route="company"  class="nav-link hover:text-navy"><span class="t-en">Company information</span><span class="t-id">Informasi perusahaan</span></a></li>
         <li><a href="#/contact"  data-nav data-route="contact"  class="nav-link hover:text-navy"><span class="t-en">Contact</span><span class="t-id">Kontak</span></a></li>
       </ul>
-    </div>
-  </div>
-
-  <div id="worksPanel" class="hidden max-h-[70vh] overflow-y-auto border-b border-navy/15 bg-putih lg:max-h-none lg:overflow-visible">
-    <div class="mx-auto max-w-shell px-5 py-8 sm:px-8 sm:py-12">
-
-      <a href="#/works" data-nav data-page-link="all" class="mb-7 inline-flex items-center gap-2 border-b-2 border-teal pb-1 font-mono text-[11px] eyebrow text-navy hover:text-teal sm:mb-9">
-        <span class="t-en">All services</span><span class="t-id">Semua layanan</span> <span aria-hidden="true">&rarr;</span>
-      </a>
-
-      <div class="grid gap-8 md:grid-cols-3 lg:gap-14">
-
-        <div>
-          <a href="#/works/construction" data-nav class="font-display text-[1.25rem] font-semibold text-navy hover:text-teal"><span class="t-en">Construction</span><span class="t-id">Konstruksi</span></a>
-          <ul class="mt-3 space-y-1 text-[1rem] sm:mt-5 sm:space-y-3 sm:text-[0.95rem]">
-            <li><a href="#/works/construction" data-nav data-page-link="construction/overview" class="block py-1.5 hover:text-navy"><span class="t-en">What we take on</span><span class="t-id">Layanan kami</span></a></li>
-            <li><a href="#/works/construction/advisory" data-nav data-page-link="construction/advisory" class="block py-1.5 hover:text-navy"><span class="t-en">Pre-construction advice</span><span class="t-id">Konsultasi prakonstruksi</span></a></li>
-          </ul>
-        </div>
-
-        <div>
-          <a href="#/works/it" data-nav class="font-display text-[1.25rem] font-semibold text-navy hover:text-teal">IT</a>
-          <p class="mt-2 font-mono text-[11px] leading-relaxed text-abu">
-            <span class="t-en">Software, data, and design for business needs</span><span class="t-id">Software, data, dan desain untuk kebutuhan bisnis</span>
-          </p>
-          <ul class="mt-3 space-y-1 text-[1rem] sm:mt-5 sm:space-y-3 sm:text-[0.95rem]">
-            <li><a href="#/works/it/software" data-nav data-page-link="it/software" class="block py-1.5 hover:text-navy">Software</a></li>
-            <li><a href="#/works/it/data" data-nav data-page-link="it/data" class="block py-1.5 hover:text-navy">Data</a></li>
-            <li><a href="#/works/it/design" data-nav data-page-link="it/design" class="block py-1.5 hover:text-navy"><span class="t-en">Design</span><span class="t-id">Desain</span></a></li>
-            <li><a href="#/works/it/projects" data-nav data-page-link="it/projects" class="block py-1.5 hover:text-navy"><span class="t-en">Projects</span><span class="t-id">Proyek</span></a></li>
-          </ul>
-        </div>
-
-        <div class="border-t border-navy/15 pt-8 md:border-l md:border-t-0 md:pl-10 md:pt-0">
-          <p class="font-mono text-[11px] eyebrow text-abu"><span class="t-en">Finished work</span><span class="t-id">Hasil kerja</span></p>
-          <p class="mt-2 text-[0.95rem] leading-relaxed text-midnight/80"><span class="t-en">See completed projects across construction and IT.</span><span class="t-id">Lihat proyek yang sudah selesai, konstruksi maupun IT.</span></p>
-          <a href="#/projects" data-nav class="mt-5 inline-flex w-full items-center justify-center border-2 border-navy px-6 py-3 font-mono text-[11px] eyebrow text-navy transition-colors hover:bg-navy hover:text-putih sm:w-auto"><span class="t-en">Projects</span><span class="t-id">Proyek</span></a>
-        </div>
-
-      </div>
     </div>
   </div>
 </nav>
