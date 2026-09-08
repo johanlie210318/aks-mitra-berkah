@@ -44,6 +44,12 @@
   body { -webkit-font-smoothing: antialiased; }
 
   .tight { letter-spacing: -0.025em; line-height: 0.98; }
+
+  /* Long Indonesian compounds ("pertanggungjawaban", "ketenagakerjaan") are
+     wider than a narrow grid column at display sizes. Hyphenate them instead
+     of letting them spill past the card edge. Needs the lang attribute, which
+     applyLang() keeps in sync. */
+  h1, h2, h3 { overflow-wrap: break-word; hyphens: auto; }
   .eyebrow { letter-spacing: .15em; text-transform: uppercase; }
   .tnum { font-variant-numeric: tabular-nums; }
 
@@ -275,7 +281,7 @@
         <div class="bg-teal p-6 text-midnight sm:p-8 lg:p-9">
           <p class="font-mono text-xs eyebrow text-midnight/60"><span class="t-en">Result</span><span class="t-id">Hasil</span></p>
           <p class="mt-4 font-display text-[3rem] font-bold leading-none tnum sm:mt-5 sm:text-[3.5rem]">1</p>
-          <p class="font-display text-[1.35rem] font-semibold leading-tight sm:text-[1.5rem]"><span class="t-en">clear point of accountability.</span><span class="t-id">titik pertanggungjawaban yang jelas.</span></p>
+          <p class="hyphens-auto break-words font-display text-[1.35rem] font-semibold leading-tight sm:text-[1.5rem]"><span class="t-en">clear point of accountability.</span><span class="t-id">penanggung jawab yang jelas.</span></p>
           <p class="mt-4 text-[0.9rem] leading-relaxed text-midnight/80 sm:mt-5"><span class="t-en">With planning, coordination, and execution managed through one process, responsibility stays clear throughout the engagement.</span><span class="t-id">Dengan perencanaan, koordinasi, dan pelaksanaan dikelola dalam satu proses, tanggung jawab tetap jelas selama penugasan berjalan.</span></p>
         </div>
       </div>
